@@ -1,53 +1,170 @@
 <!DOCTYPE html>
-<!-- saved from url=(0023)https://tb47.me/chw/R1/ -->
+<!-- saved from url=(0026)https://tb47.me/chw/R1.01/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>copenheken wheel</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/material-design-iconic-font.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/animate.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/hamburgers.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/animsition.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/select2.min.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/daterangepicker.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/util.css">
-<link rel="stylesheet" type="text/css" href="./copenheken wheel_files/main.css">
-<script type="text/javascript" src="./copenheken wheel_files/data.js.download"></script>
-<style type="text/css">
-	.list {
-	    display: grid;
-	    grid-template-columns: 50px 185px 50px;
-	    text-align: center;
-			vertical-align: middle;
-			line-height: 120px;
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="./chw R1.01_files/js"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-SF03ZLZKE3');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	
+	<meta name="description" content="A web app for copenheken wheel">
+  <meta name="keywords" content="copenheken wheel">
+  <meta name="author" content="GaBhongSena">
+  <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+  <style type="text/css">
+  		@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 	}
-  .ride_mode
-  {
-  		text-align: center;
-			vertical-align: middle;
-      font-family:    Arial, Helvetica, sans-serif;
-      font-size:      30px;
-      font-weight:    bold;
-  }
-   .speed
-  {
-  		text-align: center;
-			vertical-align: middle;
-      font-family:    Arial, Helvetica, sans-serif;
-      font-size:      80px;
-      font-weight:    bold;
-  }
-  .title
-  {
-  		text-align: center;
-			vertical-align: middle;
-      font-family:    Arial, Helvetica, sans-serif;
-      font-size:      20px;
-      font-weight:    bold;
-  }
+
+	@font-face {
+	  font-family: Poppins-Medium;
+	  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+	}
+
+	@font-face {
+	  font-family: Poppins-Bold;
+	  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+	}
+
+	@font-face {
+	  font-family: Poppins-SemiBold;
+	  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+	}
+
+	* {
+		margin: 1px; 
+		padding: 0px; 
+		box-sizing: border-box;
+	}
+
+	body, html {
+		font-family: Poppins-Regular, sans-serif;
+	  background: #f2f2f2;
+	  -webkit-user-select: none;
+	  user-select: none;
+		min-height: 99vh; 
+		width:99vw;
+	  display: flex;
+	  justify-content: center;
+	}
+
+	ul, li {
+		margin: 0px;
+		list-style-type: none;
+	}
+
+	.colorBlue {
+	    background-color: #0072ff;
+	    color: white;
+	}
+
+	.colorDark {
+	    background-color: #4b4c4e;
+	    color: white;
+	}
+
+	.colorGreen {
+	    background-color: #529e2b;
+	    color: white;
+	}
+
+	.colorWhite {
+	    background-color: white;
+	    color: black;
+	}
+
+	.colorBlack {
+	    background-color: black;
+	    color: white;
+	}
+
+	.colorRed {
+	    background-color: orangered;
+	    color: white;
+	}
+
+	.colorSkyBlue {
+	    background-color: skyblue;
+	    color: white;
+	}
+
+	.canvas {
+		height: 100%;  
+	  width: 100%;
+	  overflow-y:auto;
+	  padding: 10px 10px 10px 10px;
+	  flex-wrap: nowrap;
+	  justify-content: center;
+	  display: flex;            /* Use Flexbox on the body flex*/
+	  flex-direction: column; 
+	}
+
+	.header, .footer {
+	    text-align: center;        /* Center text */
+	    padding: 5px;             /* Padding for spacing */
+	    flex: 0 1 auto;  
+	    font-family: Poppins-Bold;
+	    font-size: x-large;
+	}
+
+	.main {
+	    flex: 1 1 auto;            /* Allow the main content to grow and take up remaining space */
+	    padding: 0px;             /* Padding for spacing */
+	    align-items: center;       /* Center content vertically */
+	    justify-content: center;   /* Center content horizontally */
+			/*display: flex;             /* Use Flexbox to center content inside main */
+			text-align: center;
+	}
+
+	.clock {
+		font-size:   70px;
+	}
+
+	.round-button {
+	    width: 100%;              /* Width of the button */
+	    height: 50px;             /* Height of the button */
+	    border-radius: 25px;       /* Makes the button round */
+	    border: none;             /* No border */
+	    cursor: pointer;          /* Pointer cursor on hover */
+	    display: flex;            /* Flex to center the content */
+	    align-items: center;      /* Center the content vertically */
+	    justify-content: center;  /* Center the content horizontally */
+	    font-size: large;          /* Font size of the content */
+	    transition: background-color 0.3s; /* Smooth transition for background color change */
+	    font-family: Poppins-Bold;
+			margin-top: 10px;
+	}
+
+	.round-button:focus {
+	    outline: none; /* Remove default focus outline */
+	   /* box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6); /* Custom focus outline */
+	}
+
+	.grid-container {
+	    display: grid;            /* Use CSS Grid for layout */
+	    grid-template-columns: 25% 1fr 25%; /* Create 3 columns with specified ratios */
+	    width: 100%;            /* Set container height to 100% of the viewport height */
+	    height: 100%;
+	    align-items: center;      /* Center the content vertically */
+	    justify-content: center;  /* Center the content horizontally */
+	    font-family: Poppins-Bold;
+	}
+
+	.grid-item {
+	    /*overflow-y: auto;         /* Add vertical scroll if content overflows */
+	    justify-content: center;  /* Center the content horizontally */
+	    align-items: center; 
+	    display: flex; 
+	}
+
   .progress {
-	  width: 280px;
+	  width: 100%;
 	  height: 20px;
 	  background-color: #577B8D;
 	  border-radius: 10px;
@@ -55,7 +172,7 @@
 
 	.progress-bar {
 	  height: 100%;
-	  background-color: #4caf50;
+	  background-color: #ffffff;
 	  border-radius: 10px;
 	  transition: width 0.3s ease-in-out;
 	  width: 0;
@@ -64,10 +181,12 @@
 		font-size:      15px;
 		color: white;
 	}
-	  .button-container {
+
+	.button-container {
     text-align: right;
     margin-top: 10px;
   }
+
   .adjust-button {
     margin: 0 2px;
     padding: 5px 10px;
@@ -82,96 +201,267 @@
     justify-content: space-between;
     padding: 5px;
     align-items: center;
-
   }
+
   .column {
     flex: 1;
   }
+
   .left {
     text-align: left;
   }
+
   .right {
     text-align: right;
   }
-
 
 	.log {
     border-bottom: 1px solid black; /* Change color and thickness as needed */
     padding-bottom: 5px; /* Adjust padding to ensure content doesn't touch the border */
   }
 
-  .clock {
-  	text-align: center;
-		font-size:      48px;
-		color: #444;
+
+	/*------------------------------------------------------------------
+	[ loder]*/
+	.loader {
+	  border: 5px solid #CAC8C7;
+	  border-radius: 50%;
+	  border-top: 5px solid #fa0404;;
+	  width: 45px;
+	  height: 45px;
+	  -webkit-animation: spin 1s linear infinite; /* Safari */
+	  animation: spin 1s linear infinite;
+	  margin:0 auto; 
+	  margin-top: 0px;
+	  position: relative;
+	  top: -80px;
+	  left: -50px;
+	  z-index: 1; 
 
 	}
 
-  .donate-button {
-    background-color: #0070ba;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
 
-  .donate-button:hover {
-    background-color: #005a9c;
-  }
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	.redWheel{
+		width:200px;
+		height: 150px;
+		z-index: 2;
+		position: relative;
+	}
 
-</style>
+	/*------------------------------------------------------------------
+	[ Input ]*/
+	/*********** Baseline, reset styles ***********/
+	input[type="range"] {
+	  -webkit-appearance: none;
+	  appearance: none;
+	  background: transparent;
+	  cursor: pointer;
+	  /*width: 25rem;*/
+	}
+
+	/* Removes default focus */
+	input[type="range"]:focus {
+	  outline: none;
+	}
+
+	/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+	/* slider track */
+	input[type="range"]::-webkit-slider-runnable-track {
+	  background-color: #66b0ff;
+	  border-radius: 0.5rem;
+	  height: 0.5rem;
+	}
+
+	/* slider thumb */
+	input[type="range"]::-webkit-slider-thumb {
+	  -webkit-appearance: none; /* Override default look */
+	  appearance: none;
+	  margin-top: -8px; /* Centers thumb on the track */
+	  background-color: #808080;
+	  border-radius: 0.5rem;
+	  height: 1.5rem;
+	  width: 3rem;
+	}
+
+	input[type="range"]:focus::-webkit-slider-thumb {
+	  outline: 3px solid #808080;
+	  outline-offset: 0.125rem;
+	}
+
+	/*********** Firefox styles ***********/
+	/* slider track */
+	input[type="range"]::-moz-range-track {
+	  background-color: #66b0ff;
+	  border-radius: 0.5rem;
+	  height: 0.5rem;
+	}
+
+	/* slider thumb */
+	input[type="range"]::-moz-range-thumb {
+	  background-color: #808080;
+	  border: none; /*Removes extra border that FF applies*/
+	  border-radius: 0.5rem;
+	  height: 1.5rem;
+	  width: 3rem;
+	}
+
+	input[type="range"]:focus::-moz-range-thumb{
+	  outline: 3px solid #808080;
+	  outline-offset: 0.125rem;
+	}
+
+	input {
+		outline: none;
+		border: none;
+	}
+
+	input:focus::-webkit-input-placeholder { color:transparent; }
+	input:focus:-moz-placeholder { color:transparent; }
+	input:focus::-moz-placeholder { color:transparent; }
+	input:focus:-ms-input-placeholder { color:transparent; }
+
+
+	input::-webkit-input-placeholder { color: #adadad;}
+	input:-moz-placeholder { color: #adadad;}
+	input::-moz-placeholder { color: #adadad;}
+	input:-ms-input-placeholder { color: #adadad;}
+
+	.wrap-input100 {
+	  width: 100%;
+	  position: relative;
+	  border-bottom: 2px solid #adadad;
+	  margin-bottom: 37px;
+	  text-align: left;
+	}
+
+	.input100 {
+	  font-family: Poppins-Regular;
+	  font-size: 15px;
+	  color: #555555;
+	  line-height: 1.2;
+
+	  display: block;
+	  width: 100%;
+	  height: 45px;
+	  background: transparent;
+	  padding: 0 5px;
+	}
+
+	/*---------------------------------------------*/ 
+	.focus-input100 {
+	  position: absolute;
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  top: 0;
+	  left: 0;
+	  pointer-events: none;
+	}
+
+	.focus-input100::before {
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  bottom: -2px;
+	  left: 0;
+	  width: 0;
+	  height: 2px;
+
+	  -webkit-transition: all 0.4s;
+	  -o-transition: all 0.4s;
+	  -moz-transition: all 0.4s;
+	  transition: all 0.4s;
+
+	  background: #6a7dfe;
+	  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+	  background: -o-linear-gradient(left, #21d4fd, #b721ff);
+	  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
+	  background: linear-gradient(left, #21d4fd, #b721ff);
+	}
+
+	.focus-input100::after {
+	  font-family: Poppins-Regular;
+	  font-size: 15px;
+	  color: #999999;
+	  line-height: 1.2;
+
+	  content: attr(data-placeholder);
+	  display: block;
+	  width: 100%;
+	  position: absolute;
+	  top: -15px;
+	  left: 0px;
+	  padding-left: 5px;
+
+	  -webkit-transition: all 0.4s;
+	  -o-transition: all 0.4s;
+	  -moz-transition: all 0.4s;
+	  transition: all 0.4s;
+	}
+
+	.input100:focus + .focus-input100::after {
+	  top: -15px;
+	}
+
+	.input100:focus + .focus-input100::before {
+	  width: 100%;
+	}
+
+	.has-val.input100 + .focus-input100::after {
+	  top: -15px;
+	}
+
+	.has-val.input100 + .focus-input100::before {
+	  width: 100%;
+	}
+
+	/*---------------------------------------------*/
+
+  </style>
+	<title>chw R1.01</title>
+	<script type="text/javascript" src="./chw R1.01_files/data.js.download"></script>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1181.0" data-gr-ext-installed="">
-<div class="limiter">
-<div class="container-login100" style="align-items: baseline;">
-<div class="wrap-login100" id="canvas">
-<span class="login100-form-title p-b-26" id="wheelName">
-copenheken wheel
-</span>
-<div class="clock" id="clock">11:53</div>
-<div class="login100-form-bgbtn"></div>
-<div id="content_canvas">
-<div>
-	Please go close to wheel and click connect to device
-</div>
-<div class="container-login100-form-btn">
-	<div class="wrap-login100-form-btn">
-		<div class="login100-form-bgbtn"></div>
-		<button class="login100-form-btn" onclick="onButtonClick(this)" name="action">Connect to Device</button>
-	</div>
-</div>
-
-
-
-<div class="container-login100-form-btn">
-	<div class="wrap-login100-form-btn">
-		<div class="login100-form-bgbtn"></div>
-		<button class="login100-form-btn" onclick="redirectToPayPal()" name="action">Donate with PayPal</button>
-	</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-
+<body data-new-gr-c-s-check-loaded="14.1182.0" data-gr-ext-installed="">
+		<div class="canvas colorWhite" id="canvas">
+			<div class="header" id="header">
+				<span id="wheelName">Copenhagen Wheel</span>
+				<div class="clock" id="clock">09:05</div>
+			</div>
+			<div class="main" id="main">
+				<div width="200px" height="150px" id="canvas_redWheel">
+					<img src="./chw R1.01_files/redwheel.svg" class="redWheel">
+				</div>
+				<div>
+					Please go close to the wheel  and click connect to device
+				</div>
+			</div>
+			<div class="footer" id="footer">
+				<button class="round-button colorRed" onclick="onButtonClick(this)" name="action">Connect to Device</button>
+				<button class="round-button colorBlue" onclick="redirectToPayPal()" name="action">Donate with PayPal</button>
+			</div>
+		</div>
 <script type="text/javascript">
 //BLE
-//copenheken UUID
-const Device_UUID = "0000180a-0000-1000-8000-00805f9b34fb";//"c6a2bbba-d6bc-4493-a99f-5173f43eacf9";
-const Firmware_Version_characteristicUuid = "00002a26-0000-1000-8000-00805f9b34fb";//"00002a26-0000-1000-8000-00805f9b34fb";
-const Hardmware_Version_characteristicUuid = "00002a27-0000-1000-8000-00805f9b34fb";//"00002a27-0000-1000-8000-00805f9b34fb";
+//Wheel BLE Services
+const Device_UUID = "0000180a-0000-1000-8000-00805f9b34fb";
+const Firmware_Version_characteristicUuid = "00002a26-0000-1000-8000-00805f9b34fb";
+const Hardmware_Version_characteristicUuid = "00002a27-0000-1000-8000-00805f9b34fb";
 
 //Authentication UUID
 const Authentication_ServiceUuid  = "52756265-6e43-6167-6e69-654350485100";
 const Main_Electronics_Board_Serial_Number_characteristicUuid = "52756265-6e43-6167-6e69-654350485105";
-const Passcode_forAuthentication_Access_characteristicUuid =  "52756265-6e43-6167-6e69-654350485101"; //static AUTH_REQUEST_UUID = '52756265-6e43-6167-6e69-654350485101'
-const Present_Access_Level_to_DSP_characteristicUuid =  "52756265-6e43-6167-6e69-654350485104"; //if state is None or state == 0xFF:
+const Passcode_forAuthentication_Access_characteristicUuid =  "52756265-6e43-6167-6e69-654350485101"; 
+const Present_Access_Level_to_DSP_characteristicUuid =  "52756265-6e43-6167-6e69-654350485104"; 
 const Wheel_Name_characteristicUuid =  "52756265-6e43-6167-6e69-654350485103";
-
 
 //Command to controller UUID
 const Controller_ServiceUuid ="52756265-6e43-6167-6e69-654350485000";
@@ -221,12 +511,14 @@ let currentRide = -1;
 let rideModeLabel;
 let speedLabel;
 let batteryLevel;
+let batteryLevelLabel;
 let logMode = false;
 let logElement;
 let authenAttempted = 0;
 let maxAssistSpeed = 32;
+
 //ride modes
-const rideModes = [{mode:"off", value:"0000000000000000000000000000000000000000"},{mode:"eco", value:"2020000a0000000034d87f3a00d500000100a88c"},{mode:"standard", value:"4040001e0000000034d87f3a00d5000001009183"},{mode:"turbo", value:"557f7d000000000034d8ff3a00d500000100064e"}];
+const rideModes = [{mode:"OFF", value:"0000000000000000000000000000000000000000"},{mode:"ECO", value:"2020000a0000000034d87f3a00d500000100a88c"},{mode:"STANDARD", value:"4040001e0000000034d87f3a00d5000001009183"},{mode:"TURBO", value:"557f7d000000000034d8ff3a00d500000100064e"}];
 let rideMode = 0; //0 off, 1 eco, 2 standard, 2 turbo
 const tries =[
 	{name:"25c-28C", value:"660d0000"},
@@ -236,8 +528,6 @@ const tries =[
 	{name:"41c-44c", value:"060e0000"},
 	{name:"45c-48c", value:"2e0e0000"},
 	{name:"49c-52c", value:"600e0000"}];
-
-
 const assisScoreHexMap = {
         20: "712c",
         21: "aa2e",
@@ -264,10 +554,13 @@ const deviceInformation = {
 }
 
 //UI
-const wheelName_div = document.getElementById("wheelName");
 //const speed_div = document.getElementById("speed_lable");
-const content_canvas = document.getElementById("content_canvas");
 const canvas = document.getElementById("canvas");
+const canvas_header = document.getElementById("header");
+const canvas_main = document.getElementById("main");
+const canvas_footer = document.getElementById("footer");
+const wheelName_div = document.getElementById("wheelName");
+
 
 function LogMode(){
 	const url = new URL(window.location.href);
@@ -283,85 +576,77 @@ function LogMode(){
 function onButtonClick(bnt){
 	logMode = LogMode();
 	var lable = bnt.textContent;
-	if (lable =="Connect to Device"){
-		if (logMode == true) {
-			investigatePage();
-		}else{
-			informationPage();
-		}
-		requestDevice();
-	}
-	if (lable == "Mode") {
-		alert("switch mode");
-		//switchMode();
-	}
-	if (lable == "<") {
-		if (rideMode > 0) rideMode = rideMode -1;
-		switchMode();
-	}
-	if (lable == ">") {
-		if (rideMode < 3) rideMode = rideMode +1;
-		switchMode();
-	}
-	if (lable == "Finish") {
-		finishRide();
-	}
-	if (lable == "Done") {
-		logMode = false;
-		homePage();
-		try{
-			bluetoothDevice.gatt.disconnect();
-		}catch(error){
-			log('Error:' + error);
-		}
-		
-	}
-	if (lable == "Disconnect from Device"){
-		//informationPage();
-		homePage()
-		if (ble_status) ble_status.textContent = "Disconnect from Device";
-		bluetoothDevice.gatt.disconnect();
-	}
-	if (lable == "LandingPage"){
-		LandingPage();
-	}
-	if (lable == "About Wheel"){
-		readDeviceInformation();
-		//SettingPage();
-	}
-		if (lable == "Save"){
-		saveSetting();	
-		LandingPage();
-	}
-
-	if (lable == "Ride"){
-		CurrentRidePage();
-	}
-
-	if (lable == "Donate with PayPal"){
-		redirectToPayPal();
+	switch (lable) {
+	  case 'Connect to Device': 
+	  	if (logMode == true) {
+				investigatePage();
+			}else{
+				informationPage();
+			}
+			requestDevice();
+	    break;
+	  case '<':
+	  	if (rideMode > 0) rideMode = rideMode -1;
+			switchMode();
+	    break;
+	  case '>':
+	  	if (rideMode < 3) rideMode = rideMode +1;
+			switchMode();
+	    break;
+	  case 'Finish':
+	  	rideMode = 3;
+			finishRide();
+	    break;
+	  case 'Done':
+	  	logMode = false;
+			homePage();
+			try{
+				bluetoothDevice.gatt.disconnect();
+			}catch(error){
+				log('Error:' + error);
+			}
+	    break;
+	  case 'Cancel':
+	  	logMode = false;
+			homePage();
+			try{
+				bluetoothDevice.gatt.disconnect();
+			}catch(error){
+				log('Error:' + error);
+			}
+	    break;
+	  case 'About Wheel':
+			readDeviceInformation();
+	    break;
+	  case 'Save':
+			saveSetting();	
+			LandingPage();
+	    break;
+	  case 'Exit':
+			canvas.classList.replace("colorBlack","colorWhite");
+			//background: #f2f2f2; -> #121212
+			document.body.style.backgroundColor = "#f2f2f2";
+			LandingPage();
+	    break;
+	  case 'Ride':
+			CurrentRidePage();
+	    break;
+	  case 'Donate with PayPal':
+			redirectToPayPal();
+	    break;
+	  default:
+	    break;
 	}
 }
 
-function cmd_button(lable){
-	let first_element = document.createElement("div");
-	first_element.className = "container-login100-form-btn";
-	let second_element = document.createElement("div");
-	second_element.className = "wrap-login100-form-btn";
-	let third_element = document.createElement("div");
-	third_element.className = "login100-form-bgbtn";
-	let forth_element = document.createElement("button");
-	forth_element.name ="action";
-	forth_element.className = "login100-form-btn";
-	forth_element.setAttribute("onclick","onButtonClick(this)");
-	forth_element.textContent = lable;
-	if (lable == '<' || lable == '>'){
-			forth_element.style.height = '100px'; 
-	}
-	second_element.appendChild(third_element);
-	second_element.appendChild(forth_element);
-	first_element.appendChild(second_element);
-	return first_element;
+function cmd_button(lable,color="colorRed"){
+	let btn_element = document.createElement("button");
+	btn_element.name ="action";
+	btn_element.className = "round-button";
+	btn_element.classList.add(color);
+	btn_element.setAttribute("onclick","onButtonClick(this)");
+	btn_element.textContent = lable;
+	return btn_element;
 }
 
 function input_text(lable,value){
@@ -388,8 +673,6 @@ function input_text(lable,value){
 }
 
 function input_slidebar(lable,value){
-
-
 	let first_element = document.createElement("div");
 	first_element.className = "wrap-input100 validate-input";
 	first_element.setAttribute("data-validate","Enter " + lable);
@@ -416,25 +699,24 @@ function input_slidebar(lable,value){
 	return first_element;
 }
 
-	function deviceInfoDetail(ul,title,value){
-		let li_title = document.createElement("li");
-		li_title.textContent = title;
-		li_title.style.textAlign = "left";
-		li_title.style.borderBottom = '2px solid #adadad';
-		li_title.style.padding =  "5px";
-		li_title.style.color = "#999999";
+function deviceInfoDetail(ul,title,value){
+	let li_title = document.createElement("li");
+	li_title.textContent = title;
+	li_title.style.textAlign = "left";
+	li_title.style.borderBottom = '2px solid #adadad';
+	li_title.style.padding =  "5px";
+	li_title.style.color = "#999999";
 
 
-		let li_value = document.createElement("li");
-		li_value.textContent = value;
-		li_value.style.textAlign = "right";
-		li_value.style.borderBottom = '2px solid #adadad';
-		li_value.style.padding =  "5px";
+	let li_value = document.createElement("li");
+	li_value.textContent = value;
+	li_value.style.textAlign = "right";
+	li_value.style.borderBottom = '2px solid #adadad';
+	li_value.style.padding =  "5px";
 
-		ul.appendChild(li_title);
-		ul.appendChild(li_value);
-	}
-
+	ul.appendChild(li_title);
+	ul.appendChild(li_value);
+}
 
 function lable_text(lable,value){
 	let first_element = document.createElement("div");
@@ -467,9 +749,7 @@ function inputSelectOption(lable){
 	second_element.style.border = "0px";
 	second_element.style.outline ="0px";
 	second_element.setAttribute("onchange","tireChange(this)");
-	//second_element.setAttribute("type","text");
-	//second_element.value = value;
-
+	
 	for (let i = 0; i < tries.length; i++) {
   	//console.log(`Name: ${tries[i].name}, Value: ${tries[i].value}`);
   	let opt_element = document.createElement("option");
@@ -479,17 +759,16 @@ function inputSelectOption(lable){
 		second_element.value = deviceInformation.tireSetting;
 	}
 
-
 	let third_element = document.createElement("span");
 	third_element.className ="focus-input100";
 	third_element.setAttribute("data-placeholder",lable);
 
-	
 	first_element.appendChild(second_element);
 	first_element.appendChild(third_element);
 
 	return first_element;
 }
+
 function increseDecressButton(lable,value){
 
 	let first_element = document.createElement("div");
@@ -537,10 +816,8 @@ function increseDecressButton(lable,value){
 
 	first_element.appendChild(third_element);
 
-		return first_element;
+	return first_element;
 }
-
-
 
 function homePage(){
 	cleanPage();
@@ -549,83 +826,134 @@ function homePage(){
 	presentAccess = 'ff';
 	BLEserver = null;
 	let first_element = document.createElement("div");
-	first_element.textContent = "Please go close to device and click connect to device";
-	content_canvas.appendChild(first_element);
-	content_canvas.appendChild(cmd_button('Connect to Device'));
-	content_canvas.appendChild(cmd_button('Donate with PayPal'));
+	first_element.textContent = "Please go close to the wheel and click connect to device";
+	
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(first_element);
+	canvas_footer.appendChild(cmd_button('Connect to Device'));
+	canvas_footer.appendChild(cmd_button('Donate with PayPal','colorBlue'));
+	
 }
 
 function informationPage(){
 	cleanPage();
-	let first_element = document.createElement("div");
-	first_element.id = "ble_status";
-	first_element.textContent = "Please click pair to connect to device";
-	content_canvas.appendChild(first_element);
-	ble_status = document.getElementById("ble_status");
+	let bleStatus_element = document.createElement("div");
+	bleStatus_element.id = "ble_status";
+	bleStatus_element.textContent = "Please click pair to connect to device";
+	ble_status = bleStatus_element;
+
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(bleStatus_element);
+	canvas_footer.appendChild(cmd_button("Cancel"));
+	
 }
 
 function investigatePage(){
 	cleanPage();
 	wheelName_div.textContent = 'Investigate Mode';
-	// let first_element = document.createElement("div");
-	// first_element.textContent = "Investigate Mode";
-	// content_canvas.appendChild(first_element);
 	logElement = document.createElement("div");
-	content_canvas.appendChild(logElement);
-	content_canvas.appendChild(cmd_button('Done'));
+	canvas_main.appendChild(logElement);
+	canvas_main.appendChild(cmd_button('Done'));
 	let ble_element = document.createElement("div");
 	ble_element.id = "ble_status";
 	ble_element.textContent = "---";
-	content_canvas.appendChild(ble_element);
+	canvas_main.appendChild(ble_element);
 }
 
 function finishPage(){
 	cleanPage();
-	let first_element = document.createElement("div");
-	first_element.textContent = "Please wait for finish proceess ...";
-	content_canvas.appendChild(first_element);
-	loadingIndicator();
-}
+	canvas.classList.replace("colorBlack","colorWhite");
+	//background: #f2f2f2; -> #121212
+	document.body.style.backgroundColor = "#f2f2f2";
+	let bleStatus_element = document.createElement("div");
+	bleStatus_element.id = "ble_status";
+	bleStatus_element.textContent = "Please wait for showdown and unpair proceess ...";
+	ble_status = bleStatus_element;
 
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(bleStatus_element);
+	loadingIndicator();
+
+}
 
 function LandingPage(){
 	if (logMode == true) return;
 	cleanPage();
 	wheelName_div.textContent = wheelName;
-	content_canvas.appendChild(cmd_button('About Wheel'));
-	content_canvas.appendChild(cmd_button('Ride'));
-	content_canvas.appendChild(cmd_button('Done'));
+
+  
+	let redwheel_element = document.createElement("img");
+	redwheel_element.src = "img/redwheel.svg";
+	let text_element = document.createElement("div");
+	text_element.innerHTML ="Wheel connected, Welcome back <br>Enjoy riding <b><font color='red'>the red wheel</font></b>";
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(text_element);
+	canvas_footer.appendChild(cmd_button('About Wheel','colorGreen'));
+	canvas_footer.appendChild(cmd_button('Ride','colorDark'));
+	canvas_footer.appendChild(cmd_button('Done',));
 }
 
 function SettingPage(){
 
 	if (logMode == true) return;
 	cleanPage();
-	//readDeviceInformation();
-	wheelName_div.textContent = deviceInformation.wheelName;
-		maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
+	//adjust layout by temporary remove disply flex
+	//canvas.style.display = '';
+	
+  	wheelName_div.textContent = deviceInformation.wheelName;
+	maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
 
-		let ul_element = document.createElement("ul");
-		ul_element.style.display = "grid";
-		ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
-		deviceInfoDetail(ul_element,"Hardware Version",deviceInformation.heardwareVersion);
-		deviceInfoDetail(ul_element,"Firmware Version",deviceInformation.firmwareVersion);
+	let ul_element = document.createElement("ul");
+	ul_element.style.display = "grid";
+	ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
+	deviceInfoDetail(ul_element,"Hardware Version",deviceInformation.heardwareVersion);
+	deviceInfoDetail(ul_element,"Firmware Version",deviceInformation.firmwareVersion);
 
+	canvas_main.appendChild(ul_element);
+	canvas_main.appendChild(document.createElement("br"));
+	canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
 
-	content_canvas.appendChild(ul_element);
-	content_canvas.appendChild(document.createElement("br"));
-	content_canvas.appendChild(input_text('Wheel Name',wheelName)); 
-	content_canvas.appendChild(input_slidebar('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));  
+	canvas_main.appendChild(input_slidebar('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));  
 	var elem = document.getElementById("lable_Power Save timeout"); 
-  elem.setAttribute("data-placeholder","Power Save timeout: " + hexToProgressScore(deviceInformation.powerSaveTimeout) + " mins");
-
-  content_canvas.appendChild(increseDecressButton('Max Assist Speed',maxAssistSpeed));
+  	elem.setAttribute("data-placeholder","Power Save timeout: " + hexToProgressScore(deviceInformation.powerSaveTimeout) + " mins");
+ 
+  	canvas_main.appendChild(increseDecressButton('Max Assist Speed',maxAssistSpeed));
 	elem = document.getElementById("lable_Max Assist Speed"); 
-  elem.setAttribute("data-placeholder","Max Assist Speed:");
+  	elem.setAttribute("data-placeholder","Max Assist Speed:");
 
-  content_canvas.appendChild(inputSelectOption("Tire Setting"));
-
-	content_canvas.appendChild(cmd_button('Save'));
+  	canvas_main.appendChild(inputSelectOption("Tire Setting"));
+	canvas_footer.appendChild(cmd_button('Save'));
+	//adjust layout by temporary remove disply flex
+	//canvas.style.display="inline";
+	canvas.scrollIntoView();
 
 }
 
@@ -634,60 +962,75 @@ function CurrentRidePage(){
 	cleanPage();
 	currentRide = 1;
 	wheelName_div.textContent = wheelName;
-	const first_element = document.createElement("div");
-	const speed_element = document.createElement("div");
-	const ul_element = document.createElement("ul");
-	const left_element = document.createElement("li");
-	const midle_element = document.createElement("li");
-	const div_element = document.createElement("div");
-	const right_element = document.createElement("li");
-  const battery_element = document.createElement("div");
 
-  const progress_element = document.createElement("div");
-	const progressBar_element = document.createElement("div");
+  	canvas.classList.replace("colorWhite","colorBlack");
+  	//background:  #f2f2f2 -- > #121212
+  	document.body.style.backgroundColor = "#121212";
 
-	first_element.className = "title";
-	first_element.textContent = "CURRENT RIDE";
-	content_canvas.appendChild(first_element);
-	
-	speed_element.className ="speed";
-	//speed_element.id = "speed_lable";
-	speed_element.textContent = "";
-	content_canvas.appendChild(speed_element);
-	speedLabel = speed_element;
+	const gridContainer_element = document.createElement("div");
+	gridContainer_element.className = "grid-container";
+	const left_element = document.createElement("div");
+	left_element.className = "grid-item";
+	const center_element = document.createElement("div");
+	center_element.className = "grid-item";
+	center_element.id = "rideMode";
+	const right_element = document.createElement("div");
+	right_element.className = "grid-item";
+
+	gridContainer_element.appendChild(left_element);
+	gridContainer_element.appendChild(center_element);
+	gridContainer_element.appendChild(right_element);
 
 
-	let mFrame_element = document.createElement("div");
-	mFrame_element.className = "container-login100-form-btn";
+	const decressBtn = cmd_button("<","colorBlack");
+	const incressBtn = cmd_button(">","colorBlack");
+	decressBtn.style.height = '120px';
+	decressBtn.style.width = '80%';
+	decressBtn.style.margin = '0px';
+	decressBtn.style.fontSize = '180px';
+	decressBtn.style.fontFamily = "Poppins-Medium";
+	incressBtn.style.height = '120px';
+	incressBtn.style.margin = '0px';
+	incressBtn.style.width = '80%';
+	incressBtn.style.fontSize = '180px';
+	incressBtn.style.fontFamily = "Poppins-Medium";
 
-	ul_element.className = "list";
-	left_element.className = "list-item";
-	left_element.appendChild(cmd_button('<'));
-	ul_element.appendChild(left_element);
-	midle_element.className = "list-item";
-	div_element.className ="ride_mode";
-	div_element.textContent = rideModes[rideMode].mode;
-	midle_element.appendChild(div_element);
-	ul_element.appendChild(midle_element);
-	rideModeLabel = div_element;
-	right_element.className = "list-item";
-	right_element.appendChild(cmd_button('>'));
-	ul_element.appendChild(right_element);
-	mFrame_element.appendChild(ul_element);
-	content_canvas.appendChild(mFrame_element);
+	left_element.appendChild(decressBtn);
+	right_element.appendChild(incressBtn);
+
+	center_element.textContent = rideModes[rideMode].mode;//"STANDARD";
+	rideModeLabel = center_element;
+	center_element.style.fontSize = '28px';
+	canvas_main.appendChild(gridContainer_element);
+
 
 	//batteryLabel
+	const progress_element = document.createElement("div");
+	const progressBar_element = document.createElement("div");
 	let frame_element = document.createElement("div");
-	frame_element.className = "container-login100-form-btn";
+	const batteryLevelLabel_element = document.createElement("div");
+
+	batteryLevelLabel_element.style.textAlign = "left";
+	batteryLevelLabel_element.style.fontSize = '15px';
+	batteryLevelLabel_element.style.fontFamily = "Poppins-Regular";
+
+
+	batteryLevelLabel = batteryLevelLabel_element;
+	batteryLevelLabel_element.textContent = "Battery Level: -%";
+	frame_element.appendChild(batteryLevelLabel_element);
+
 	progress_element.className = "progress";
 	progress_element.appendChild(progressBar_element);
 	progressBar_element.className = "progress-bar";
 	batteryLevel= progressBar_element;
-	frame_element.appendChild(progress_element);
-	content_canvas.appendChild(frame_element);
 
-	content_canvas.appendChild(cmd_button('Finish'));
-	
+	frame_element.appendChild(progress_element);
+
+
+
+	canvas_footer.appendChild(frame_element);
+	canvas_footer.appendChild(cmd_button("Finish"));
+	canvas_footer.appendChild(cmd_button("Exit","colorBlue"));
 
 	canvas.scrollIntoView();
 
@@ -695,24 +1038,28 @@ function CurrentRidePage(){
 }
 
 function cleanPage(){
-	wheelName_div.textContent = 'copenheken wheel';
-	canvas.style.width="";
-	while (content_canvas.firstChild) {
- 		 content_canvas.removeChild(content_canvas.firstChild);
-		}
+  wheelName_div.textContent = 'Copenhagen Wheel';
+	while (canvas_main.firstChild) {
+ 		canvas_main.removeChild(canvas_main.firstChild);
+	}
+	while (canvas_footer.firstChild) {
+ 		canvas_footer.removeChild(canvas_footer.firstChild);
+	}
 }
 	
 function loadingIndicator(){
     let div = document.createElement("div");
     div.id = "loadingIndicator";
 		div.className = "loader";
-		content_canvas.appendChild(div);
+		let redwheel_element = document.getElementById("canvas_redWheel");
+		redwheel_element.appendChild(div);
 }
 
 //BLE
 function requestDevice() {
-  log('Requesting any Bluetooth Device...');
+  log('Requesting Bluetooth Device...');
   loadingIndicator();
+
   navigator.bluetooth.requestDevice({
   		filters: [{ services: [Controller_ServiceUuid] }],
           optionalServices: [Device_UUID,Authentication_ServiceUuid,Battery_ServiceUuid]
@@ -728,19 +1075,19 @@ function requestDevice() {
     log('Getting Services...');
     if (ble_status) ble_status.textContent = "Getting Services...";
     loadCharacteristic();
-    return;// server.getPrimaryServices();
+    return;
   })
   .catch(error => {
   	log('Argh! ' + error);
   	if (logMode == true) return;
 		homePage();
-		content_canvas.appendChild(document.createElement("br"));
+		canvas_main.appendChild(document.createElement("br"));
 		let first_element = document.createElement("div");
-		first_element.textContent = '>> Unable to connect... ';
-		content_canvas.appendChild(first_element);
+		first_element.textContent = '>> Unable to connect <<';
+		canvas_main.appendChild(first_element);
 		return;
   });
-  //if (BLEserver) loadCharacteristic();
+  
 }
 
 async function loadCharacteristic(){
@@ -791,7 +1138,6 @@ async function loadCharacteristic(){
 		C0x007bCharacteristic.addEventListener('characteristicvaluechanged',batteryWarningValueChanged);
 		log('C0x007bCharacteristic checked');
 
-
 		//Device Info
 		const deviceService =  await BLEserver.getPrimaryService(Device_UUID);
 		FirmwareVersionCharacteristic = await deviceService.getCharacteristic(Firmware_Version_characteristicUuid);
@@ -804,10 +1150,10 @@ async function loadCharacteristic(){
 		log('Error loadCharacteristic:' + error);
   		if (logMode == true) return;
 		homePage();
-		content_canvas.appendChild(document.createElement("br"));
+		canvas_main.appendChild(document.createElement("br"));
 		let first_element = document.createElement("div");
 		first_element.textContent = '>> fail to loadCharacteristic... ';
-		content_canvas.appendChild(first_element);
+		canvas_main.appendChild(first_element);
 	}
 
 }
@@ -824,20 +1170,8 @@ function C0x0041CharacteristicValueChanged(event) {
 	const characteristic = event.target;
     const value = event.target.value;
     log('0x0041 value change | ' +  dataToHexString(value) + ' | ' + DataToStr(value));
-    //due to some not consistance c3feff03  c3ff7f03 
-    //
-    /*const prefix = dataToHexString(value).substring(0, 2);
-  	if (prefix == 'c3'){
-  		log('Step 17)  C0x0041Characteristic return:c3');
-  		CurrentRidePage();
-  	}else{
-  		log('error Step 17)  C0x0041Characteristic return miss match: ' + dataToHexString(value));
-  	}*/
-
   	log('Step 17)');
   	LandingPage();
-  	//CurrentRidePage();
-
 }
 
 function speedValueChanged(event) {
@@ -861,7 +1195,8 @@ function batteryLevelValueChanged(event) {
 	  const value = event.target.value;
 	  const level = value.getUint8(7);
 	  batteryLevel.style.width = level + '%';
-	  batteryLevel.textContent = level+'%';
+	  batteryLevelLabel.textContent = 'Battery Level: ' + level+'%';
+
 	}catch(error){
 		log('error batteryLevelValueChanged: ' + error);
 	}
@@ -895,86 +1230,85 @@ function handleCharacteristicValueChanged(event) {
 }
 
 //Data Convertion
-	function DataToInt(data) {
-	    let offset = 0;
-	    let i = dataView.getInt32(offset, true);
-	    //return out;
-	    return i;
-	}
+function DataToInt(data) {
+    let offset = 0;
+    let i = dataView.getInt32(offset, true);
+    //return out;
+    return i;
+}
 
 
-	function DataToStr(data) {
-	    var out = "";
-	    for (var i = 0; i < data.byteLength; i++) {
-	      out += (String.fromCharCode(data.getUint8(i)));
-	    }
-	    //return out;
-	     return out.replace(/\0.*$/g,'');
-	}
+function DataToStr(data) {
+    var out = "";
+    for (var i = 0; i < data.byteLength; i++) {
+      out += (String.fromCharCode(data.getUint8(i)));
+    }
+    //return out;
+     return out.replace(/\0.*$/g,'');
+}
 
-	function StrToData(str){
-	  var buffer = new ArrayBuffer(str.length);
-	  var x = new DataView(buffer, 0);
-	  for (var i = 0; i < str.length; i++) {
-	    x.setUint8(i,str.charCodeAt(i));
-	  }
-	  return x;
-	}
+function StrToData(str){
+  var buffer = new ArrayBuffer(str.length);
+  var x = new DataView(buffer, 0);
+  for (var i = 0; i < str.length; i++) {
+    x.setUint8(i,str.charCodeAt(i));
+  }
+  return x;
+}
 
-	function hexStringToData(hex) {
-	    if (hex.length % 2 !== 0) {
-	        log("Invalid hex string: length must be even.");
-	        return null; // Return null if the length is not even
-	    }
+function hexStringToData(hex) {
+    if (hex.length % 2 !== 0) {
+        log("Invalid hex string: length must be even.");
+        return null; // Return null if the length is not even
+    }
 
-	    // Create an ArrayBuffer with half the length of the hex string
-	    var buffer = new ArrayBuffer(hex.length / 2);
-	    var view = new DataView(buffer);
+    // Create an ArrayBuffer with half the length of the hex string
+    var buffer = new ArrayBuffer(hex.length / 2);
+    var view = new DataView(buffer);
 
-	    // Iterate through the hex string and set each byte in the DataView
-	    for (var i = 0; i < hex.length; i += 2) {
-	        var byte = parseInt(hex.substr(i, 2), 16);
-	        view.setUint8(i / 2, byte);
-	    }
-	    return view;
-	}
+    // Iterate through the hex string and set each byte in the DataView
+    for (var i = 0; i < hex.length; i += 2) {
+        var byte = parseInt(hex.substr(i, 2), 16);
+        view.setUint8(i / 2, byte);
+    }
+    return view;
+}
 
+function dataToHexString(data) {
+    let hexString = '';
+    for (let i = 0; i < data.byteLength; i++) {
+        // Get the byte value from the DataView
+        const byte = data.getUint8(i);
 
-	function dataToHexString(data) {
-	    let hexString = '';
-	    for (let i = 0; i < data.byteLength; i++) {
-	        // Get the byte value from the DataView
-	        const byte = data.getUint8(i);
+        // Convert the byte to its hexadecimal representation
+        const byteHex = byte.toString(16).padStart(2, '0');
 
-	        // Convert the byte to its hexadecimal representation
-	        const byteHex = byte.toString(16).padStart(2, '0');
+        // Append the hexadecimal byte to the string
+        hexString += byteHex;
+    }
+    return hexString;
+}
 
-	        // Append the hexadecimal byte to the string
-	        hexString += byteHex;
-	    }
-	    return hexString;
-	}
-
-	function switchMode(){
-		
-			RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
-		  .then(data=>{
-		    log('RideModeCharacteristic successed');
-		    log('RequestToControllerharacteristic');
-		    RequestToControllerharacteristic.writeValue(hexStringToData('2000'))
-				  .then(data=>{
-				    log('RequestToControllerharacteristic successed');
-				    getRideModeState();
-				    //rideModeLabel.textContent = rideModes[rideMode].mode;
-				  })
-				  .catch(error => {
-				    log('Argh! RequestToControllerharacteristic fail: ' + error);
-				  });
-		  })
-		  .catch(error => {
-		    log('Argh! RideModeCharacteristic fail: ' + error);
-		  });
-	}
+function switchMode(){
+	
+		RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
+	  .then(data=>{
+	    log('RideModeCharacteristic successed');
+	    log('RequestToControllerharacteristic');
+	    RequestToControllerharacteristic.writeValue(hexStringToData('2000'))
+			  .then(data=>{
+			    log('RequestToControllerharacteristic successed');
+			    getRideModeState();
+			    //rideModeLabel.textContent = rideModes[rideMode].mode;
+			  })
+			  .catch(error => {
+			    log('Argh! RequestToControllerharacteristic fail: ' + error);
+			  });
+	  })
+	  .catch(error => {
+	    log('Argh! RideModeCharacteristic fail: ' + error);
+	  });
+}
 
 async function readDeviceInformation(){
 	try {
@@ -998,8 +1332,6 @@ async function readDeviceInformation(){
 		deviceInformation.powerSaveTimeout = wheelInfoString.substring(18, 20); // "35"
 
 		console.log('deviceInformation',deviceInformation);
-		
-	
 		//0004 660d 0000:660d0000 64 1c47 ee02 35 fb4f 3901 000000000000
 	}catch(error){
 		log('Error readDeviceInformation fail: ' + error);	
@@ -1095,31 +1427,31 @@ function getRideModeState(){
 			  .then(data=>{
 			    log('RideModeCharacteristic' + ' | ' + dataToHexString(data) + ' | ' + DataToStr(data));
 			    const value = dataToHexString(data);
-			
+			    //calcualte break assis
 			    let prefix = value.substring(0, 3);
 
 					switch (prefix) {
 					  case '000': 
 					  	rideMode = 0;
-							log('RideMode: off');
+						log('RideMode: off');
 					    break;
 					  case '202':
 					  	rideMode = 1; 
-							log('RideMode: eco');
+						log('RideMode: eco');
 					    break;
 					  case '404':
 					  	rideMode = 2;
-							log('RideMode: standard');
+						log('RideMode: standard');
 					    break;
 					  case '557':
 					  	rideMode = 3;
-							log('RideMode: turbo');
+						log('RideMode: turbo');
 					    break;
 					  default:
 					    break;
 					}
 					rideModeLabel.textContent = rideModes[rideMode].mode;
-					 log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
+					log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
 			  })
 			  .catch(error => {
 			    log('Argh! RideModeCharacteristic Read fail: ' + error);
@@ -1146,10 +1478,10 @@ function PresentAccessLevelValueChanged(event){
 				log ('Authentication fail');
 				if (logMode == true) return;
 				homePage();
-				content_canvas.appendChild(document.createElement("br"));
+				canvas_main.appendChild(document.createElement("br"));
 				let first_element = document.createElement("div");
 				first_element.textContent = 'Authen Fail';
-				content_canvas.appendChild(first_element);
+				canvas_main.appendChild(first_element);
 				authenAttempted = 0;
 			}
 			
@@ -1163,10 +1495,7 @@ async function finishRide(){
 	finishPage();
 	try {
 		await CommandToControllerharacteristic.writeValue(hexStringToData('1e0102'));
-		//log('Step final)  CommandToControllerharacteristic with 1e0102 successed');
-	}catch (error) {
-  	//log('Argh! Step final) CommandToControllerharacteristic with 1e0102 fail: ' + error);
-  }
+	}catch (error) {}
   log('Step final)  turn off device');
   homePage();
 	if (ble_status) ble_status.textContent = "Disconnect from Device";
@@ -1183,13 +1512,13 @@ function findValue(searchKey) {
             return parts[1];
         }
     }
-    return null; // Value not found
+    return null; 
 }
 
 function log(msg){
 	if (logMode == true){
 		const indicator = document.getElementById('loadingIndicator');
-		if(indicator)content_canvas.removeChild(indicator);
+		if(indicator)canvas_main.removeChild(indicator);
 		let element = document.createElement("div");
 		element.className = "log";
 		element.textContent = msg;
@@ -1197,24 +1526,17 @@ function log(msg){
 	}else{
 		console.log(msg);
 	}
-	const prefix = msg.substring(0, 15);
-	//const step = msg.substring(0, 4);
-	//if (step == 'Step'){
-		try{
-			if (ble_status) ble_status.textContent =  prefix  + '...';
-		}catch(error){}
-		
-	//}
-	
+	const prefix = msg.substring(0, 180);
+	try{
+		if (ble_status) ble_status.textContent =  prefix  + '...';
+	}catch(error){}
 }	
 
 function rpmToKmph(rpm) {
     // Wheel diameter in inches
     const wheelDiameterInch = 27;
-
     // Convert RPM to km/h
     const speedKmph = (rpm * Math.PI * wheelDiameterInch * 0.0000254 * 60) / 1000;
-
     return speedKmph.toFixed(0); // Round to 2 decimal places
 }
 
@@ -1224,70 +1546,68 @@ async function saveSetting(){
 	
 	var wheelNameValue = document.getElementById("Wheel Name").value;
 	var powerSaveTimeoutValue = document.getElementById("Power Save timeout").value;
-	//maxAssistSpeed;
 	var trieSettingValue = document.getElementById("Tire Setting").value;
+	//canvas.style.display = '';
 
-
-
-
-
-		//await CommandToControllerharacteristic.writeValue(hexStringToData('1e0102'));
-		log('wheelNameValue:' + wheelNameValue);
-		log('powerSaveTimeoutValue as hex:' + progressScoreToHex(powerSaveTimeoutValue));
-		log('assistScoreToHex as hex:' + assistScoreToHex(maxAssistSpeed));
-		log('trieSettingHex as hex:' + trieSettingValue);
-		// progressScoreToHex(powerSaveTimeoutValue);
-		// assistScoreToHex(maxAssistSpeed);
-		finishPage();
-		if(deviceInformation.wheelName != wheelNameValue){
-			//modify and save
-			log('wheelName Change from ' + deviceInformation.wheelName + ' to ' + wheelNameValue);
-			let value = StrToData(wheelNameValue);
-			try{
-				log('wheelName write ' +  value + ' | ' + dataToHexString(value));
-				await WheelNameCharacteristic.writeValue(value);
-				log('wheelName write complete');
-				const wheelNameData = await WheelNameCharacteristic.readValue();
-				wheelName = DataToStr(wheelNameData);
-				log ('read wheel name: ' +  wheelName);	
-			}catch(error){
-				log('error wheelName write '  + value + ':' + error);
-			}
+	log('wheelNameValue:' + wheelNameValue);
+	log('powerSaveTimeoutValue as hex:' + progressScoreToHex(powerSaveTimeoutValue));
+	log('assistScoreToHex as hex:' + assistScoreToHex(maxAssistSpeed));
+	log('trieSettingHex as hex:' + trieSettingValue);
+	
+	finishPage();
+	if(deviceInformation.wheelName != wheelNameValue){
+		//modify and save
+		log('wheelName Change from ' + deviceInformation.wheelName + ' to ' + wheelNameValue);
+		let value = StrToData(wheelNameValue);
+		try{
+			log('wheelName write ' +  value + ' | ' + dataToHexString(value));
+			await WheelNameCharacteristic.writeValue(value);
+			log('wheelName write complete');
+			const wheelNameData = await WheelNameCharacteristic.readValue();
+			wheelName = DataToStr(wheelNameData);
+			log ('read wheel name: ' +  wheelName);	
+		}catch(error){
+			log('error wheelName write '  + value + ':' + error);
 		}
-		if (deviceInformation.powerSaveTimeout != progressScoreToHex(powerSaveTimeoutValue)){
-			log('powerSaveTimeout change from ' + deviceInformation.powerSaveTimeout + ' to ' + progressScoreToHex(powerSaveTimeoutValue));
-			let value = '1f01' + progressScoreToHex(powerSaveTimeoutValue);
-			try{
-				log('powerSaveTimeout write ' + value);
-				await CommandToControllerharacteristic.writeValue(hexStringToData(value));
-			} catch(error){
-				log('error powerSaveTimeout write '  + value + ':' + error);
-			}
-		}
-		if (deviceInformation.maxAssistSpeed != assistScoreToHex(maxAssistSpeed)){
-			log('maxAssistSpeed change from ' + deviceInformation.maxAssistSpeed + ' to ' + assistScoreToHex(maxAssistSpeed));
-			let value = '2102' + assistScoreToHex(maxAssistSpeed);
-			try{
-				log('maxAssistSpeed write ' +  value);
-				await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
-			}catch(error){
-				log('error maxAssistSpeed write '  + value + ':' + error);
-			}
-		}
-		if (deviceInformation.tireSetting != trieSettingValue){
-			log('tireSetting change from ' + deviceInformation.tireSetting + ' to ' + trieSettingValue);
-			let value = '0004' + trieSettingValue;
-			try{
-				log('tireSetting write '  + value);
-				await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
-			}catch (error) {
-				log('error tireSetting write '  + value + ':' + error);
-  		}
-		}
-		LandingPage();
+	}
 
+	if (deviceInformation.powerSaveTimeout != progressScoreToHex(powerSaveTimeoutValue)){
+		log('powerSaveTimeout change from ' + deviceInformation.powerSaveTimeout + ' to ' + progressScoreToHex(powerSaveTimeoutValue));
+		let value = '1f01' + progressScoreToHex(powerSaveTimeoutValue);
+		try{
+			log('powerSaveTimeout write ' + value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));
+		} catch(error){
+			log('error powerSaveTimeout write '  + value + ':' + error);
+		}
+	}
+
+	if (deviceInformation.maxAssistSpeed != assistScoreToHex(maxAssistSpeed)){
+		log('maxAssistSpeed change from ' + deviceInformation.maxAssistSpeed + ' to ' + assistScoreToHex(maxAssistSpeed));
+		let value = '2102' + assistScoreToHex(maxAssistSpeed);
+		try{
+			log('maxAssistSpeed write ' +  value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
+		}catch(error){
+			log('error maxAssistSpeed write '  + value + ':' + error);
+		}
+	}
+
+	if (deviceInformation.tireSetting != trieSettingValue){
+		log('tireSetting change from ' + deviceInformation.tireSetting + ' to ' + trieSettingValue);
+		let value = '0004' + trieSettingValue;
+		try{
+			log('tireSetting write '  + value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
+		}catch (error) {
+			log('error tireSetting write '  + value + ':' + error);
+		}
+	}
+	LandingPage();
+	//set display back
+	//canvas.style.display = "flex";
+  	canvas.scrollIntoView();
 }
-
 
 
 function progressScoreToHex(score) {
@@ -1308,7 +1628,7 @@ function progressScoreToHex(score) {
     const hexValue = Math.round(decimalValue).toString(16).toLowerCase();
 
     // Return only the last hex digit
-    return hexValue;//.slice(-1);
+    return hexValue;
 }
 
 function hexToProgressScore(hexValue) {
@@ -1364,15 +1684,14 @@ function hexToAssistScore(hexValue) {
 
 function maxAssistSpeedChange(){
 	var elem = document.getElementById("lable_Max Assist Speed"); 
-
 	if (maxAssistSpeed > 32) {
 		elem.textContent = "Assits above 32km/h";
 	}else{
 		elem.textContent = maxAssistSpeed +" km/h";
 	}
   log('maxAssistSpeed:'+maxAssistSpeed);
-
 }
+
 function decreaseValue() {
 	if (maxAssistSpeed > 19)maxAssistSpeed = maxAssistSpeed - 1;
 	maxAssistSpeedChange();
@@ -1387,16 +1706,15 @@ function tireChange(event){
 	console.log("tireChange",event.value);
 }
 
-  function redirectToPayPal() {
-    window.location.href = 'https://www.paypal.me/gabhongSena';
-  }
+function redirectToPayPal() {
+  window.location.href = 'https://www.paypal.me/gabhongSena';
+}
 
 function updateClock() {
   const clockElement = document.getElementById('clock');
   const now = new Date();
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
-  
   clockElement.textContent = `${hours}:${minutes}`;
 }
 
@@ -1404,8 +1722,10 @@ function updateClock() {
 updateClock();
 
 // Update the clock every second
-setInterval(updateClock, 1000);
+setInterval(updateClock, 1000);	
+
 </script>
+
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
       div.grammarly-desktop-integration {
         position: absolute;
