@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0026)https://tb47.me/chw/R1.01/ -->
+<!-- saved from url=(0026)https://tb47.me/chw/R1.02/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- Google tag (gtag.js) -->
-	<script async="" src="./chw R1.01_files/js"></script>
+	<script async="" src="./chw R1.02_files/js"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
@@ -191,6 +191,7 @@
     margin: 0 2px;
     padding: 5px 10px;
     font-size: 16px;
+    color: black;
     cursor: pointer;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -257,67 +258,26 @@
 		position: relative;
 	}
 
-	/*------------------------------------------------------------------
-	[ Input ]*/
-	/*********** Baseline, reset styles ***********/
-	input[type="range"] {
-	  -webkit-appearance: none;
-	  appearance: none;
-	  background: transparent;
-	  cursor: pointer;
-	  /*width: 25rem;*/
-	}
-
-	/* Removes default focus */
-	input[type="range"]:focus {
-	  outline: none;
-	}
-
-	/******** Chrome, Safari, Opera and Edge Chromium styles ********/
-	/* slider track */
-	input[type="range"]::-webkit-slider-runnable-track {
-	  background-color: #66b0ff;
-	  border-radius: 0.5rem;
-	  height: 0.5rem;
-	}
-
-	/* slider thumb */
-	input[type="range"]::-webkit-slider-thumb {
-	  -webkit-appearance: none; /* Override default look */
-	  appearance: none;
-	  margin-top: -8px; /* Centers thumb on the track */
-	  background-color: #808080;
-	  border-radius: 0.5rem;
-	  height: 1.5rem;
-	  width: 3rem;
-	}
-
-	input[type="range"]:focus::-webkit-slider-thumb {
-	  outline: 3px solid #808080;
-	  outline-offset: 0.125rem;
-	}
 
 	/*********** Firefox styles ***********/
 	/* slider track */
 	input[type="range"]::-moz-range-track {
-	  background-color: #66b0ff;
+	  background-color: orangered;/*#66b0ff;*/
 	  border-radius: 0.5rem;
 	  height: 0.5rem;
 	}
 
 	/* slider thumb */
 	input[type="range"]::-moz-range-thumb {
-	  background-color: #808080;
-	  border: none; /*Removes extra border that FF applies*/
-	  border-radius: 0.5rem;
-	  height: 1.5rem;
-	  width: 3rem;
+	  background-color: #ffffff;
+	  /*border: none; /*Removes extra border that FF applies*/
+	  border: 1px solid #c9c9c9;
+	  border-radius: 2rem;
+	  border-color: gray;
+	  height: 2rem;
+	  width: 2rem;
 	}
 
-	input[type="range"]:focus::-moz-range-thumb{
-	  outline: 3px solid #808080;
-	  outline-offset: 0.125rem;
-	}
 
 	input {
 		outline: none;
@@ -345,10 +305,9 @@
 
 	.input100 {
 	  font-family: Poppins-Regular;
-	  font-size: 15px;
-	  color: #555555;
+	  font-size: 16px;
 	  line-height: 1.2;
-
+	  color: black;
 	  display: block;
 	  width: 100%;
 	  height: 45px;
@@ -366,79 +325,143 @@
 	  left: 0;
 	  pointer-events: none;
 	}
+	
+/*---------------------------------------------*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
-	.focus-input100::before {
-	  content: "";
-	  display: block;
-	  position: absolute;
-	  bottom: -2px;
-	  left: 0;
-	  width: 0;
-	  height: 2px;
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-	  -webkit-transition: all 0.4s;
-	  -o-transition: all 0.4s;
-	  -moz-transition: all 0.4s;
-	  transition: all 0.4s;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
-	  background: #6a7dfe;
-	  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-	  background: -o-linear-gradient(left, #21d4fd, #b721ff);
-	  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
-	  background: linear-gradient(left, #21d4fd, #b721ff);
-	}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
-	.focus-input100::after {
-	  font-family: Poppins-Regular;
-	  font-size: 15px;
-	  color: #999999;
-	  line-height: 1.2;
+input[type="checkbox"]:checked + .slider {
+  background-color: #6d6b6b;/*#2196F3;*/
+}
 
-	  content: attr(data-placeholder);
-	  display: block;
-	  width: 100%;
-	  position: absolute;
-	  top: -15px;
-	  left: 0px;
-	  padding-left: 5px;
+input[type="checkbox"]:focus + .slider {
+  box-shadow: 0 0 1px #6d6b6b;/*#2196F3;*/
+}
 
-	  -webkit-transition: all 0.4s;
-	  -o-transition: all 0.4s;
-	  -moz-transition: all 0.4s;
-	  transition: all 0.4s;
-	}
+input[type="checkbox"]:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
 
-	.input100:focus + .focus-input100::after {
-	  top: -15px;
-	}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
 
-	.input100:focus + .focus-input100::before {
-	  width: 100%;
-	}
+.slider.round:before {
+  border-radius: 50%;
+}
 
-	.has-val.input100 + .focus-input100::after {
-	  top: -15px;
-	}
+/*---------------------------------------*/
+.sliderRange-container {
+    width: 100%;
+    margin: 5px auto;
+    border-bottom: 2px solid #adadad;
+}
 
-	.has-val.input100 + .focus-input100::before {
-	  width: 100%;
-	}
+.sliderRange-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding:5px;
+}
 
-	/*---------------------------------------------*/
+.sliderRange {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, #6d6b6b 50%, #ddd 50%);
+    outline: none;
+    /*opacity: 0.7;*/
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 10px;
+}
+
+.sliderRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
+
+.sliderRange::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
+
+.sliderRange::-ms-thumb {
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
 
   </style>
-	<title>chw R1.01</title>
-	<script type="text/javascript" src="./chw R1.01_files/data.js.download"></script>
+	<title>chw R1.02</title>
+	<script type="text/javascript" src="./chw R1.02_files/data.js.download"></script>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1182.0" data-gr-ext-installed="">
+<body data-new-gr-c-s-check-loaded="14.1186.0" data-gr-ext-installed="">
 		<div class="canvas colorWhite" id="canvas">
 			<div class="header" id="header">
 				<span id="wheelName">Copenhagen Wheel</span>
-				<div class="clock" id="clock">09:05</div>
+				<div class="clock" id="clock">13:28</div>
 			</div>
 			<div class="main" id="main">
 				<div width="200px" height="150px" id="canvas_redWheel">
-					<img src="./chw R1.01_files/redwheel.svg" class="redWheel">
+					<img src="./chw R1.02_files/redwheel.svg" class="redWheel">
 				</div>
 				<div>
 					Please go close to the wheel  and click connect to device
@@ -447,6 +470,7 @@
 			<div class="footer" id="footer">
 				<button class="round-button colorRed" onclick="onButtonClick(this)" name="action">Connect to Device</button>
 				<button class="round-button colorBlue" onclick="redirectToPayPal()" name="action">Donate with PayPal</button>
+				<!--<button class="round-button colorBlue" onclick="onButtonClick(this)" name="action">About Wheel</button>-->
 			</div>
 		</div>
 <script type="text/javascript">
@@ -516,8 +540,12 @@ let logMode = false;
 let logElement;
 let authenAttempted = 0;
 let maxAssistSpeed = 32;
+let currentPage ="homePage";
+let timeoutId;
 
 //ride modes
+//let breakAssistState = "00d5000001000";
+
 const rideModes = [{mode:"OFF", value:"0000000000000000000000000000000000000000"},{mode:"ECO", value:"2020000a0000000034d87f3a00d500000100a88c"},{mode:"STANDARD", value:"4040001e0000000034d87f3a00d5000001009183"},{mode:"TURBO", value:"557f7d000000000034d8ff3a00d500000100064e"}];
 let rideMode = 0; //0 off, 1 eco, 2 standard, 2 turbo
 const tries =[
@@ -608,6 +636,7 @@ function onButtonClick(bnt){
 	    break;
 	  case 'Cancel':
 	  	logMode = false;
+	  	clearTimeout(timeoutId);
 			homePage();
 			try{
 				bluetoothDevice.gatt.disconnect();
@@ -616,8 +645,14 @@ function onButtonClick(bnt){
 			}
 	    break;
 	  case 'About Wheel':
+			aboutWheelPage();
+	    break; 
+	  case ' Done ':
+			LandingPage();
+	    break; 
+	  case 'Wheel Setting':
 			readDeviceInformation();
-	    break;
+	    break; 
 	  case 'Save':
 			saveSetting();	
 			LandingPage();
@@ -629,7 +664,17 @@ function onButtonClick(bnt){
 			LandingPage();
 	    break;
 	  case 'Ride':
+	  	loadBrakeAssistData();
 			CurrentRidePage();
+	    break;
+	  case 'Braking Assistance':
+	  	loadBrakeAssistData();
+			brakeAssistPage();
+	    break;
+	     Save
+	  case ' Save ':
+			brakeAssistSave();
+			LandingPage();
 	    break;
 	  case 'Donate with PayPal':
 			redirectToPayPal();
@@ -672,6 +717,8 @@ function input_text(lable,value){
 	return first_element;
 }
 
+
+
 function input_slidebar(lable,value){
 	let first_element = document.createElement("div");
 	first_element.className = "wrap-input100 validate-input";
@@ -699,13 +746,52 @@ function input_slidebar(lable,value){
 	return first_element;
 }
 
+function input_Range_PowerSaveTimeout(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+	second_element.id ="lable_" + lable;
+
+	let third_element = document.createElement("input");
+	third_element.className = "sliderRange";
+	third_element.id = lable;
+	third_element.type = "range";
+	third_element.min = 5;
+	third_element.max = 30;
+	third_element.value = value;
+	third_element.addEventListener('input', PowerSaveTimeoutUpdate);
+
+	let fourth_element = document.createElement("div");
+	fourth_element.className = "sliderRange-labels";
+
+	let fifth_element = document.createElement("span");
+	fifth_element.textContent = "Min";
+	let sixth_element = document.createElement("span");
+	sixth_element.textContent ="Max";
+
+	fourth_element.appendChild(fifth_element);
+	fourth_element.appendChild(sixth_element);
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	first_element.appendChild(fourth_element);
+
+
+	return first_element;
+}
+
+
 function deviceInfoDetail(ul,title,value){
+
 	let li_title = document.createElement("li");
 	li_title.textContent = title;
 	li_title.style.textAlign = "left";
 	li_title.style.borderBottom = '2px solid #adadad';
 	li_title.style.padding =  "5px";
-	li_title.style.color = "#999999";
+	li_title.style.alignContent = "center";
 
 
 	let li_value = document.createElement("li");
@@ -713,6 +799,7 @@ function deviceInfoDetail(ul,title,value){
 	li_value.style.textAlign = "right";
 	li_value.style.borderBottom = '2px solid #adadad';
 	li_value.style.padding =  "5px";
+	li_title.style.alignContent = "center";
 
 	ul.appendChild(li_title);
 	ul.appendChild(li_value);
@@ -769,6 +856,115 @@ function inputSelectOption(lable){
 	return first_element;
 }
 
+function input_text_WheelName(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+	second_element.id ="lable_" + lable;
+
+	let third_element = document.createElement("input");
+	third_element.className= "input100";
+	//third_element.style.width = "100%";
+	//third_element.style.fontSize = "17px";
+	third_element.name = lable;
+	third_element.id= lable;
+	third_element.setAttribute("type","text");
+	third_element.value = value;
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	return first_element;
+
+}
+
+
+function input_Button_IncreseDecreseSpeed(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+
+	let third_element = document.createElement("div");
+	third_element.className = "container-increse-decrese";
+	third_element.style.width = "100%";
+	let left_element = document.createElement("div");
+	left_element.className = "column left";
+	left_element.id="lable_" + lable;
+
+
+	if (maxAssistSpeed > 32) {
+		left_element.textContent = "above 32km/h";
+	}else{
+		left_element.textContent = maxAssistSpeed +" km/h";
+	}
+
+	let right_element = document.createElement("div");
+	right_element.className = "column right";
+	third_element.appendChild(left_element);
+	third_element.appendChild(right_element);
+
+	let button_element = document.createElement("div");
+	button_element.className = "button-container";
+	let decrese_element = document.createElement("button");
+	decrese_element.className = "adjust-button";
+	decrese_element.textContent = "-";
+	decrese_element.setAttribute("onclick","decreaseValue()");
+	let increse_element = document.createElement("button");
+	increse_element.className = "adjust-button";
+	increse_element.textContent = "+";
+	increse_element.setAttribute("onclick","increaseValue()");
+	button_element.appendChild(decrese_element);
+	button_element.appendChild(increse_element);
+	right_element.appendChild(button_element);
+
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+
+}
+
+function input_SelectOption_Tire(lable){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+	//first_element.alignContent="left"
+	let second_element = document.createElement("div");
+	second_element.style.float ="left";
+	second_element.textContent = lable;
+	
+
+	let third_element = document.createElement("select");
+	third_element.className= "input100";
+	//third_element.style.width = "100%";
+  //third_element.style.fontSize="17px";
+	third_element.name = lable;
+	third_element.id= lable;
+	third_element.style.border = "0px";
+	third_element.style.outline ="0px";
+	third_element.setAttribute("onchange","tireChange(this)");
+	
+	for (let i = 0; i < tries.length; i++) {
+  	//console.log(`Name: ${tries[i].name}, Value: ${tries[i].value}`);
+  	let opt_element = document.createElement("option");
+  	opt_element.value = tries[i].value;
+		opt_element.textContent = tries[i].name;
+		third_element.appendChild(opt_element);
+		third_element.value = deviceInformation.tireSetting;
+	}
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+
+}
+
+
 function increseDecressButton(lable,value){
 
 	let first_element = document.createElement("div");
@@ -819,8 +1015,144 @@ function increseDecressButton(lable,value){
 	return first_element;
 }
 
+function increseDecressButton(lable,value){
+
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+
+
+	let second_element = document.createElement("div");
+	second_element.className = "container-increse-decrese";
+	let left_element = document.createElement("div");
+	left_element.className = "column left";
+	left_element.id="lable_" + lable;
+
+
+	if (maxAssistSpeed > 32) {
+		left_element.textContent = "above 32km/h";
+	}else{
+		left_element.textContent = maxAssistSpeed +" km/h";
+	}
+
+	let right_element = document.createElement("div");
+	right_element.className = "column right";
+	second_element.appendChild(left_element);
+	second_element.appendChild(right_element);
+
+
+	let button_element = document.createElement("div");
+	button_element.className = "button-container";
+	let decrese_element = document.createElement("button");
+	decrese_element.className = "adjust-button";
+	decrese_element.textContent = "-";
+	decrese_element.setAttribute("onclick","decreaseValue()");
+	let increse_element = document.createElement("button");
+	increse_element.className = "adjust-button";
+	increse_element.textContent = "+";
+	increse_element.setAttribute("onclick","increaseValue()");
+	button_element.appendChild(decrese_element);
+	button_element.appendChild(increse_element);
+	right_element.appendChild(button_element);
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder","Max Assist Speed:");
+
+	first_element.appendChild(second_element);
+
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+
+
+
+function toggleButton(ul,lable,value){
+	let li_title = document.createElement("li");
+	li_title.textContent = lable;
+	li_title.style.textAlign = "left";
+	li_title.style.borderBottom = '2px solid #adadad';
+	li_title.style.padding =  "5px";
+	li_title.style.alignContent = "center";
+
+
+	let li_value = document.createElement("li");
+	
+	li_value.style.textAlign = "right";
+	li_value.style.borderBottom = '2px solid #adadad';
+	li_value.style.padding =  "5px";
+
+	
+
+	let label_element = document.createElement("label");
+	label_element.className = "switch";
+	let input_element = document.createElement("input");
+	input_element.id = lable;
+	input_element.type = "checkbox";
+	input_element.checked = value;
+	input_element.addEventListener('input',brakeAssistToggleUpdate);
+	let span_element = document.createElement("span");
+	span_element.className = "slider round";
+
+	label_element.appendChild(input_element);
+	label_element.appendChild(span_element);
+
+	li_value.appendChild(label_element);
+
+	ul.appendChild(li_title);
+	ul.appendChild(li_value);
+
+
+}
+
+
+function input_Range_Sensitivity(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+
+	let third_element = document.createElement("input");
+	third_element.className = "sliderRange";
+	third_element.id = lable;
+	third_element.type = "range";
+	third_element.min = 285179688;
+	third_element.max = 2289925988;
+	third_element.value = SensitivityReverseValue(value);
+	//third_element.setAttribute("onchange","SensitivityRangeChange(this)");
+	third_element.addEventListener('input', SensitivityRangeUpdate);
+
+	let fourth_element = document.createElement("div");
+	fourth_element.className = "sliderRange-labels";
+
+	let fifth_element = document.createElement("span");
+	fifth_element.textContent = "Low";
+	let sixth_element = document.createElement("span");
+	sixth_element.textContent ="High";
+
+	fourth_element.appendChild(fifth_element);
+	fourth_element.appendChild(sixth_element);
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	first_element.appendChild(fourth_element);
+
+
+	return first_element;
+}
+
+
+
 function homePage(){
+	currentPage = "homePage";
 	cleanPage();
+
+	canvas.classList.replace("colorBlack","colorWhite");
+	document.body.style.backgroundColor = "#f2f2f2";
+
 	logMode = false;
 	currentRide = -1;
 	presentAccess = 'ff';
@@ -841,10 +1173,12 @@ function homePage(){
 	canvas_main.appendChild(first_element);
 	canvas_footer.appendChild(cmd_button('Connect to Device'));
 	canvas_footer.appendChild(cmd_button('Donate with PayPal','colorBlue'));
+	window.scrollTo(0,0);
 	
 }
 
 function informationPage(){
+	currentPage = "informationPage";
 	cleanPage();
 	let bleStatus_element = document.createElement("div");
 	bleStatus_element.id = "ble_status";
@@ -863,10 +1197,12 @@ function informationPage(){
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(bleStatus_element);
 	canvas_footer.appendChild(cmd_button("Cancel"));
+	window.scrollTo(0,0);
 	
 }
 
 function investigatePage(){
+	currentPage = "investigatePage";
 	cleanPage();
 	wheelName_div.textContent = 'Investigate Mode';
 	logElement = document.createElement("div");
@@ -879,6 +1215,7 @@ function investigatePage(){
 }
 
 function finishPage(){
+	currentPage = "finishPage";
 	cleanPage();
 	canvas.classList.replace("colorBlack","colorWhite");
 	//background: #f2f2f2; -> #121212
@@ -899,11 +1236,13 @@ function finishPage(){
 
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(bleStatus_element);
+	window.scrollTo(0,0);
 	loadingIndicator();
 
 }
 
 function LandingPage(){
+	currentPage = "LandingPage";
 	if (logMode == true) return;
 	cleanPage();
 	wheelName_div.textContent = wheelName;
@@ -917,19 +1256,57 @@ function LandingPage(){
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(text_element);
 	canvas_footer.appendChild(cmd_button('About Wheel','colorGreen'));
+	//canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
 	canvas_footer.appendChild(cmd_button('Ride','colorDark'));
-	canvas_footer.appendChild(cmd_button('Done',));
+	canvas_footer.appendChild(cmd_button('Done'));
+	window.scrollTo(0,0);
+}
+
+function aboutWheelPage(){
+	currentPage = "aboutWheelPage";
+	if (logMode == true) return;
+	cleanPage();
+
+	const title_element = document.createElement("div");
+	title_element.style.color ="orangered";
+	title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+	title_element.style.fontSize = "large";
+	title_element.textContent ="About Wheel";
+	title_element.style.paddingBottom = "20px";
+	canvas_main.appendChild(title_element);
+
+	let redwheel_element = document.createElement("img");
+	redwheel_element.src = "img/redwheel.svg";
+	let text_element = document.createElement("div");
+	text_element.innerHTML ="Wheel connected, Welcome back <br>Enjoy riding <b><font color='red'>the red wheel</font></b>";
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(text_element);
+	canvas_footer.appendChild(cmd_button('Wheel Setting','colorGreen'));
+	canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
+	canvas_footer.appendChild(cmd_button(' Done '));
+	window.scrollTo(0,0);
+	
 }
 
 function SettingPage(){
-
+	currentPage = "SettingPage";
 	if (logMode == true) return;
 	cleanPage();
 	//adjust layout by temporary remove disply flex
 	//canvas.style.display = '';
 	
-  	wheelName_div.textContent = deviceInformation.wheelName;
+  wheelName_div.textContent = deviceInformation.wheelName;
 	maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
+
+
+	const title_element = document.createElement("div");
+	title_element.style.color ="orangered";
+	title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+	title_element.style.fontSize = "large";
+	title_element.textContent ="Wheel Setting";
+	title_element.style.paddingBottom = "20px";
+	canvas_main.appendChild(title_element);
 
 	let ul_element = document.createElement("ul");
 	ul_element.style.display = "grid";
@@ -939,25 +1316,84 @@ function SettingPage(){
 
 	canvas_main.appendChild(ul_element);
 	canvas_main.appendChild(document.createElement("br"));
-	canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
+	//canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
 
-	canvas_main.appendChild(input_slidebar('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));  
-	var elem = document.getElementById("lable_Power Save timeout"); 
-  	elem.setAttribute("data-placeholder","Power Save timeout: " + hexToProgressScore(deviceInformation.powerSaveTimeout) + " mins");
- 
-  	canvas_main.appendChild(increseDecressButton('Max Assist Speed',maxAssistSpeed));
-	elem = document.getElementById("lable_Max Assist Speed"); 
-  	elem.setAttribute("data-placeholder","Max Assist Speed:");
+	canvas_main.appendChild(input_text_WheelName('Wheel Name',wheelName)); 
+	canvas_main.appendChild(input_Range_PowerSaveTimeout('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));
 
-  	canvas_main.appendChild(inputSelectOption("Tire Setting"));
+	canvas_main.appendChild(input_Button_IncreseDecreseSpeed('Max Assist Speed',maxAssistSpeed));
+	canvas_main.appendChild(input_SelectOption_Tire("Tire Setting"));
+
 	canvas_footer.appendChild(cmd_button('Save'));
-	//adjust layout by temporary remove disply flex
-	//canvas.style.display="inline";
-	canvas.scrollIntoView();
+	PowerSaveTimeoutUpdate();
+	window.scrollTo(0,0);
 
 }
 
+
+function brakeAssistPage(){
+	currentPage = "brakeAssistPage";
+	if (logMode == true) return;
+		cleanPage();
+		//2020000a0000000034d87f3a00d500000100a88c
+
+		var brakeAssistValue = rideModes[1].value.substr(16,8);
+		var brakeAssistState = rideModes[1].value.substr(24,12);
+    
+		const title_element = document.createElement("div");
+		title_element.style.color ="orangered";
+		title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+		title_element.style.fontSize = "large";
+		title_element.textContent ="Braking Assistance";
+		title_element.style.paddingBottom = "20px";
+
+		const desc_element = document.createElement("div");
+		desc_element.style.textAlign = "left";
+		desc_element.style.fontSize =  "14px";
+		desc_element.style.borderBottom = "2px solid #adadad";
+		desc_element.innerHTML = "<blockquote style='padding-bottom: 20px;'>When enabled, your Copenhagen Wheel can help with braking! Just pedal backwards to slow down. Adjust the sensitivity to decide how much you need to backpedal.<P><BR><Font color='orangered'><B>Remember</B></Font>, braking assistance is just that—assistance. It doesn't replace your bike's hand brakes, so don't rely on it in emergencies.</P></blockquote>";
+
+
+
+	let ul_element = document.createElement("ul");
+	ul_element.style.display = "grid";
+	ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
+	if (brakeAssistState == '00d500000100'){
+		toggleButton(ul_element,"Braking Assistance",true);
+	}else{
+		toggleButton(ul_element,"Braking Assistance",false);
+	}
+	
+
+	canvas_main.appendChild(title_element);
+	canvas_main.appendChild(desc_element);
+	canvas_main.appendChild(ul_element);
+	canvas_main.appendChild(input_Range_Sensitivity('Sensitivity',hexToDecimal(brakeAssistValue)));
+
+  /*
+	let test_element = document.createElement("div");
+	let testinput_element = document.createElement("input");
+	testinput_element.type = "text";
+	testinput_element.id = "tx";
+	let testbtn_element = document.createElement("botton");
+	testbtn_element.textContent = "xx";
+	testbtn_element.oncli
+	//testbtn_element.onButtonClick = "testSensitivityRangeUpdate()";
+	testbtn_element.setAttribute("onclick","testSensitivityRangeUpdate()");
+	test_element.appendChild(testinput_element);
+	test_element.appendChild(testbtn_element);
+	canvas_main.appendChild(test_element);*/
+
+	canvas_footer.appendChild(cmd_button(' Save ')); 
+
+	SensitivityRangeUpdate();
+	brakeAssistToggleUpdate();
+
+	window.scrollTo(0,0);
+}
+
 function CurrentRidePage(){
+	currentPage = "CurrentRidePage";
 	if (logMode == true) return;
 	cleanPage();
 	currentRide = 1;
@@ -1032,10 +1468,11 @@ function CurrentRidePage(){
 	canvas_footer.appendChild(cmd_button("Finish"));
 	canvas_footer.appendChild(cmd_button("Exit","colorBlue"));
 
-	canvas.scrollIntoView();
-
+	//canvas.scrollIntoView();
+  window.scrollTo(0,0);
 	getRideModeState();
 }
+
 
 function cleanPage(){
   wheelName_div.textContent = 'Copenhagen Wheel';
@@ -1171,6 +1608,7 @@ function C0x0041CharacteristicValueChanged(event) {
     const value = event.target.value;
     log('0x0041 value change | ' +  dataToHexString(value) + ' | ' + DataToStr(value));
   	log('Step 17)');
+  	clearTimeout(timeoutId);
   	LandingPage();
 }
 
@@ -1190,12 +1628,26 @@ function speedValueChanged(event) {
 }
 
 function batteryLevelValueChanged(event) {
+	if (currentPage != "CurrentRidePage") return;
 	try{
 		const characteristic = event.target;
 	  const value = event.target.value;
 	  const level = value.getUint8(7);
+	  const status = value.getUint8(8);
 	  batteryLevel.style.width = level + '%';
 	  batteryLevelLabel.textContent = 'Battery Level: ' + level+'%';
+
+	  if (status == 195){
+	  	//use
+	  	if (level > 30) {
+	  		batteryLevel.style.backgroundColor = '#ffffff';	
+	  	}else{
+	  		batteryLevel.style.backgroundColor = 'red';
+	  	}
+	  }else{
+	  	//charge
+	  	batteryLevel.style.backgroundColor = '#529e2b'; 
+	  }
 
 	}catch(error){
 		log('error batteryLevelValueChanged: ' + error);
@@ -1289,26 +1741,22 @@ function dataToHexString(data) {
     return hexString;
 }
 
-function switchMode(){
-	
-		RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
-	  .then(data=>{
-	    log('RideModeCharacteristic successed');
-	    log('RequestToControllerharacteristic');
-	    RequestToControllerharacteristic.writeValue(hexStringToData('2000'))
-			  .then(data=>{
-			    log('RequestToControllerharacteristic successed');
-			    getRideModeState();
-			    //rideModeLabel.textContent = rideModes[rideMode].mode;
-			  })
-			  .catch(error => {
-			    log('Argh! RequestToControllerharacteristic fail: ' + error);
-			  });
-	  })
-	  .catch(error => {
-	    log('Argh! RideModeCharacteristic fail: ' + error);
-	  });
+
+async function switchMode(){
+	try{
+			//step 9-15 start noti
+			log('switchMode');
+			log('Write RideModeCharacteristic ' + rideModes[rideMode].value);
+			await RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
+			log('RideModeCharacteristic successed');
+			log('RequestToControllerharacteristic 2000');
+			await RequestToControllerharacteristic.writeValue(hexStringToData('2000'));
+			await getRideModeState();
+	}catch(error){
+			log('Argh! RideModeCharacteristic fail: ' + error);
+	}
 }
+
 
 async function readDeviceInformation(){
 	try {
@@ -1377,7 +1825,15 @@ async function readIntitialInformation() {
 			let passcode = findValue(serial);
 			if(passcode){
 				log ('Step 8) Sending passcode for authentication');
+				//start time out
+				timeoutId = setTimeout(function() {
+							const timeout_element = document.createElement("div");
+							timeout_element.textContent = "Timeout Please try again!!!";
+							canvas_main.appendChild(timeout_element);
+	            //log('Timeout Please try again');    
+	            }, 20000); // 20 seconds
 				await PasscodeCharacteristic.writeValue(hexStringToData(passcode));
+
 			}else{
 				log ('Step 8) authen fail passcode not found');	
 			}
@@ -1406,6 +1862,8 @@ async function prepareRideModeInformation(){
 			await C0x007bCharacteristic.startNotifications();
 			log ('Step 15) C0x007bCharacteristic : start noti');	
 
+
+
 			//step 16 send request cf 	
 			RequestToControllerharacteristic.writeValue(hexStringToData('cf'))
 			  .then(data=>{
@@ -1415,6 +1873,8 @@ async function prepareRideModeInformation(){
 			  .catch(error => {
 			    log('Argh! Step 16) RequestToControllerharacteristic with cf fail: ' + error);
 			  });		
+
+
 	}catch (error) {
   	console.error('prepareRideModeInformation:', error);
   	log('prepareRideModeInformation:' + error);
@@ -1422,40 +1882,53 @@ async function prepareRideModeInformation(){
 
 }
 
-function getRideModeState(){
-	RideModeCharacteristic.readValue()
-			  .then(data=>{
-			    log('RideModeCharacteristic' + ' | ' + dataToHexString(data) + ' | ' + DataToStr(data));
-			    const value = dataToHexString(data);
-			    //calcualte break assis
-			    let prefix = value.substring(0, 3);
 
-					switch (prefix) {
-					  case '000': 
-					  	rideMode = 0;
-						log('RideMode: off');
-					    break;
-					  case '202':
-					  	rideMode = 1; 
-						log('RideMode: eco');
-					    break;
-					  case '404':
-					  	rideMode = 2;
-						log('RideMode: standard');
-					    break;
-					  case '557':
-					  	rideMode = 3;
-						log('RideMode: turbo');
-					    break;
-					  default:
-					    break;
-					}
-					rideModeLabel.textContent = rideModes[rideMode].mode;
-					log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
-			  })
-			  .catch(error => {
-			    log('Argh! RideModeCharacteristic Read fail: ' + error);
-			  });	
+async function getRideModeState(){
+	try {
+		const data = await RideModeCharacteristic.readValue();
+		const value = dataToHexString(data);
+		let prefix = value.substring(0, 3);
+		switch (prefix) {
+		  case '000': 
+		  	rideMode = 0;
+			log('RideMode: off');
+		    break;
+		  case '202':
+		  	rideMode = 1; 
+			log('RideMode: eco');
+		    break;
+		  case '404':
+		  	rideMode = 2;
+			log('RideMode: standard');
+		    break;
+		  case '557':
+		  	rideMode = 3;
+			log('RideMode: turbo');
+		    break;
+		  default:
+		    break;
+		}
+		log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
+		try{
+			if(rideModeLabel){
+				if (rideMode == 2) {
+					rideModeLabel.style.fontSize = '24px';
+				}else{
+					rideModeLabel.style.fontSize = '28px';
+				}
+				rideModeLabel.textContent = rideModes[rideMode].mode;
+			} 
+
+
+		}catch(error){
+			log('Argh! rideModeLabel not found: ' + error);
+		}
+
+	}catch(error){
+		log('Argh! RideModeCharacteristic Read fail: ' + error);
+	}
+	
+
 }
 
 function PresentAccessLevelValueChanged(event){
@@ -1469,6 +1942,7 @@ function PresentAccessLevelValueChanged(event){
 		log ('Access gant');
 		if (currentRide < 0) {
 			currentRide = 1;
+			clearTimeout(timeoutId);
 			prepareRideModeInformation();
 		}
 		}else{
@@ -1554,6 +2028,8 @@ async function saveSetting(){
 	log('assistScoreToHex as hex:' + assistScoreToHex(maxAssistSpeed));
 	log('trieSettingHex as hex:' + trieSettingValue);
 	
+
+	
 	finishPage();
 	if(deviceInformation.wheelName != wheelNameValue){
 		//modify and save
@@ -1607,6 +2083,8 @@ async function saveSetting(){
 	//set display back
 	//canvas.style.display = "flex";
   	canvas.scrollIntoView();
+
+  	
 }
 
 
@@ -1653,11 +2131,24 @@ function hexToProgressScore(hexValue) {
 }
 
 function moveProgressBar() {
+	//remove 
   var rangeValue = document.getElementById("Power Save timeout").value;
   var elem = document.getElementById("lable_Power Save timeout"); 
   elem.setAttribute("data-placeholder","Power Save timeout: " + rangeValue + " mins");
 	log('moveProgressBar:'+rangeValue);
 
+}
+
+function PowerSaveTimeoutUpdate(){
+	const slider = document.getElementById('Power Save timeout');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+  var lable = document.getElementById("lable_Power Save timeout"); 
+  lable.textContent = "Power Save timeout: " + value + " mins";
+  log('PowerSaveTimeoutUpdate:'+value);
 }
 
 function assistScoreToHex(score) {
@@ -1724,6 +2215,225 @@ updateClock();
 // Update the clock every second
 setInterval(updateClock, 1000);	
 
+//---
+
+function saveBrakeAssistData(value) {
+  localStorage.setItem('brakeAssistValue', value);
+}
+
+function loadBrakeAssistData() {
+  var data = localStorage.getItem('brakeAssistValue');
+  var brakeAssistValue= "34d87f3a00d500000100";
+  if (data) {
+      brakeAssistValue = data;
+  } 
+  rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
+	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
+	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
+
+	console.log('loadBrakeAssistData');
+	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
+
+}
+
+async function brakeAssistSave(){
+	const toggle = document.getElementById('Braking Assistance');
+	const slider = document.getElementById('Sensitivity');
+	var breakAssistState = "00d500000100";
+	if (!toggle.checked) {
+		breakAssistState = "000000000100";
+	}
+
+	const value = slider.value;
+	var reverseValue = SensitivityReverseValue(value);
+	var brakeAssistValue = decimalToHex(reverseValue) + breakAssistState
+	saveBrakeAssistData(brakeAssistValue);
+
+	rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
+	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
+	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
+
+	console.log('brakeAssistSave');
+	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
+
+	try{
+			//sent new brake assist command
+		//step 1 read current mode
+		await getRideModeState();
+		
+	  var currentRideModeState = rideMode;
+	  console.log('brakeAssistSave step1 getRideModeState:' + rideMode);
+	  if (currentRideModeState == 0) rideMode = 1;
+	  await  switchMode();
+	  if (rideMode != currentRideModeState) {
+	  	rideMode = currentRideModeState;
+	  	console.log('brakeAssistSave step2 getRideModeState back to :' + rideMode);
+	  	await  switchMode();
+	  }
+	  
+
+	}catch(error){
+		console.log('brakeAssistSave error' + error);
+	}
+
+	
+}
+
+
+function brakeAssistToggleUpdate(){
+	const toggle = document.getElementById('Braking Assistance');
+	const slider = document.getElementById('Sensitivity');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+	if (toggle.checked) {
+		slider.disabled = false
+		slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+	}else{
+		slider.disabled = true;
+		slider.style.background = `linear-gradient(to right, #ddd ${percentage}%, #ddd ${percentage}%)`;	
+	}
+}
+
+function SensitivityRangeUpdate(){
+	const slider = document.getElementById('Sensitivity');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+  const reverseValue = SensitivityReverseValue(value);
+
+  
+  var eco= rideModeCRC('2020000a00000000' + decimalToHex(reverseValue) + "00d500000100");
+	var std = rideModeCRC('4040001e00000000' + decimalToHex(reverseValue) + "00d500000100");
+	var tub = rideModeCRC('557f7d0000000000' + decimalToHex(reverseValue) + "00d500000100");
+
+  console.log('SensitivityRangeValue',Math.round(percentage/10),value,decimalToHex(reverseValue),eco,std,tub);  
+  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+}
+
+/*
+function testSensitivityRangeUpdate(){
+	const slider = document.getElementById('Sensitivity');
+	const tx = document.getElementById('tx');
+	alert (tx.value);
+	slider.value = SensitivityReverseValue(hexToDecimal(tx.value));
+	SensitivityRangeUpdate();
+}*/
+
+function SensitivityChange(){
+
+	var rangeValue = document.getElementById("Sensitivity").value;
+  var elem = document.getElementById("lable_Sensitivity"); 
+  elem.setAttribute("data-placeholder","Sensitivity: " + Sensitivitypercentage(rangeValue) + "%");
+  rangeValue = SensitivityReverseValue(rangeValue);
+  var v = rideModeCRC('2020000a00000000' + decimalToHex(rangeValue) + '00d500000100');
+	log('SensitivityBar:'+v);
+
+}
+
+function Sensitivitypercentage(value) {
+	return  Math.round(value * (100/2289925988));
+}
+
+function SensitivityReverseValue(value) {
+	const min = 285179688; 
+  const max = 2289925988;  
+  return max - (value - min);
+}
+
+function decimalToHex(decimal) {
+	decimal = parseInt(decimal);
+    return decimal.toString(16).toUpperCase();
+}
+
+function hexToDecimal(hex) {
+    return parseInt(hex, 16);
+}
+
+function hexToBytes(hex) {
+    let bytes = [];
+    for (let c = 0; c < hex.length; c += 2)
+        bytes.push(parseInt(hex.substr(c, 2), 16));
+    return new Uint8Array(bytes);
+}
+
+function buf2hex(buffer) { // buffer is an ArrayBuffer
+    return [...new Uint8Array(buffer)]
+        .map(x => x.toString(16).padStart(2, '0'))
+        .join('');
+}
+
+function swapEveryOtherByte(byteArray) {
+    // Loop through the byte array two bytes at a time
+    for (let i = 0; i < byteArray.length - 1; i += 2) {
+        // Swap bytes
+        const temp = byteArray[i];
+        byteArray[i] = byteArray[i + 1];
+        byteArray[i + 1] = temp;
+    }
+    return byteArray;
+}
+function crc16(data) {
+  let crc = 0;
+  let out = 0;
+  let bitFlag;
+  let thisByte;
+  let bitsRead = 0;
+  let index = 0;
+
+  // Create a new copy of the data and swap every other byte
+  const newData = swapEveryOtherByte([...data]);
+  let byteLen = newData.length;
+
+  while (byteLen > 0) {
+      bitFlag = out >> 15;
+      out = (out << 1) & 0xFFFF;
+
+      thisByte = newData[index] & 0xFF;
+
+      // Get the next bit from thisByte
+      out = out | ((thisByte >> bitsRead) & 1);
+
+      bitsRead += 1;
+      if (bitsRead > 7) {
+          bitsRead = 0;
+          index += 1;
+          byteLen -= 1;
+      }
+
+      // Apply the CRC polynomial if the shifted-out bit is 1
+      if (bitFlag !== 0) {
+          out = out ^ 0x8005;
+      }
+  }
+
+  // Push out the last 16 bits
+  for (let i = 0; i < 16; i++) {
+      bitFlag = out >> 15;
+      out = (out << 1) & 0xFFFF;
+      if (bitFlag !== 0) {
+          out = out ^ 0x8005;
+      }
+  }
+
+  // Reverse the bits in the CRC
+  for (let i = 0; i < 16; i++) {
+      if (out & (1 << i)) {
+          crc = crc | (1 << (15 - i));
+      }
+  }
+  return new Uint8Array([(crc & 0xFF), (crc >> 8)]);
+}
+
+function rideModeCRC(hex){
+    var d = hexToBytes(hex);
+    let b = new Uint8Array(d.buffer, d.byteOffset, d.byteLength);
+    var crc = crc16(b);
+    var data = new Uint8Array([...b, ...crc]);
+    return buf2hex(data.buffer);
+}
 </script>
 
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
