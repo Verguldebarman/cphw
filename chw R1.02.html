@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://tb47.me/chw/R1.02/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="./chw R1.02_files/js"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-SF03ZLZKE3');
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	
+	<meta name="description" content="A web app for copenheken wheel">
+  <meta name="keywords" content="copenheken wheel">
+  <meta name="author" content="GaBhongSena">
+  <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+  <style type="text/css">
+  		@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+	}
+
+	@font-face {
+	  font-family: Poppins-Medium;
+	  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+	}
+
+	@font-face {
+	  font-family: Poppins-Bold;
+	  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+	}
+
+	@font-face {
+	  font-family: Poppins-SemiBold;
+	  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+	}
+
+	* {
+		margin: 1px; 
+		padding: 0px; 
+		box-sizing: border-box;
+	}
+
+	body, html {
+		font-family: Poppins-Regular, sans-serif;
+	  background: #f2f2f2;
+	  -webkit-user-select: none;
+	  user-select: none;
+		min-height: 99vh; 
+		width:99vw;
+	  display: flex;
+	  justify-content: center;
+	}
+
+	ul, li {
+		margin: 0px;
+		list-style-type: none;
+	}
+
+	.colorBlue {
+	    background-color: #0072ff;
+	    color: white;
+	}
+
+	.colorDark {
+	    background-color: #4b4c4e;
+	    color: white;
+	}
+
+	.colorGreen {
+	    background-color: #529e2b;
+	    color: white;
+	}
+
+	.colorWhite {
+	    background-color: white;
+	    color: black;
+	}
+
+	.colorBlack {
+	    background-color: black;
+	    color: white;
+	}
+
+	.colorRed {
+	    background-color: orangered;
+	    color: white;
+	}
+
+	.colorSkyBlue {
+	    background-color: skyblue;
+	    color: white;
+	}
+
+	.canvas {
+		height: 100%;  
+	  width: 100%;
+	  overflow-y:auto;
+	  padding: 10px 10px 10px 10px;
+	  flex-wrap: nowrap;
+	  justify-content: center;
+	  display: flex;            /* Use Flexbox on the body flex*/
+	  flex-direction: column; 
+	}
+
+	.header, .footer {
+	    text-align: center;        /* Center text */
+	    padding: 5px;             /* Padding for spacing */
+	    flex: 0 1 auto;  
+	    font-family: Poppins-Bold;
+	    font-size: x-large;
+	}
+
+	.main {
+	    flex: 1 1 auto;            /* Allow the main content to grow and take up remaining space */
+	    padding: 0px;             /* Padding for spacing */
+	    align-items: center;       /* Center content vertically */
+	    justify-content: center;   /* Center content horizontally */
+			/*display: flex;             /* Use Flexbox to center content inside main */
+			text-align: center;
+	}
+
+	.clock {
+		font-size:   70px;
+	}
+
+	.round-button {
+	    width: 100%;              /* Width of the button */
+	    height: 50px;             /* Height of the button */
+	    border-radius: 25px;       /* Makes the button round */
+	    border: none;             /* No border */
+	    cursor: pointer;          /* Pointer cursor on hover */
+	    display: flex;            /* Flex to center the content */
+	    align-items: center;      /* Center the content vertically */
+	    justify-content: center;  /* Center the content horizontally */
+	    font-size: large;          /* Font size of the content */
+	    transition: background-color 0.3s; /* Smooth transition for background color change */
+	    font-family: Poppins-Bold;
+			margin-top: 10px;
+	}
+
+	.round-button:focus {
+	    outline: none; /* Remove default focus outline */
+	   /* box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6); /* Custom focus outline */
+	}
+
+	.grid-container {
+	    display: grid;            /* Use CSS Grid for layout */
+	    grid-template-columns: 25% 1fr 25%; /* Create 3 columns with specified ratios */
+	    width: 100%;            /* Set container height to 100% of the viewport height */
+	    height: 100%;
+	    align-items: center;      /* Center the content vertically */
+	    justify-content: center;  /* Center the content horizontally */
+	    font-family: Poppins-Bold;
+	}
+
+	.grid-item {
+	    /*overflow-y: auto;         /* Add vertical scroll if content overflows */
+	    justify-content: center;  /* Center the content horizontally */
+	    align-items: center; 
+	    display: flex; 
+	}
+
+  .progress {
+	  width: 100%;
+	  height: 20px;
+	  background-color: #577B8D;
+	  border-radius: 10px;
+	}
+
+	.progress-bar {
+	  height: 100%;
+	  background-color: #ffffff;
+	  border-radius: 10px;
+	  transition: width 0.3s ease-in-out;
+	  width: 0;
+		text-align: center;
+		font-family:    Arial, Helvetica, sans-serif;
+		font-size:      15px;
+		color: white;
+	}
+
+	.button-container {
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  .adjust-button {
+    margin: 0 2px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+
+  .container-increse-decrese {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+	.log {
+    border-bottom: 1px solid black; /* Change color and thickness as needed */
+    padding-bottom: 5px; /* Adjust padding to ensure content doesn't touch the border */
+  }
+
+
+	/*------------------------------------------------------------------
+	[ loder]*/
+	.loader {
+	  border: 5px solid #CAC8C7;
+	  border-radius: 50%;
+	  border-top: 5px solid #fa0404;;
+	  width: 45px;
+	  height: 45px;
+	  -webkit-animation: spin 1s linear infinite; /* Safari */
+	  animation: spin 1s linear infinite;
+	  margin:0 auto; 
+	  margin-top: 0px;
+	  position: relative;
+	  top: -80px;
+	  left: -50px;
+	  z-index: 1; 
+
+	}
+
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	.redWheel{
+		width:200px;
+		height: 150px;
+		z-index: 2;
+		position: relative;
+	}
+
+
+	/*********** Firefox styles ***********/
+	/* slider track */
+	input[type="range"]::-moz-range-track {
+	  background-color: orangered;/*#66b0ff;*/
+	  border-radius: 0.5rem;
+	  height: 0.5rem;
+	}
+
+	/* slider thumb */
+	input[type="range"]::-moz-range-thumb {
+	  background-color: #ffffff;
+	  /*border: none; /*Removes extra border that FF applies*/
+	  border: 1px solid #c9c9c9;
+	  border-radius: 2rem;
+	  border-color: gray;
+	  height: 2rem;
+	  width: 2rem;
+	}
+
+
+	input {
+		outline: none;
+		border: none;
+	}
+
+	input:focus::-webkit-input-placeholder { color:transparent; }
+	input:focus:-moz-placeholder { color:transparent; }
+	input:focus::-moz-placeholder { color:transparent; }
+	input:focus:-ms-input-placeholder { color:transparent; }
+
+
+	input::-webkit-input-placeholder { color: #adadad;}
+	input:-moz-placeholder { color: #adadad;}
+	input::-moz-placeholder { color: #adadad;}
+	input:-ms-input-placeholder { color: #adadad;}
+
+	.wrap-input100 {
+	  width: 100%;
+	  position: relative;
+	  border-bottom: 2px solid #adadad;
+	  margin-bottom: 37px;
+	  text-align: left;
+	}
+
+	.input100 {
+	  font-family: Poppins-Regular;
+	  font-size: 16px;
+	  line-height: 1.2;
+	  color: black;
+	  display: block;
+	  width: 100%;
+	  height: 45px;
+	  background: transparent;
+	  padding: 0 5px;
+	}
+
+	/*---------------------------------------------*/ 
+	.focus-input100 {
+	  position: absolute;
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  top: 0;
+	  left: 0;
+	  pointer-events: none;
+	}
+	
+/*---------------------------------------------*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input[type="checkbox"]:checked + .slider {
+  background-color: #6d6b6b;/*#2196F3;*/
+}
+
+input[type="checkbox"]:focus + .slider {
+  box-shadow: 0 0 1px #6d6b6b;/*#2196F3;*/
+}
+
+input[type="checkbox"]:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*---------------------------------------*/
+.sliderRange-container {
+    width: 100%;
+    margin: 5px auto;
+    border-bottom: 2px solid #adadad;
+}
+
+.sliderRange-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding:5px;
+}
+
+.sliderRange {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, #6d6b6b 50%, #ddd 50%);
+    outline: none;
+    /*opacity: 0.7;*/
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 10px;
+}
+
+.sliderRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
+
+.sliderRange::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
+
+.sliderRange::-ms-thumb {
+    width: 30px;
+    height: 30px;
+    /*background: #888;*/
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+	  border: 1px solid rgb(173,173,173);
+}
+
+  </style>
+	<title>chw R1.02</title>
+	<script type="text/javascript" src="./chw R1.02_files/data.js.download"></script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1186.0" data-gr-ext-installed="">
+		<div class="canvas colorWhite" id="canvas">
+			<div class="header" id="header">
+				<span id="wheelName">Copenhagen Wheel</span>
+				<div class="clock" id="clock">13:28</div>
+			</div>
+			<div class="main" id="main">
+				<div width="200px" height="150px" id="canvas_redWheel">
+					<img src="./chw R1.02_files/redwheel.svg" class="redWheel">
+				</div>
+				<div>
+					Please go close to the wheel  and click connect to device
+				</div>
+			</div>
+			<div class="footer" id="footer">
+				<button class="round-button colorRed" onclick="onButtonClick(this)" name="action">Connect to Device</button>
+				<button class="round-button colorBlue" onclick="redirectToPayPal()" name="action">Donate with PayPal</button>
+				<!--<button class="round-button colorBlue" onclick="onButtonClick(this)" name="action">About Wheel</button>-->
+			</div>
+		</div>
+<script type="text/javascript">
+//BLE
+//Wheel BLE Services
+const Device_UUID = "0000180a-0000-1000-8000-00805f9b34fb";
+const Firmware_Version_characteristicUuid = "00002a26-0000-1000-8000-00805f9b34fb";
+const Hardmware_Version_characteristicUuid = "00002a27-0000-1000-8000-00805f9b34fb";
+
+//Authentication UUID
+const Authentication_ServiceUuid  = "52756265-6e43-6167-6e69-654350485100";
+const Main_Electronics_Board_Serial_Number_characteristicUuid = "52756265-6e43-6167-6e69-654350485105";
+const Passcode_forAuthentication_Access_characteristicUuid =  "52756265-6e43-6167-6e69-654350485101"; 
+const Present_Access_Level_to_DSP_characteristicUuid =  "52756265-6e43-6167-6e69-654350485104"; 
+const Wheel_Name_characteristicUuid =  "52756265-6e43-6167-6e69-654350485103";
+
+//Command to controller UUID
+const Controller_ServiceUuid ="52756265-6e43-6167-6e69-654350485000";
+const RIDE_MODE_characteristicUuid = "52756265-6e43-6167-6e69-65435048500a";
+const Command_to_Controller_characteristicUuid = "52756265-6e43-6167-6e69-654350485001";
+const Request_to_Controller_characteristicUuid = "52756265-6e43-6167-6e69-654350485004";
+const C0x0025_characteristicUuid = "52756265-6e43-6167-6e69-654350485007";
+const C0x0029_characteristicUuid = "52756265-6e43-6167-6e69-654350485002";
+const C0x002d_characteristicUuid = "52756265-6e43-6167-6e69-654350485003";
+const C0x0031_characteristicUuid = "52756265-6e43-6167-6e69-65435048500b";
+const C0x0035_characteristicUuid = "52756265-6e43-6167-6e69-654350485009";
+const C0x003d_characteristicUuid = "52756265-6e43-6167-6e69-65435048500c";
+const C0x0041_characteristicUuid = "52756265-6e43-6167-6e69-65435048500d";
+
+ //Battery UUID
+const Battery_ServiceUuid  = "52756265-6e43-6167-6e69-654350485300";
+const C0x007b_characteristicUuid = "52756265-6e43-6167-6e69-654350485304";
+
+let BLEserver;
+let bluetoothDevice;
+
+let BoardSerialNumberCharacteristic;
+let PasscodeCharacteristic;
+let PresentAccessCharacteristic;
+let WheelNameCharacteristic;
+let RideModeCharacteristic;
+let CommandToControllerharacteristic;
+let RequestToControllerharacteristic;
+let C0x0025Characteristic;
+let C0x0029Characteristic;
+let C0x002dCharacteristic;
+let C0x0031Characteristic;
+let C0x0035Characteristic;
+let C0x003dCharacteristic;
+let C0x0041Characteristic;
+let C0x007bCharacteristic;
+let FirmwareVersionCharacteristic;
+let HardmwareVersionCharacteristic; 
+
+//value
+let presentAccess = 'ff';
+let boardSerialNumber;
+let firmwareVersion;
+let hardwareVersion;
+let wheelName = "copenheken";
+let currentRide = -1;
+let rideModeLabel;
+let speedLabel;
+let batteryLevel;
+let batteryLevelLabel;
+let logMode = false;
+let logElement;
+let authenAttempted = 0;
+let maxAssistSpeed = 32;
+let currentPage ="homePage";
+let timeoutId;
+
+//ride modes
+//let breakAssistState = "00d5000001000";
+
+const rideModes = [{mode:"OFF", value:"0000000000000000000000000000000000000000"},{mode:"ECO", value:"2020000a0000000034d87f3a00d500000100a88c"},{mode:"STANDARD", value:"4040001e0000000034d87f3a00d5000001009183"},{mode:"TURBO", value:"557f7d000000000034d8ff3a00d500000100064e"}];
+let rideMode = 0; //0 off, 1 eco, 2 standard, 2 turbo
+const tries =[
+	{name:"25c-28C", value:"660d0000"},
+	{name:"29c-32c", value:"8e0d0000"},
+	{name:"33c-36c", value:"a20d0000"},
+	{name:"37c-40c", value:"c00d0000"},
+	{name:"41c-44c", value:"060e0000"},
+	{name:"45c-48c", value:"2e0e0000"},
+	{name:"49c-52c", value:"600e0000"}];
+const assisScoreHexMap = {
+        20: "712c",
+        21: "aa2e",
+        22: "e330",
+        23: "1c33",
+        24: "5535",
+        25: "8e37",
+        26: "c739",
+        27: "003c",
+        28: "383e",
+        29: "7140",
+        30: "aa42",
+        31: "e344",
+        32: "1c47",
+        33: "e358"
+    };
+const deviceInformation = {
+	wheelName:"",
+	heardwareVersion:"",
+	firmwareVersion:"",
+	powerSaveTimeout:"",
+	maxAssistSpeed:"",
+	tireSetting:""
+}
+
+//UI
+//const speed_div = document.getElementById("speed_lable");
+const canvas = document.getElementById("canvas");
+const canvas_header = document.getElementById("header");
+const canvas_main = document.getElementById("main");
+const canvas_footer = document.getElementById("footer");
+const wheelName_div = document.getElementById("wheelName");
+
+
+function LogMode(){
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	const paramName = params.get('logMode');
+	log('LogMode:' + paramName);
+	if (paramName){
+		if (paramName == '1') return true;
+	}
+	return false;
+}
+
+function onButtonClick(bnt){
+	logMode = LogMode();
+	var lable = bnt.textContent;
+	switch (lable) {
+	  case 'Connect to Device': 
+	  	if (logMode == true) {
+				investigatePage();
+			}else{
+				informationPage();
+			}
+			requestDevice();
+	    break;
+	  case '<':
+	  	if (rideMode > 0) rideMode = rideMode -1;
+			switchMode();
+	    break;
+	  case '>':
+	  	if (rideMode < 3) rideMode = rideMode +1;
+			switchMode();
+	    break;
+	  case 'Finish':
+	  	rideMode = 3;
+			finishRide();
+	    break;
+	  case 'Done':
+	  	logMode = false;
+			homePage();
+			try{
+				bluetoothDevice.gatt.disconnect();
+			}catch(error){
+				log('Error:' + error);
+			}
+	    break;
+	  case 'Cancel':
+	  	logMode = false;
+	  	clearTimeout(timeoutId);
+			homePage();
+			try{
+				bluetoothDevice.gatt.disconnect();
+			}catch(error){
+				log('Error:' + error);
+			}
+	    break;
+	  case 'About Wheel':
+			aboutWheelPage();
+	    break; 
+	  case ' Done ':
+			LandingPage();
+	    break; 
+	  case 'Wheel Setting':
+			readDeviceInformation();
+	    break; 
+	  case 'Save':
+			saveSetting();	
+			LandingPage();
+	    break;
+	  case 'Exit':
+			canvas.classList.replace("colorBlack","colorWhite");
+			//background: #f2f2f2; -> #121212
+			document.body.style.backgroundColor = "#f2f2f2";
+			LandingPage();
+	    break;
+	  case 'Ride':
+	  	loadBrakeAssistData();
+			CurrentRidePage();
+	    break;
+	  case 'Braking Assistance':
+	  	loadBrakeAssistData();
+			brakeAssistPage();
+	    break;
+	     Save
+	  case ' Save ':
+			brakeAssistSave();
+			LandingPage();
+	    break;
+	  case 'Donate with PayPal':
+			redirectToPayPal();
+	    break;
+	  default:
+	    break;
+	}
+}
+
+function cmd_button(lable,color="colorRed"){
+	let btn_element = document.createElement("button");
+	btn_element.name ="action";
+	btn_element.className = "round-button";
+	btn_element.classList.add(color);
+	btn_element.setAttribute("onclick","onButtonClick(this)");
+	btn_element.textContent = lable;
+	return btn_element;
+}
+
+function input_text(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+	first_element.setAttribute("data-validate","Enter " + lable);
+
+	let second_element = document.createElement("input");
+	second_element.className ="input100";
+	second_element.name = lable;
+	second_element.id= lable;
+	second_element.setAttribute("type","text");
+	second_element.value = value;
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder",lable);
+
+	
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+
+
+function input_slidebar(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+	first_element.setAttribute("data-validate","Enter " + lable);
+
+	let second_element = document.createElement("input");
+	second_element.className ="input100";
+	second_element.name = lable;
+	second_element.id= lable;
+	second_element.setAttribute("type","range");
+	second_element.setAttribute("min",5);
+	second_element.setAttribute("max",30);
+	second_element.setAttribute("onchange","moveProgressBar()");
+	second_element.value = value;
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.id="lable_" + lable;
+	third_element.setAttribute("data-placeholder",lable);
+
+	
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+function input_Range_PowerSaveTimeout(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+	second_element.id ="lable_" + lable;
+
+	let third_element = document.createElement("input");
+	third_element.className = "sliderRange";
+	third_element.id = lable;
+	third_element.type = "range";
+	third_element.min = 5;
+	third_element.max = 30;
+	third_element.value = value;
+	third_element.addEventListener('input', PowerSaveTimeoutUpdate);
+
+	let fourth_element = document.createElement("div");
+	fourth_element.className = "sliderRange-labels";
+
+	let fifth_element = document.createElement("span");
+	fifth_element.textContent = "Min";
+	let sixth_element = document.createElement("span");
+	sixth_element.textContent ="Max";
+
+	fourth_element.appendChild(fifth_element);
+	fourth_element.appendChild(sixth_element);
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	first_element.appendChild(fourth_element);
+
+
+	return first_element;
+}
+
+
+function deviceInfoDetail(ul,title,value){
+
+	let li_title = document.createElement("li");
+	li_title.textContent = title;
+	li_title.style.textAlign = "left";
+	li_title.style.borderBottom = '2px solid #adadad';
+	li_title.style.padding =  "5px";
+	li_title.style.alignContent = "center";
+
+
+	let li_value = document.createElement("li");
+	li_value.textContent = value;
+	li_value.style.textAlign = "right";
+	li_value.style.borderBottom = '2px solid #adadad';
+	li_value.style.padding =  "5px";
+	li_title.style.alignContent = "center";
+
+	ul.appendChild(li_title);
+	ul.appendChild(li_value);
+}
+
+function lable_text(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+	first_element.setAttribute("data-validate","Enter " + lable);
+
+	let second_element = document.createElement("div");
+	second_element.textContent = value;
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder",lable);
+
+	
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+function inputSelectOption(lable){
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+	first_element.setAttribute("data-validate","Enter " + lable);
+
+	let second_element = document.createElement("select");
+	second_element.className ="input100";
+	second_element.name = lable;
+	second_element.id= lable;
+	second_element.style.border = "0px";
+	second_element.style.outline ="0px";
+	second_element.setAttribute("onchange","tireChange(this)");
+	
+	for (let i = 0; i < tries.length; i++) {
+  	//console.log(`Name: ${tries[i].name}, Value: ${tries[i].value}`);
+  	let opt_element = document.createElement("option");
+		opt_element.value = tries[i].value;
+		opt_element.textContent = tries[i].name;
+		second_element.appendChild(opt_element);
+		second_element.value = deviceInformation.tireSetting;
+	}
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder",lable);
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+function input_text_WheelName(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+	second_element.id ="lable_" + lable;
+
+	let third_element = document.createElement("input");
+	third_element.className= "input100";
+	//third_element.style.width = "100%";
+	//third_element.style.fontSize = "17px";
+	third_element.name = lable;
+	third_element.id= lable;
+	third_element.setAttribute("type","text");
+	third_element.value = value;
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	return first_element;
+
+}
+
+
+function input_Button_IncreseDecreseSpeed(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+
+	let third_element = document.createElement("div");
+	third_element.className = "container-increse-decrese";
+	third_element.style.width = "100%";
+	let left_element = document.createElement("div");
+	left_element.className = "column left";
+	left_element.id="lable_" + lable;
+
+
+	if (maxAssistSpeed > 32) {
+		left_element.textContent = "above 32km/h";
+	}else{
+		left_element.textContent = maxAssistSpeed +" km/h";
+	}
+
+	let right_element = document.createElement("div");
+	right_element.className = "column right";
+	third_element.appendChild(left_element);
+	third_element.appendChild(right_element);
+
+	let button_element = document.createElement("div");
+	button_element.className = "button-container";
+	let decrese_element = document.createElement("button");
+	decrese_element.className = "adjust-button";
+	decrese_element.textContent = "-";
+	decrese_element.setAttribute("onclick","decreaseValue()");
+	let increse_element = document.createElement("button");
+	increse_element.className = "adjust-button";
+	increse_element.textContent = "+";
+	increse_element.setAttribute("onclick","increaseValue()");
+	button_element.appendChild(decrese_element);
+	button_element.appendChild(increse_element);
+	right_element.appendChild(button_element);
+
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+
+}
+
+function input_SelectOption_Tire(lable){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+	//first_element.alignContent="left"
+	let second_element = document.createElement("div");
+	second_element.style.float ="left";
+	second_element.textContent = lable;
+	
+
+	let third_element = document.createElement("select");
+	third_element.className= "input100";
+	//third_element.style.width = "100%";
+  //third_element.style.fontSize="17px";
+	third_element.name = lable;
+	third_element.id= lable;
+	third_element.style.border = "0px";
+	third_element.style.outline ="0px";
+	third_element.setAttribute("onchange","tireChange(this)");
+	
+	for (let i = 0; i < tries.length; i++) {
+  	//console.log(`Name: ${tries[i].name}, Value: ${tries[i].value}`);
+  	let opt_element = document.createElement("option");
+  	opt_element.value = tries[i].value;
+		opt_element.textContent = tries[i].name;
+		third_element.appendChild(opt_element);
+		third_element.value = deviceInformation.tireSetting;
+	}
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+
+	return first_element;
+
+}
+
+
+function increseDecressButton(lable,value){
+
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+
+
+	let second_element = document.createElement("div");
+	second_element.className = "container-increse-decrese";
+	let left_element = document.createElement("div");
+	left_element.className = "column left";
+	left_element.id="lable_" + lable;
+
+
+	if (maxAssistSpeed > 32) {
+		left_element.textContent = "above 32km/h";
+	}else{
+		left_element.textContent = maxAssistSpeed +" km/h";
+	}
+
+	let right_element = document.createElement("div");
+	right_element.className = "column right";
+	second_element.appendChild(left_element);
+	second_element.appendChild(right_element);
+
+
+	let button_element = document.createElement("div");
+	button_element.className = "button-container";
+	let decrese_element = document.createElement("button");
+	decrese_element.className = "adjust-button";
+	decrese_element.textContent = "-";
+	decrese_element.setAttribute("onclick","decreaseValue()");
+	let increse_element = document.createElement("button");
+	increse_element.className = "adjust-button";
+	increse_element.textContent = "+";
+	increse_element.setAttribute("onclick","increaseValue()");
+	button_element.appendChild(decrese_element);
+	button_element.appendChild(increse_element);
+	right_element.appendChild(button_element);
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder","Max Assist Speed:");
+
+	first_element.appendChild(second_element);
+
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+function increseDecressButton(lable,value){
+
+	let first_element = document.createElement("div");
+	first_element.className = "wrap-input100 validate-input";
+
+
+	let second_element = document.createElement("div");
+	second_element.className = "container-increse-decrese";
+	let left_element = document.createElement("div");
+	left_element.className = "column left";
+	left_element.id="lable_" + lable;
+
+
+	if (maxAssistSpeed > 32) {
+		left_element.textContent = "above 32km/h";
+	}else{
+		left_element.textContent = maxAssistSpeed +" km/h";
+	}
+
+	let right_element = document.createElement("div");
+	right_element.className = "column right";
+	second_element.appendChild(left_element);
+	second_element.appendChild(right_element);
+
+
+	let button_element = document.createElement("div");
+	button_element.className = "button-container";
+	let decrese_element = document.createElement("button");
+	decrese_element.className = "adjust-button";
+	decrese_element.textContent = "-";
+	decrese_element.setAttribute("onclick","decreaseValue()");
+	let increse_element = document.createElement("button");
+	increse_element.className = "adjust-button";
+	increse_element.textContent = "+";
+	increse_element.setAttribute("onclick","increaseValue()");
+	button_element.appendChild(decrese_element);
+	button_element.appendChild(increse_element);
+	right_element.appendChild(button_element);
+
+	let third_element = document.createElement("span");
+	third_element.className ="focus-input100";
+	third_element.setAttribute("data-placeholder","Max Assist Speed:");
+
+	first_element.appendChild(second_element);
+
+	first_element.appendChild(third_element);
+
+	return first_element;
+}
+
+
+
+
+function toggleButton(ul,lable,value){
+	let li_title = document.createElement("li");
+	li_title.textContent = lable;
+	li_title.style.textAlign = "left";
+	li_title.style.borderBottom = '2px solid #adadad';
+	li_title.style.padding =  "5px";
+	li_title.style.alignContent = "center";
+
+
+	let li_value = document.createElement("li");
+	
+	li_value.style.textAlign = "right";
+	li_value.style.borderBottom = '2px solid #adadad';
+	li_value.style.padding =  "5px";
+
+	
+
+	let label_element = document.createElement("label");
+	label_element.className = "switch";
+	let input_element = document.createElement("input");
+	input_element.id = lable;
+	input_element.type = "checkbox";
+	input_element.checked = value;
+	input_element.addEventListener('input',brakeAssistToggleUpdate);
+	let span_element = document.createElement("span");
+	span_element.className = "slider round";
+
+	label_element.appendChild(input_element);
+	label_element.appendChild(span_element);
+
+	li_value.appendChild(label_element);
+
+	ul.appendChild(li_title);
+	ul.appendChild(li_value);
+
+
+}
+
+
+function input_Range_Sensitivity(lable,value){
+	let first_element = document.createElement("div");
+	first_element.className = "sliderRange-container";
+
+	let second_element = document.createElement("div");
+	second_element.textContent = lable;
+	second_element.style.float = "left";
+
+	let third_element = document.createElement("input");
+	third_element.className = "sliderRange";
+	third_element.id = lable;
+	third_element.type = "range";
+	third_element.min = 285179688;
+	third_element.max = 2289925988;
+	third_element.value = SensitivityReverseValue(value);
+	//third_element.setAttribute("onchange","SensitivityRangeChange(this)");
+	third_element.addEventListener('input', SensitivityRangeUpdate);
+
+	let fourth_element = document.createElement("div");
+	fourth_element.className = "sliderRange-labels";
+
+	let fifth_element = document.createElement("span");
+	fifth_element.textContent = "Low";
+	let sixth_element = document.createElement("span");
+	sixth_element.textContent ="High";
+
+	fourth_element.appendChild(fifth_element);
+	fourth_element.appendChild(sixth_element);
+
+	first_element.appendChild(second_element);
+	first_element.appendChild(third_element);
+	first_element.appendChild(fourth_element);
+
+
+	return first_element;
+}
+
+
+
+function homePage(){
+	currentPage = "homePage";
+	cleanPage();
+
+	canvas.classList.replace("colorBlack","colorWhite");
+	document.body.style.backgroundColor = "#f2f2f2";
+
+	logMode = false;
+	currentRide = -1;
+	presentAccess = 'ff';
+	BLEserver = null;
+	let first_element = document.createElement("div");
+	first_element.textContent = "Please go close to the wheel and click connect to device";
+	
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(first_element);
+	canvas_footer.appendChild(cmd_button('Connect to Device'));
+	canvas_footer.appendChild(cmd_button('Donate with PayPal','colorBlue'));
+	window.scrollTo(0,0);
+	
+}
+
+function informationPage(){
+	currentPage = "informationPage";
+	cleanPage();
+	let bleStatus_element = document.createElement("div");
+	bleStatus_element.id = "ble_status";
+	bleStatus_element.textContent = "Please click pair to connect to device";
+	ble_status = bleStatus_element;
+
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(bleStatus_element);
+	canvas_footer.appendChild(cmd_button("Cancel"));
+	window.scrollTo(0,0);
+	
+}
+
+function investigatePage(){
+	currentPage = "investigatePage";
+	cleanPage();
+	wheelName_div.textContent = 'Investigate Mode';
+	logElement = document.createElement("div");
+	canvas_main.appendChild(logElement);
+	canvas_main.appendChild(cmd_button('Done'));
+	let ble_element = document.createElement("div");
+	ble_element.id = "ble_status";
+	ble_element.textContent = "---";
+	canvas_main.appendChild(ble_element);
+}
+
+function finishPage(){
+	currentPage = "finishPage";
+	cleanPage();
+	canvas.classList.replace("colorBlack","colorWhite");
+	//background: #f2f2f2; -> #121212
+	document.body.style.backgroundColor = "#f2f2f2";
+	let bleStatus_element = document.createElement("div");
+	bleStatus_element.id = "ble_status";
+	bleStatus_element.textContent = "Please wait for showdown and unpair proceess ...";
+	ble_status = bleStatus_element;
+
+	let redwheel_element = document.createElement("div");
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
+	redwheel_element.id = "canvas_redWheel"; 
+	let svg_element = document.createElement("img");
+	svg_element.src = "img/redwheel.svg";
+	svg_element.className = "redWheel";
+	redwheel_element.appendChild(svg_element);
+
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(bleStatus_element);
+	window.scrollTo(0,0);
+	loadingIndicator();
+
+}
+
+function LandingPage(){
+	currentPage = "LandingPage";
+	if (logMode == true) return;
+	cleanPage();
+	wheelName_div.textContent = wheelName;
+
+  
+	let redwheel_element = document.createElement("img");
+	redwheel_element.src = "img/redwheel.svg";
+	let text_element = document.createElement("div");
+	text_element.innerHTML ="Wheel connected, Welcome back <br>Enjoy riding <b><font color='red'>the red wheel</font></b>";
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(text_element);
+	canvas_footer.appendChild(cmd_button('About Wheel','colorGreen'));
+	//canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
+	canvas_footer.appendChild(cmd_button('Ride','colorDark'));
+	canvas_footer.appendChild(cmd_button('Done'));
+	window.scrollTo(0,0);
+}
+
+function aboutWheelPage(){
+	currentPage = "aboutWheelPage";
+	if (logMode == true) return;
+	cleanPage();
+
+	const title_element = document.createElement("div");
+	title_element.style.color ="orangered";
+	title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+	title_element.style.fontSize = "large";
+	title_element.textContent ="About Wheel";
+	title_element.style.paddingBottom = "20px";
+	canvas_main.appendChild(title_element);
+
+	let redwheel_element = document.createElement("img");
+	redwheel_element.src = "img/redwheel.svg";
+	let text_element = document.createElement("div");
+	text_element.innerHTML ="Wheel connected, Welcome back <br>Enjoy riding <b><font color='red'>the red wheel</font></b>";
+	
+	canvas_main.appendChild(redwheel_element);
+	canvas_main.appendChild(text_element);
+	canvas_footer.appendChild(cmd_button('Wheel Setting','colorGreen'));
+	canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
+	canvas_footer.appendChild(cmd_button(' Done '));
+	window.scrollTo(0,0);
+	
+}
+
+function SettingPage(){
+	currentPage = "SettingPage";
+	if (logMode == true) return;
+	cleanPage();
+	//adjust layout by temporary remove disply flex
+	//canvas.style.display = '';
+	
+  wheelName_div.textContent = deviceInformation.wheelName;
+	maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
+
+
+	const title_element = document.createElement("div");
+	title_element.style.color ="orangered";
+	title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+	title_element.style.fontSize = "large";
+	title_element.textContent ="Wheel Setting";
+	title_element.style.paddingBottom = "20px";
+	canvas_main.appendChild(title_element);
+
+	let ul_element = document.createElement("ul");
+	ul_element.style.display = "grid";
+	ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
+	deviceInfoDetail(ul_element,"Hardware Version",deviceInformation.heardwareVersion);
+	deviceInfoDetail(ul_element,"Firmware Version",deviceInformation.firmwareVersion);
+
+	canvas_main.appendChild(ul_element);
+	canvas_main.appendChild(document.createElement("br"));
+	//canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
+
+	canvas_main.appendChild(input_text_WheelName('Wheel Name',wheelName)); 
+	canvas_main.appendChild(input_Range_PowerSaveTimeout('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));
+
+	canvas_main.appendChild(input_Button_IncreseDecreseSpeed('Max Assist Speed',maxAssistSpeed));
+	canvas_main.appendChild(input_SelectOption_Tire("Tire Setting"));
+
+	canvas_footer.appendChild(cmd_button('Save'));
+	PowerSaveTimeoutUpdate();
+	window.scrollTo(0,0);
+
+}
+
+
+function brakeAssistPage(){
+	currentPage = "brakeAssistPage";
+	if (logMode == true) return;
+		cleanPage();
+		//2020000a0000000034d87f3a00d500000100a88c
+
+		var brakeAssistValue = rideModes[1].value.substr(16,8);
+		var brakeAssistState = rideModes[1].value.substr(24,12);
+    
+		const title_element = document.createElement("div");
+		title_element.style.color ="orangered";
+		title_element.style.fontFamily = "Poppins-Bold, sans-serif";
+		title_element.style.fontSize = "large";
+		title_element.textContent ="Braking Assistance";
+		title_element.style.paddingBottom = "20px";
+
+		const desc_element = document.createElement("div");
+		desc_element.style.textAlign = "left";
+		desc_element.style.fontSize =  "14px";
+		desc_element.style.borderBottom = "2px solid #adadad";
+		desc_element.innerHTML = "<blockquote style='padding-bottom: 20px;'>When enabled, your Copenhagen Wheel can help with braking! Just pedal backwards to slow down. Adjust the sensitivity to decide how much you need to backpedal.<P><BR><Font color='orangered'><B>Remember</B></Font>, braking assistance is just that—assistance. It doesn't replace your bike's hand brakes, so don't rely on it in emergencies.</P></blockquote>";
+
+
+
+	let ul_element = document.createElement("ul");
+	ul_element.style.display = "grid";
+	ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
+	if (brakeAssistState == '00d500000100'){
+		toggleButton(ul_element,"Braking Assistance",true);
+	}else{
+		toggleButton(ul_element,"Braking Assistance",false);
+	}
+	
+
+	canvas_main.appendChild(title_element);
+	canvas_main.appendChild(desc_element);
+	canvas_main.appendChild(ul_element);
+	canvas_main.appendChild(input_Range_Sensitivity('Sensitivity',hexToDecimal(brakeAssistValue)));
+
+  /*
+	let test_element = document.createElement("div");
+	let testinput_element = document.createElement("input");
+	testinput_element.type = "text";
+	testinput_element.id = "tx";
+	let testbtn_element = document.createElement("botton");
+	testbtn_element.textContent = "xx";
+	testbtn_element.oncli
+	//testbtn_element.onButtonClick = "testSensitivityRangeUpdate()";
+	testbtn_element.setAttribute("onclick","testSensitivityRangeUpdate()");
+	test_element.appendChild(testinput_element);
+	test_element.appendChild(testbtn_element);
+	canvas_main.appendChild(test_element);*/
+
+	canvas_footer.appendChild(cmd_button(' Save ')); 
+
+	SensitivityRangeUpdate();
+	brakeAssistToggleUpdate();
+
+	window.scrollTo(0,0);
+}
+
+function CurrentRidePage(){
+	currentPage = "CurrentRidePage";
+	if (logMode == true) return;
+	cleanPage();
+	currentRide = 1;
+	wheelName_div.textContent = wheelName;
+
+  	canvas.classList.replace("colorWhite","colorBlack");
+  	//background:  #f2f2f2 -- > #121212
+  	document.body.style.backgroundColor = "#121212";
+
+	const gridContainer_element = document.createElement("div");
+	gridContainer_element.className = "grid-container";
+	const left_element = document.createElement("div");
+	left_element.className = "grid-item";
+	const center_element = document.createElement("div");
+	center_element.className = "grid-item";
+	center_element.id = "rideMode";
+	const right_element = document.createElement("div");
+	right_element.className = "grid-item";
+
+	gridContainer_element.appendChild(left_element);
+	gridContainer_element.appendChild(center_element);
+	gridContainer_element.appendChild(right_element);
+
+
+	const decressBtn = cmd_button("<","colorBlack");
+	const incressBtn = cmd_button(">","colorBlack");
+	decressBtn.style.height = '120px';
+	decressBtn.style.width = '80%';
+	decressBtn.style.margin = '0px';
+	decressBtn.style.fontSize = '180px';
+	decressBtn.style.fontFamily = "Poppins-Medium";
+	incressBtn.style.height = '120px';
+	incressBtn.style.margin = '0px';
+	incressBtn.style.width = '80%';
+	incressBtn.style.fontSize = '180px';
+	incressBtn.style.fontFamily = "Poppins-Medium";
+
+	left_element.appendChild(decressBtn);
+	right_element.appendChild(incressBtn);
+
+	center_element.textContent = rideModes[rideMode].mode;//"STANDARD";
+	rideModeLabel = center_element;
+	center_element.style.fontSize = '28px';
+	canvas_main.appendChild(gridContainer_element);
+
+
+	//batteryLabel
+	const progress_element = document.createElement("div");
+	const progressBar_element = document.createElement("div");
+	let frame_element = document.createElement("div");
+	const batteryLevelLabel_element = document.createElement("div");
+
+	batteryLevelLabel_element.style.textAlign = "left";
+	batteryLevelLabel_element.style.fontSize = '15px';
+	batteryLevelLabel_element.style.fontFamily = "Poppins-Regular";
+
+
+	batteryLevelLabel = batteryLevelLabel_element;
+	batteryLevelLabel_element.textContent = "Battery Level: -%";
+	frame_element.appendChild(batteryLevelLabel_element);
+
+	progress_element.className = "progress";
+	progress_element.appendChild(progressBar_element);
+	progressBar_element.className = "progress-bar";
+	batteryLevel= progressBar_element;
+
+	frame_element.appendChild(progress_element);
+
+
+
+	canvas_footer.appendChild(frame_element);
+	canvas_footer.appendChild(cmd_button("Finish"));
+	canvas_footer.appendChild(cmd_button("Exit","colorBlue"));
+
+	//canvas.scrollIntoView();
+  window.scrollTo(0,0);
+	getRideModeState();
+}
+
+
+function cleanPage(){
+  wheelName_div.textContent = 'Copenhagen Wheel';
+	while (canvas_main.firstChild) {
+ 		canvas_main.removeChild(canvas_main.firstChild);
+	}
+	while (canvas_footer.firstChild) {
+ 		canvas_footer.removeChild(canvas_footer.firstChild);
+	}
+}
+	
+function loadingIndicator(){
+    let div = document.createElement("div");
+    div.id = "loadingIndicator";
+		div.className = "loader";
+		let redwheel_element = document.getElementById("canvas_redWheel");
+		redwheel_element.appendChild(div);
+}
+
+//BLE
+function requestDevice() {
+  log('Requesting Bluetooth Device...');
+  loadingIndicator();
+
+  navigator.bluetooth.requestDevice({
+  		filters: [{ services: [Controller_ServiceUuid] }],
+          optionalServices: [Device_UUID,Authentication_ServiceUuid,Battery_ServiceUuid]
+      }) 
+  .then(device => {
+    bluetoothDevice = device;
+    bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
+    if (ble_status) ble_status.textContent = "Device Connected...";
+    return device.gatt.connect();
+  })
+  .then(server => {
+  	BLEserver = server;
+    log('Getting Services...');
+    if (ble_status) ble_status.textContent = "Getting Services...";
+    loadCharacteristic();
+    return;
+  })
+  .catch(error => {
+  	log('Argh! ' + error);
+  	if (logMode == true) return;
+		homePage();
+		canvas_main.appendChild(document.createElement("br"));
+		let first_element = document.createElement("div");
+		first_element.textContent = '>> Unable to connect <<';
+		canvas_main.appendChild(first_element);
+		return;
+  });
+  
+}
+
+async function loadCharacteristic(){
+	try{
+		//Authentication_ServiceUuid
+		const authenticationService =  await BLEserver.getPrimaryService(Authentication_ServiceUuid);
+		BoardSerialNumberCharacteristic = await authenticationService.getCharacteristic(Main_Electronics_Board_Serial_Number_characteristicUuid);
+		log('BoardSerialNumberCharacteristic checked');
+		PasscodeCharacteristic = await authenticationService.getCharacteristic(Passcode_forAuthentication_Access_characteristicUuid);
+		log('PasscodeCharacteristic checked');
+		PresentAccessCharacteristic = await authenticationService.getCharacteristic(Present_Access_Level_to_DSP_characteristicUuid);
+		PresentAccessCharacteristic.addEventListener('characteristicvaluechanged',PresentAccessLevelValueChanged);
+		log('PresentAccessCharacteristic checked');
+		WheelNameCharacteristic = await authenticationService.getCharacteristic(Wheel_Name_characteristicUuid);
+		log('WheelNameCharacteristic checked');
+		//Controller_ServiceUuid
+		const controllerService =  await BLEserver.getPrimaryService(Controller_ServiceUuid);
+		RideModeCharacteristic = await controllerService.getCharacteristic(RIDE_MODE_characteristicUuid);
+		log('RideModeCharacteristic checked');
+		CommandToControllerharacteristic = await controllerService.getCharacteristic(Command_to_Controller_characteristicUuid);
+		log('CommandToControllerharacteristic checked');
+		RequestToControllerharacteristic = await controllerService.getCharacteristic(Request_to_Controller_characteristicUuid);
+		log('RequestToControllerharacteristic checked');
+		C0x0025Characteristic = await controllerService.getCharacteristic(C0x0025_characteristicUuid);
+		C0x0025Characteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
+		log('C0x0025Characteristic checked');
+		C0x0029Characteristic = await controllerService.getCharacteristic(C0x0029_characteristicUuid);//timer not speed
+		C0x0029Characteristic.addEventListener('characteristicvaluechanged',speedValueChanged);
+		log('C0x0029Characteristic checked');
+		C0x002dCharacteristic = await controllerService.getCharacteristic(C0x002d_characteristicUuid);//Can't crack value yet
+		C0x002dCharacteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
+		log('C0x002dCharacteristic checked');
+		C0x0031Characteristic = await controllerService.getCharacteristic(C0x0031_characteristicUuid);//Batter Level
+		C0x0031Characteristic.addEventListener('characteristicvaluechanged',batteryLevelValueChanged);
+		log('C0x0031Characteristic checked');
+		C0x0035Characteristic = await controllerService.getCharacteristic(C0x0035_characteristicUuid);//setting page
+		C0x0035Characteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
+		log('C0x0035Characteristic checked');
+		C0x003dCharacteristic = await controllerService.getCharacteristic(C0x003d_characteristicUuid); //Can't crack value yet
+		C0x003dCharacteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
+		log('C0x003dCharacteristic checked');
+		C0x0041Characteristic = await controllerService.getCharacteristic(C0x0041_characteristicUuid);//Check point
+		C0x0041Characteristic.addEventListener('characteristicvaluechanged',C0x0041CharacteristicValueChanged);
+		log('C0x0041Characteristic checked');
+	 	//Battery UUID
+		const batteryService =  await BLEserver.getPrimaryService(Battery_ServiceUuid);
+		C0x007bCharacteristic = await batteryService.getCharacteristic(C0x007b_characteristicUuid);//batter warning
+		C0x007bCharacteristic.addEventListener('characteristicvaluechanged',batteryWarningValueChanged);
+		log('C0x007bCharacteristic checked');
+
+		//Device Info
+		const deviceService =  await BLEserver.getPrimaryService(Device_UUID);
+		FirmwareVersionCharacteristic = await deviceService.getCharacteristic(Firmware_Version_characteristicUuid);
+		log('FirmwareVersionCharacteristic checked');
+		HardmwareVersionCharacteristic  = await deviceService.getCharacteristic(Hardmware_Version_characteristicUuid);
+		log('HardmwareVersionCharacteristic checked');
+
+		readIntitialInformation();
+	}catch (error){
+		log('Error loadCharacteristic:' + error);
+  		if (logMode == true) return;
+		homePage();
+		canvas_main.appendChild(document.createElement("br"));
+		let first_element = document.createElement("div");
+		first_element.textContent = '>> fail to loadCharacteristic... ';
+		canvas_main.appendChild(first_element);
+	}
+
+}
+
+function onDisconnected() {
+	if (logMode == true) return;
+	bnt = document.getElementsByName("action")[0];
+	log('> Bluetooth Device disconnected');
+	homePage();
+}
+
+
+function C0x0041CharacteristicValueChanged(event) {
+	const characteristic = event.target;
+    const value = event.target.value;
+    log('0x0041 value change | ' +  dataToHexString(value) + ' | ' + DataToStr(value));
+  	log('Step 17)');
+  	clearTimeout(timeoutId);
+  	LandingPage();
+}
+
+function speedValueChanged(event) {
+	/* hv to find out
+	const characteristic = event.target;
+  const value = event.target.value; //00 00 00 00 4d 15 ac 14 d4 00 65 20 44 02 98 1d 4e 4e 02 00
+  let kmh = value.getUint8(12);
+  log('Speed: ' + dataToHexString(value) + '|' + kmh);
+  //kmh  = rpmToKmph(kmh);		
+  try{
+  	//speedLabel.textContent =  kmh; timmer
+  }catch(error){
+  	log('error speedValueChanged: ' + error);
+  }
+	*/
+}
+
+function batteryLevelValueChanged(event) {
+	if (currentPage != "CurrentRidePage") return;
+	try{
+		const characteristic = event.target;
+	  const value = event.target.value;
+	  const level = value.getUint8(7);
+	  const status = value.getUint8(8);
+	  batteryLevel.style.width = level + '%';
+	  batteryLevelLabel.textContent = 'Battery Level: ' + level+'%';
+
+	  if (status == 195){
+	  	//use
+	  	if (level > 30) {
+	  		batteryLevel.style.backgroundColor = '#ffffff';	
+	  	}else{
+	  		batteryLevel.style.backgroundColor = 'red';
+	  	}
+	  }else{
+	  	//charge
+	  	batteryLevel.style.backgroundColor = '#529e2b'; 
+	  }
+
+	}catch(error){
+		log('error batteryLevelValueChanged: ' + error);
+	}
+
+}
+
+function batteryWarningValueChanged(event){
+	try{
+		const characteristic = event.target;
+	  const value = event.target.value;
+	  //alert('batteryWarning: ' + DataToStr(value));
+	  log('batteryWarning: ' + DataToStr(value));
+	}catch(error){
+		log('error batteryLevelValueChanged: ' + error);
+	}
+}
+
+function handleCharacteristicValueChanged(event) {
+	/* hv to find out
+	try{
+		// Here you can access the characteristic UUID stored in the outer scope
+		const characteristic = event.target
+		// To get the actual value, you can access it from the event object
+		const characteristicUUID = characteristic.uuid; 
+		const value = event.target.value;
+		log('handle value change | ' + characteristicUUID + ' | ' + dataToHexString(value) + ' | ' + DataToStr(value));
+	}catch(error){
+		log('error handleCharacteristicValueChanged: ' + error);
+	}
+	*/
+}
+
+//Data Convertion
+function DataToInt(data) {
+    let offset = 0;
+    let i = dataView.getInt32(offset, true);
+    //return out;
+    return i;
+}
+
+
+function DataToStr(data) {
+    var out = "";
+    for (var i = 0; i < data.byteLength; i++) {
+      out += (String.fromCharCode(data.getUint8(i)));
+    }
+    //return out;
+     return out.replace(/\0.*$/g,'');
+}
+
+function StrToData(str){
+  var buffer = new ArrayBuffer(str.length);
+  var x = new DataView(buffer, 0);
+  for (var i = 0; i < str.length; i++) {
+    x.setUint8(i,str.charCodeAt(i));
+  }
+  return x;
+}
+
+function hexStringToData(hex) {
+    if (hex.length % 2 !== 0) {
+        log("Invalid hex string: length must be even.");
+        return null; // Return null if the length is not even
+    }
+
+    // Create an ArrayBuffer with half the length of the hex string
+    var buffer = new ArrayBuffer(hex.length / 2);
+    var view = new DataView(buffer);
+
+    // Iterate through the hex string and set each byte in the DataView
+    for (var i = 0; i < hex.length; i += 2) {
+        var byte = parseInt(hex.substr(i, 2), 16);
+        view.setUint8(i / 2, byte);
+    }
+    return view;
+}
+
+function dataToHexString(data) {
+    let hexString = '';
+    for (let i = 0; i < data.byteLength; i++) {
+        // Get the byte value from the DataView
+        const byte = data.getUint8(i);
+
+        // Convert the byte to its hexadecimal representation
+        const byteHex = byte.toString(16).padStart(2, '0');
+
+        // Append the hexadecimal byte to the string
+        hexString += byteHex;
+    }
+    return hexString;
+}
+
+
+async function switchMode(){
+	try{
+			//step 9-15 start noti
+			log('switchMode');
+			log('Write RideModeCharacteristic ' + rideModes[rideMode].value);
+			await RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
+			log('RideModeCharacteristic successed');
+			log('RequestToControllerharacteristic 2000');
+			await RequestToControllerharacteristic.writeValue(hexStringToData('2000'));
+			await getRideModeState();
+	}catch(error){
+			log('Argh! RideModeCharacteristic fail: ' + error);
+	}
+}
+
+
+async function readDeviceInformation(){
+	try {
+		deviceInformation.wheelName = wheelName;
+
+		const heardwareVersion = await HardmwareVersionCharacteristic.readValue();
+		const heardwareVersionString = DataToStr(heardwareVersion);
+		log ('Step 2) read c0X0025: ' + heardwareVersionString);	
+		deviceInformation.heardwareVersion = heardwareVersionString.split('+')[0];
+
+		const firmwareVersion = await FirmwareVersionCharacteristic.readValue();
+		const firmwareVersionString = DataToStr(firmwareVersion);
+		log ('Step 2) read c0X0025: ' + firmwareVersionString);	
+		deviceInformation.firmwareVersion = firmwareVersionString.split('+')[0];
+
+		const wheelInfo = await C0x0035Characteristic.readValue();
+		const wheelInfoString =  dataToHexString(wheelInfo);
+		log ('Step 2) read c0X0025: ' + wheelInfoString);	
+		deviceInformation.tireSetting = wheelInfoString.substring(0, 8); // "660d0000"
+		deviceInformation.maxAssistSpeed = wheelInfoString.substring(10, 14); // "1c47"
+		deviceInformation.powerSaveTimeout = wheelInfoString.substring(18, 20); // "35"
+
+		console.log('deviceInformation',deviceInformation);
+		//0004 660d 0000:660d0000 64 1c47 ee02 35 fb4f 3901 000000000000
+	}catch(error){
+		log('Error readDeviceInformation fail: ' + error);	
+	}
+	SettingPage();
+}
+
+async function readIntitialInformation() {
+	try {
+		//step 1 start noti 0x0026
+		await C0x0025Characteristic.startNotifications();
+		log ('Step 1) strat noti : c0X0026');	
+
+		//step 2 read 0X0025
+		const c0X0025 = await C0x0025Characteristic.readValue();
+		log ('Step 2) read c0X0025: ' + dataToHexString(c0X0025));	
+
+		//step 3 read serial nubmer
+		boardSerialNumber = await BoardSerialNumberCharacteristic.readValue();
+		log ('step 3) boardSerialNumber: ' + dataToHexString(boardSerialNumber));	
+
+		//step 4 start noti 0x0054
+		await PresentAccessCharacteristic.startNotifications();
+		log ('Step 4) strat noti : c0X0054');	
+
+		//step 5 read wheel name
+		const wheelNameData = await WheelNameCharacteristic.readValue();
+		wheelName = DataToStr(wheelNameData);
+		log ('Step 5) read wheel name: ' +  wheelName);	
+
+		//step 6 send request cc00
+		await RequestToControllerharacteristic.writeValue(hexStringToData('ca00'));
+		log('step 6) Request ca00 ToControllerharacteristic successed');
+
+		//step 7 check presentAccess
+		const presentAccessData = await PresentAccessCharacteristic.readValue();
+		presentAccess = 	dataToHexString(presentAccessData);
+
+		log ('Step 7) read presentAccess: ' +  presentAccess);	
+		if (presentAccess == 'ff') {
+			//step 8 authen
+			let serial = DataToStr(boardSerialNumber);
+			let passcode = findValue(serial);
+			if(passcode){
+				log ('Step 8) Sending passcode for authentication');
+				//start time out
+				timeoutId = setTimeout(function() {
+							const timeout_element = document.createElement("div");
+							timeout_element.textContent = "Timeout Please try again!!!";
+							canvas_main.appendChild(timeout_element);
+	            //log('Timeout Please try again');    
+	            }, 20000); // 20 seconds
+				await PasscodeCharacteristic.writeValue(hexStringToData(passcode));
+
+			}else{
+				log ('Step 8) authen fail passcode not found');	
+			}
+		}
+	}catch (error) {
+  	console.error('Error readIntitialInformation:', error);
+  	log('Error readIntitialInformation:' +  error);
+  }
+}
+
+async function prepareRideModeInformation(){
+	try{
+			//step 9-15 start noti
+			await C0x0029Characteristic.startNotifications();
+			log ('Step 9) C0x0029Characteristic : start noti');	
+			await C0x002dCharacteristic.startNotifications();
+			log ('Step 10) C0x002dCharacteristic : start noti');	
+			await C0x0031Characteristic.startNotifications();
+			log ('Step 11) C0x0031Characteristic : start noti');	
+			await C0x0035Characteristic.startNotifications();
+			log ('Step 12) C0x0035Characteristic : start noti');	
+			await C0x003dCharacteristic.startNotifications();
+			log ('Step 13) C0x003dCharacteristic : start noti');	
+			await C0x0041Characteristic.startNotifications();
+			log ('Step 14) C0x0041Characteristic : start noti');	
+			await C0x007bCharacteristic.startNotifications();
+			log ('Step 15) C0x007bCharacteristic : start noti');	
+
+
+
+			//step 16 send request cf 	
+			RequestToControllerharacteristic.writeValue(hexStringToData('cf'))
+			  .then(data=>{
+			    log('Step 16)  RequestToControllerharacteristic with cf successed');
+			    //wait for handle value change 
+			  })
+			  .catch(error => {
+			    log('Argh! Step 16) RequestToControllerharacteristic with cf fail: ' + error);
+			  });		
+
+
+	}catch (error) {
+  	console.error('prepareRideModeInformation:', error);
+  	log('prepareRideModeInformation:' + error);
+  }
+
+}
+
+
+async function getRideModeState(){
+	try {
+		const data = await RideModeCharacteristic.readValue();
+		const value = dataToHexString(data);
+		let prefix = value.substring(0, 3);
+		switch (prefix) {
+		  case '000': 
+		  	rideMode = 0;
+			log('RideMode: off');
+		    break;
+		  case '202':
+		  	rideMode = 1; 
+			log('RideMode: eco');
+		    break;
+		  case '404':
+		  	rideMode = 2;
+			log('RideMode: standard');
+		    break;
+		  case '557':
+		  	rideMode = 3;
+			log('RideMode: turbo');
+		    break;
+		  default:
+		    break;
+		}
+		log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
+		try{
+			if(rideModeLabel){
+				if (rideMode == 2) {
+					rideModeLabel.style.fontSize = '24px';
+				}else{
+					rideModeLabel.style.fontSize = '28px';
+				}
+				rideModeLabel.textContent = rideModes[rideMode].mode;
+			} 
+
+
+		}catch(error){
+			log('Argh! rideModeLabel not found: ' + error);
+		}
+
+	}catch(error){
+		log('Argh! RideModeCharacteristic Read fail: ' + error);
+	}
+	
+
+}
+
+function PresentAccessLevelValueChanged(event){
+	try{
+		const characteristic = event.target
+		const value = event.target.value;
+		log(characteristic.uuid + ' | ' + dataToHexString(value) );
+		presentAccess = dataToHexString(value);
+		log('PresentAccessLevelValueChanged: ' + presentAccess);
+		if (presentAccess != 'ff') {
+		log ('Access gant');
+		if (currentRide < 0) {
+			currentRide = 1;
+			clearTimeout(timeoutId);
+			prepareRideModeInformation();
+		}
+		}else{
+			if (authenAttempted < 5) {
+				authenAttempted++;
+			}else{
+				log ('Authentication fail');
+				if (logMode == true) return;
+				homePage();
+				canvas_main.appendChild(document.createElement("br"));
+				let first_element = document.createElement("div");
+				first_element.textContent = 'Authen Fail';
+				canvas_main.appendChild(first_element);
+				authenAttempted = 0;
+			}
+			
+		}
+	}catch(error){
+		log ('Error PresentAccessLevelValueChanged:' + error);
+	}
+}
+
+async function finishRide(){
+	finishPage();
+	try {
+		await CommandToControllerharacteristic.writeValue(hexStringToData('1e0102'));
+	}catch (error) {}
+  log('Step final)  turn off device');
+  homePage();
+	if (ble_status) ble_status.textContent = "Disconnect from Device";
+	bluetoothDevice.gatt.disconnect();
+}
+
+function findValue(searchKey) {
+		log ('findValue | ' + searchKey);
+    const lines = passcodedata.split('\n');
+    for (const line of lines) {
+        const parts = line.split(',');
+        if (parts.length === 2 && parts[0] === searchKey) {
+        		log (searchKey + ' | ' + parts[1]);
+            return parts[1];
+        }
+    }
+    return null; 
+}
+
+function log(msg){
+	if (logMode == true){
+		const indicator = document.getElementById('loadingIndicator');
+		if(indicator)canvas_main.removeChild(indicator);
+		let element = document.createElement("div");
+		element.className = "log";
+		element.textContent = msg;
+		logElement.appendChild(element);
+	}else{
+		console.log(msg);
+	}
+	const prefix = msg.substring(0, 180);
+	try{
+		if (ble_status) ble_status.textContent =  prefix  + '...';
+	}catch(error){}
+}	
+
+function rpmToKmph(rpm) {
+    // Wheel diameter in inches
+    const wheelDiameterInch = 27;
+    // Convert RPM to km/h
+    const speedKmph = (rpm * Math.PI * wheelDiameterInch * 0.0000254 * 60) / 1000;
+    return speedKmph.toFixed(0); // Round to 2 decimal places
+}
+
+
+
+async function saveSetting(){
+	
+	var wheelNameValue = document.getElementById("Wheel Name").value;
+	var powerSaveTimeoutValue = document.getElementById("Power Save timeout").value;
+	var trieSettingValue = document.getElementById("Tire Setting").value;
+	//canvas.style.display = '';
+
+	log('wheelNameValue:' + wheelNameValue);
+	log('powerSaveTimeoutValue as hex:' + progressScoreToHex(powerSaveTimeoutValue));
+	log('assistScoreToHex as hex:' + assistScoreToHex(maxAssistSpeed));
+	log('trieSettingHex as hex:' + trieSettingValue);
+	
+
+	
+	finishPage();
+	if(deviceInformation.wheelName != wheelNameValue){
+		//modify and save
+		log('wheelName Change from ' + deviceInformation.wheelName + ' to ' + wheelNameValue);
+		let value = StrToData(wheelNameValue);
+		try{
+			log('wheelName write ' +  value + ' | ' + dataToHexString(value));
+			await WheelNameCharacteristic.writeValue(value);
+			log('wheelName write complete');
+			const wheelNameData = await WheelNameCharacteristic.readValue();
+			wheelName = DataToStr(wheelNameData);
+			log ('read wheel name: ' +  wheelName);	
+		}catch(error){
+			log('error wheelName write '  + value + ':' + error);
+		}
+	}
+
+	if (deviceInformation.powerSaveTimeout != progressScoreToHex(powerSaveTimeoutValue)){
+		log('powerSaveTimeout change from ' + deviceInformation.powerSaveTimeout + ' to ' + progressScoreToHex(powerSaveTimeoutValue));
+		let value = '1f01' + progressScoreToHex(powerSaveTimeoutValue);
+		try{
+			log('powerSaveTimeout write ' + value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));
+		} catch(error){
+			log('error powerSaveTimeout write '  + value + ':' + error);
+		}
+	}
+
+	if (deviceInformation.maxAssistSpeed != assistScoreToHex(maxAssistSpeed)){
+		log('maxAssistSpeed change from ' + deviceInformation.maxAssistSpeed + ' to ' + assistScoreToHex(maxAssistSpeed));
+		let value = '2102' + assistScoreToHex(maxAssistSpeed);
+		try{
+			log('maxAssistSpeed write ' +  value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
+		}catch(error){
+			log('error maxAssistSpeed write '  + value + ':' + error);
+		}
+	}
+
+	if (deviceInformation.tireSetting != trieSettingValue){
+		log('tireSetting change from ' + deviceInformation.tireSetting + ' to ' + trieSettingValue);
+		let value = '0004' + trieSettingValue;
+		try{
+			log('tireSetting write '  + value);
+			await CommandToControllerharacteristic.writeValue(hexStringToData(value));				
+		}catch (error) {
+			log('error tireSetting write '  + value + ':' + error);
+		}
+	}
+	LandingPage();
+	//set display back
+	//canvas.style.display = "flex";
+  	canvas.scrollIntoView();
+
+  	
+}
+
+
+function progressScoreToHex(score) {
+    // Define the minimum and maximum values
+    const minScore = 5;
+    const maxScore = 30;
+    const minDecimal = 20; // Decimal value corresponding to the score of 5
+    const maxDecimal = 120; // Decimal value corresponding to the score of 30
+
+    // Ensure the score is within the given range
+    if (score < minScore) score = minScore;
+    if (score > maxScore) score = maxScore;
+
+    // Calculate the corresponding decimal value using linear interpolation
+    const decimalValue = minDecimal + ((score - minScore) * (maxDecimal - minDecimal) / (maxScore - minScore));
+
+    // Convert the decimal value to a hexadecimal string
+    const hexValue = Math.round(decimalValue).toString(16).toLowerCase();
+
+    // Return only the last hex digit
+    return hexValue;
+}
+
+function hexToProgressScore(hexValue) {
+    // Define the minimum and maximum values
+    const minScore = 5;
+    const maxScore = 30;
+    const minDecimal = 20; // Decimal value corresponding to the score of 5
+    const maxDecimal = 120; // Decimal value corresponding to the score of 30
+
+    // Convert the hexadecimal value to a decimal value
+    const decimalValue = parseInt(hexValue, 16);
+
+    // Calculate the corresponding score using the inverse of the linear interpolation
+    const score = minScore + ((decimalValue - minDecimal) * (maxScore - minScore) / (maxDecimal - minDecimal));
+
+    // Ensure the score is within the given range
+    if (score < minScore || score > maxScore) {
+        throw new Error("Hex value does not correspond to a valid score");
+    }
+
+    return score;
+}
+
+function moveProgressBar() {
+	//remove 
+  var rangeValue = document.getElementById("Power Save timeout").value;
+  var elem = document.getElementById("lable_Power Save timeout"); 
+  elem.setAttribute("data-placeholder","Power Save timeout: " + rangeValue + " mins");
+	log('moveProgressBar:'+rangeValue);
+
+}
+
+function PowerSaveTimeoutUpdate(){
+	const slider = document.getElementById('Power Save timeout');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+  var lable = document.getElementById("lable_Power Save timeout"); 
+  lable.textContent = "Power Save timeout: " + value + " mins";
+  log('PowerSaveTimeoutUpdate:'+value);
+}
+
+function assistScoreToHex(score) {
+    if (score < 20) score = 20;
+    if (score > 32) score = 33;
+    if (assisScoreHexMap.hasOwnProperty(score)) {
+        return assisScoreHexMap[score];
+    }
+}
+
+function hexToAssistScore(hexValue) {
+    // Create a reverse lookup map
+    const hexScoreMap = {};
+    for (const score in assisScoreHexMap) {
+        hexScoreMap[assisScoreHexMap[score]] = parseInt(score);
+    }
+    // Check if the provided hex value exists in the reverse lookup map
+    if (hexScoreMap.hasOwnProperty(hexValue)) {
+        return hexScoreMap[hexValue];
+    } else {
+        throw new Error("Hex value does not correspond to a known score");
+    }
+}
+
+function maxAssistSpeedChange(){
+	var elem = document.getElementById("lable_Max Assist Speed"); 
+	if (maxAssistSpeed > 32) {
+		elem.textContent = "Assits above 32km/h";
+	}else{
+		elem.textContent = maxAssistSpeed +" km/h";
+	}
+  log('maxAssistSpeed:'+maxAssistSpeed);
+}
+
+function decreaseValue() {
+	if (maxAssistSpeed > 19)maxAssistSpeed = maxAssistSpeed - 1;
+	maxAssistSpeedChange();
+}
+
+function increaseValue() {
+	if (maxAssistSpeed < 33)maxAssistSpeed = maxAssistSpeed + 1;
+	maxAssistSpeedChange();
+}
+
+function tireChange(event){
+	console.log("tireChange",event.value);
+}
+
+function redirectToPayPal() {
+  window.location.href = 'https://www.paypal.me/gabhongSena';
+}
+
+function updateClock() {
+  const clockElement = document.getElementById('clock');
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  clockElement.textContent = `${hours}:${minutes}`;
+}
+
+// Initial call to display the clock immediately
+updateClock();
+
+// Update the clock every second
+setInterval(updateClock, 1000);	
+
+//---
+
+function saveBrakeAssistData(value) {
+  localStorage.setItem('brakeAssistValue', value);
+}
+
+function loadBrakeAssistData() {
+  var data = localStorage.getItem('brakeAssistValue');
+  var brakeAssistValue= "34d87f3a00d500000100";
+  if (data) {
+      brakeAssistValue = data;
+  } 
+  rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
+	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
+	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
+
+	console.log('loadBrakeAssistData');
+	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
+
+}
+
+async function brakeAssistSave(){
+	const toggle = document.getElementById('Braking Assistance');
+	const slider = document.getElementById('Sensitivity');
+	var breakAssistState = "00d500000100";
+	if (!toggle.checked) {
+		breakAssistState = "000000000100";
+	}
+
+	const value = slider.value;
+	var reverseValue = SensitivityReverseValue(value);
+	var brakeAssistValue = decimalToHex(reverseValue) + breakAssistState
+	saveBrakeAssistData(brakeAssistValue);
+
+	rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
+	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
+	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
+
+	console.log('brakeAssistSave');
+	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
+
+	try{
+			//sent new brake assist command
+		//step 1 read current mode
+		await getRideModeState();
+		
+	  var currentRideModeState = rideMode;
+	  console.log('brakeAssistSave step1 getRideModeState:' + rideMode);
+	  if (currentRideModeState == 0) rideMode = 1;
+	  await  switchMode();
+	  if (rideMode != currentRideModeState) {
+	  	rideMode = currentRideModeState;
+	  	console.log('brakeAssistSave step2 getRideModeState back to :' + rideMode);
+	  	await  switchMode();
+	  }
+	  
+
+	}catch(error){
+		console.log('brakeAssistSave error' + error);
+	}
+
+	
+}
+
+
+function brakeAssistToggleUpdate(){
+	const toggle = document.getElementById('Braking Assistance');
+	const slider = document.getElementById('Sensitivity');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+	if (toggle.checked) {
+		slider.disabled = false
+		slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+	}else{
+		slider.disabled = true;
+		slider.style.background = `linear-gradient(to right, #ddd ${percentage}%, #ddd ${percentage}%)`;	
+	}
+}
+
+function SensitivityRangeUpdate(){
+	const slider = document.getElementById('Sensitivity');
+	const value = slider.value;
+  const min = slider.min;
+  const max = slider.max;
+  const percentage = ((value - min) / (max - min)) * 100;
+  const reverseValue = SensitivityReverseValue(value);
+
+  
+  var eco= rideModeCRC('2020000a00000000' + decimalToHex(reverseValue) + "00d500000100");
+	var std = rideModeCRC('4040001e00000000' + decimalToHex(reverseValue) + "00d500000100");
+	var tub = rideModeCRC('557f7d0000000000' + decimalToHex(reverseValue) + "00d500000100");
+
+  console.log('SensitivityRangeValue',Math.round(percentage/10),value,decimalToHex(reverseValue),eco,std,tub);  
+  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
+}
+
+/*
+function testSensitivityRangeUpdate(){
+	const slider = document.getElementById('Sensitivity');
+	const tx = document.getElementById('tx');
+	alert (tx.value);
+	slider.value = SensitivityReverseValue(hexToDecimal(tx.value));
+	SensitivityRangeUpdate();
+}*/
+
+function SensitivityChange(){
+
+	var rangeValue = document.getElementById("Sensitivity").value;
+  var elem = document.getElementById("lable_Sensitivity"); 
+  elem.setAttribute("data-placeholder","Sensitivity: " + Sensitivitypercentage(rangeValue) + "%");
+  rangeValue = SensitivityReverseValue(rangeValue);
+  var v = rideModeCRC('2020000a00000000' + decimalToHex(rangeValue) + '00d500000100');
+	log('SensitivityBar:'+v);
+
+}
+
+function Sensitivitypercentage(value) {
+	return  Math.round(value * (100/2289925988));
+}
+
+function SensitivityReverseValue(value) {
+	const min = 285179688; 
+  const max = 2289925988;  
+  return max - (value - min);
+}
+
+function decimalToHex(decimal) {
+	decimal = parseInt(decimal);
+    return decimal.toString(16).toUpperCase();
+}
+
+function hexToDecimal(hex) {
+    return parseInt(hex, 16);
+}
+
+function hexToBytes(hex) {
+    let bytes = [];
+    for (let c = 0; c < hex.length; c += 2)
+        bytes.push(parseInt(hex.substr(c, 2), 16));
+    return new Uint8Array(bytes);
+}
+
+function buf2hex(buffer) { // buffer is an ArrayBuffer
+    return [...new Uint8Array(buffer)]
+        .map(x => x.toString(16).padStart(2, '0'))
+        .join('');
+}
+
+function swapEveryOtherByte(byteArray) {
+    // Loop through the byte array two bytes at a time
+    for (let i = 0; i < byteArray.length - 1; i += 2) {
+        // Swap bytes
+        const temp = byteArray[i];
+        byteArray[i] = byteArray[i + 1];
+        byteArray[i + 1] = temp;
+    }
+    return byteArray;
+}
+function crc16(data) {
+  let crc = 0;
+  let out = 0;
+  let bitFlag;
+  let thisByte;
+  let bitsRead = 0;
+  let index = 0;
+
+  // Create a new copy of the data and swap every other byte
+  const newData = swapEveryOtherByte([...data]);
+  let byteLen = newData.length;
+
+  while (byteLen > 0) {
+      bitFlag = out >> 15;
+      out = (out << 1) & 0xFFFF;
+
+      thisByte = newData[index] & 0xFF;
+
+      // Get the next bit from thisByte
+      out = out | ((thisByte >> bitsRead) & 1);
+
+      bitsRead += 1;
+      if (bitsRead > 7) {
+          bitsRead = 0;
+          index += 1;
+          byteLen -= 1;
+      }
+
+      // Apply the CRC polynomial if the shifted-out bit is 1
+      if (bitFlag !== 0) {
+          out = out ^ 0x8005;
+      }
+  }
+
+  // Push out the last 16 bits
+  for (let i = 0; i < 16; i++) {
+      bitFlag = out >> 15;
+      out = (out << 1) & 0xFFFF;
+      if (bitFlag !== 0) {
+          out = out ^ 0x8005;
+      }
+  }
+
+  // Reverse the bits in the CRC
+  for (let i = 0; i < 16; i++) {
+      if (out & (1 << i)) {
+          crc = crc | (1 << (15 - i));
+      }
+  }
+  return new Uint8Array([(crc & 0xFF), (crc >> 8)]);
+}
+
+function rideModeCRC(hex){
+    var d = hexToBytes(hex);
+    let b = new Uint8Array(d.buffer, d.byteOffset, d.byteLength);
+    var crc = crc16(b);
+    var data = new Uint8Array([...b, ...crc]);
+    return buf2hex(data.buffer);
+}
+</script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
