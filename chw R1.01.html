@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0026)https://tb47.me/chw/R1.03/ -->
+<!-- saved from url=(0026)https://tb47.me/chw/R1.01/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- Google tag (gtag.js) -->
-	<script async="" src="./chw R1.03_files/js"></script>
+	<script async="" src="./chw R1.01_files/js"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
@@ -12,7 +12,7 @@
 	</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	
-	<meta name="description" content="A web app for copenheken wheel ">
+	<meta name="description" content="A web app for copenheken wheel">
   <meta name="keywords" content="copenheken wheel">
   <meta name="author" content="GaBhongSena">
   <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
@@ -95,82 +95,35 @@
 	}
 
 	.canvas {
-		position: relative;
 		height: 100%;  
 	  width: 100%;
 	  overflow-y:auto;
-	  padding: 0px;
+	  padding: 10px 10px 10px 10px;
 	  flex-wrap: nowrap;
+	  justify-content: center;
 	  display: flex;            /* Use Flexbox on the body flex*/
 	  flex-direction: column; 
-	  align-items: center;
-    text-align: center;
 	}
 
-.foreground{
-    content: '';
-    position: absolute;
-    padding: 0px;
-    bottom: 0;
-    left:0;
-    width: 98%;
-    height: 0%; /* Default to 50%, this will be adjusted by JavaScript */
-    background-color: rgba(255, 255, 255, 0.2); /* Blue color #2E5D77*/
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    transition: height 1.0s, border-top-left-radius 1.0s, border-top-right-radius 1.0s ease;
-    transform: translateX(1%);
-}
-
-	.header {
-	    /*text-align: center;        /* Center text */
-	    padding: 3px;             /* Padding for spacing */
+	.header, .footer {
+	    text-align: center;        /* Center text */
+	    padding: 5px;             /* Padding for spacing */
 	    flex: 0 1 auto;  
 	    font-family: Poppins-Bold;
 	    font-size: x-large;
-	    z-index: 1;
-	    /*height: 115px;*/
-	    width: inherit;
-	  	justify-content: center;
-	}
-
-	.footer {
-	    /*text-align: center;        /* Center text */
-	    padding: 3px;             /* Padding for spacing */
-	    flex: 0 1 auto;  
-	    font-family: Poppins-Bold;
-	    font-size: x-large;
-	    width: inherit;
-	    z-index: 1;
-	  	justify-content: center;
 	}
 
 	.main {
-	    flex: 0 1 auto;            /* Allow the main content to grow and take up remaining space */
+	    flex: 1 1 auto;            /* Allow the main content to grow and take up remaining space */
 	    padding: 0px;             /* Padding for spacing */
 	    align-items: center;       /* Center content vertically */
 	    justify-content: center;   /* Center content horizontally */
 			/*display: flex;             /* Use Flexbox to center content inside main */
-			/*text-align: center;*/
-			width: inherit;
-			height: 100%;  
-			z-index: 1;			
-	  	justify-content: center;
-      display: flex;
-      flex-direction: column;
+			text-align: center;
 	}
 
 	.clock {
-		font-size:   40px;
-	}
-
-	.speed {
-		font-family: Poppins-Bold;
-		font-size: 45px; /*Sep 28 modify from size from 40 to 45px*/
-		color: #00fffd;
-		margin: 0px;
-		padding: 0px;
-		height: 50px; /*Sep 28 modify from size from 50 to 50px*/
+		font-size:   70px;
 	}
 
 	.round-button {
@@ -196,12 +149,11 @@
 	.grid-container {
 	    display: grid;            /* Use CSS Grid for layout */
 	    grid-template-columns: 25% 1fr 25%; /* Create 3 columns with specified ratios */
-	    /*width: 100%;            /* Set container height to 100% of the viewport height */
-	    /*height: 100%;*/
+	    width: 100%;            /* Set container height to 100% of the viewport height */
+	    height: 100%;
 	    align-items: center;      /* Center the content vertically */
 	    justify-content: center;  /* Center the content horizontally */
 	    font-family: Poppins-Bold;
-	    width: inherit;
 	}
 
 	.grid-item {
@@ -239,7 +191,6 @@
     margin: 0 2px;
     padding: 5px 10px;
     font-size: 16px;
-    color: black;
     cursor: pointer;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -306,26 +257,67 @@
 		position: relative;
 	}
 
+	/*------------------------------------------------------------------
+	[ Input ]*/
+	/*********** Baseline, reset styles ***********/
+	input[type="range"] {
+	  -webkit-appearance: none;
+	  appearance: none;
+	  background: transparent;
+	  cursor: pointer;
+	  /*width: 25rem;*/
+	}
+
+	/* Removes default focus */
+	input[type="range"]:focus {
+	  outline: none;
+	}
+
+	/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+	/* slider track */
+	input[type="range"]::-webkit-slider-runnable-track {
+	  background-color: #66b0ff;
+	  border-radius: 0.5rem;
+	  height: 0.5rem;
+	}
+
+	/* slider thumb */
+	input[type="range"]::-webkit-slider-thumb {
+	  -webkit-appearance: none; /* Override default look */
+	  appearance: none;
+	  margin-top: -8px; /* Centers thumb on the track */
+	  background-color: #808080;
+	  border-radius: 0.5rem;
+	  height: 1.5rem;
+	  width: 3rem;
+	}
+
+	input[type="range"]:focus::-webkit-slider-thumb {
+	  outline: 3px solid #808080;
+	  outline-offset: 0.125rem;
+	}
 
 	/*********** Firefox styles ***********/
 	/* slider track */
 	input[type="range"]::-moz-range-track {
-	  background-color: orangered;/*#66b0ff;*/
+	  background-color: #66b0ff;
 	  border-radius: 0.5rem;
 	  height: 0.5rem;
 	}
 
 	/* slider thumb */
 	input[type="range"]::-moz-range-thumb {
-	  background-color: #ffffff;
-	  /*border: none; /*Removes extra border that FF applies*/
-	  border: 1px solid #c9c9c9;
-	  border-radius: 2rem;
-	  border-color: gray;
-	  height: 2rem;
-	  width: 2rem;
+	  background-color: #808080;
+	  border: none; /*Removes extra border that FF applies*/
+	  border-radius: 0.5rem;
+	  height: 1.5rem;
+	  width: 3rem;
 	}
 
+	input[type="range"]:focus::-moz-range-thumb{
+	  outline: 3px solid #808080;
+	  outline-offset: 0.125rem;
+	}
 
 	input {
 		outline: none;
@@ -353,9 +345,10 @@
 
 	.input100 {
 	  font-family: Poppins-Regular;
-	  font-size: 16px;
+	  font-size: 15px;
+	  color: #555555;
 	  line-height: 1.2;
-	  color: black;
+
 	  display: block;
 	  width: 100%;
 	  height: 45px;
@@ -373,183 +366,79 @@
 	  left: 0;
 	  pointer-events: none;
 	}
-	
-/*---------------------------------------------*/
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+	.focus-input100::before {
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  bottom: -2px;
+	  left: 0;
+	  width: 0;
+	  height: 2px;
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+	  -webkit-transition: all 0.4s;
+	  -o-transition: all 0.4s;
+	  -moz-transition: all 0.4s;
+	  transition: all 0.4s;
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+	  background: #6a7dfe;
+	  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+	  background: -o-linear-gradient(left, #21d4fd, #b721ff);
+	  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
+	  background: linear-gradient(left, #21d4fd, #b721ff);
+	}
 
-input[type="checkbox"]:checked + .slider {
-  background-color: #6d6b6b;/*#2196F3;*/
-}
+	.focus-input100::after {
+	  font-family: Poppins-Regular;
+	  font-size: 15px;
+	  color: #999999;
+	  line-height: 1.2;
 
-input[type="checkbox"]:focus + .slider {
-  box-shadow: 0 0 1px #6d6b6b;/*#2196F3;*/
-}
+	  content: attr(data-placeholder);
+	  display: block;
+	  width: 100%;
+	  position: absolute;
+	  top: -15px;
+	  left: 0px;
+	  padding-left: 5px;
 
-input[type="checkbox"]:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+	  -webkit-transition: all 0.4s;
+	  -o-transition: all 0.4s;
+	  -moz-transition: all 0.4s;
+	  transition: all 0.4s;
+	}
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+	.input100:focus + .focus-input100::after {
+	  top: -15px;
+	}
 
-.slider.round:before {
-  border-radius: 50%;
-}
+	.input100:focus + .focus-input100::before {
+	  width: 100%;
+	}
 
-/*---------------------------------------*/
-.sliderRange-container {
-    width: 100%;
-    margin: 5px auto;
-    border-bottom: 2px solid #adadad;
-}
+	.has-val.input100 + .focus-input100::after {
+	  top: -15px;
+	}
 
-.sliderRange-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    padding:5px;
-}
+	.has-val.input100 + .focus-input100::before {
+	  width: 100%;
+	}
 
-.sliderRange {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 10px;
-    background: linear-gradient(to right, #6d6b6b 50%, #ddd 50%);
-    outline: none;
-    /*opacity: 0.7;*/
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    border-radius: 10px;
-}
-
-.sliderRange::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    /*background: #888;*/
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-	  border: 1px solid rgb(173,173,173);
-}
-
-.sliderRange::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
-    /*background: #888;*/
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-	  border: 1px solid rgb(173,173,173);
-}
-
-.sliderRange::-ms-thumb {
-    width: 30px;
-    height: 30px;
-    /*background: #888;*/
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-	  border: 1px solid rgb(173,173,173);
-}
-
-
-.trip-summary {
-            background-color: #000;
-            padding: 5px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: inherit;
-            margin-top: 20px;
-}
-.trip-summary-header {
-		font-size: 16px;
-    color: #fff;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-.trip-summary-info {
-    display: flex;
-    justify-content: space-between;
-}
-.trip-summary-info div {
-    text-align: center;
-    flex: 1;
-}
-.trip-summary-info .trip-column:not(:last-child) {
-    border-right: 1px solid #eee;
-}
-.trip-summary-info  .value {
-    font-size: 18px;
-    color: #fff;
-}
-.trip-summary-info  .unit {
-		font-size: 12px;
-    color: #999;
-}
-
-
+	/*---------------------------------------------*/
 
   </style>
-	<title>chw R1.03</title>
-	<script type="text/javascript" src="./chw R1.03_files/data.js.download"></script>
-	<script type="text/javascript" src="./chw R1.03_files/simulator.js.download"></script>
+	<title>chw R1.01</title>
+	<script type="text/javascript" src="./chw R1.01_files/data.js.download"></script>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1226.0" data-gr-ext-installed="">
+<body data-new-gr-c-s-check-loaded="14.1182.0" data-gr-ext-installed="">
 		<div class="canvas colorWhite" id="canvas">
-			<div class="foreground" id="foreground"></div>
 			<div class="header" id="header">
 				<span id="wheelName">Copenhagen Wheel</span>
-				<div class="clock" id="clock">11:00</div>
+				<div class="clock" id="clock">09:05</div>
 			</div>
 			<div class="main" id="main">
-				<div width="100%" heigh="150px" id="canvas_redWheel">
-					<img src="./chw R1.03_files/redwheel.svg" class="redWheel">
+				<div width="200px" height="150px" id="canvas_redWheel">
+					<img src="./chw R1.01_files/redwheel.svg" class="redWheel">
 				</div>
 				<div>
 					Please go close to the wheel  and click connect to device
@@ -627,30 +516,8 @@ let logMode = false;
 let logElement;
 let authenAttempted = 0;
 let maxAssistSpeed = 32;
-let currentPage ="homePage";
-let timeoutId;
-
-let logTrace = [];
-let paddle = "stop";
-//let gpslng;
-//let gpslat;
-//let gpsspeed;
-//let gpstime = -1;
-let distances = [];
-let speeds = [];
-let totalDistance = 0;
-let totalDistanceLabel;
-let tripData = [];
-
-var unitValue = localStorage.getItem('unitValue');
-let unit = 1;
-if (unitValue) {
-    unit = unitValue;
-} 
 
 //ride modes
-//let breakAssistState = "00d5000001000";
-
 const rideModes = [{mode:"OFF", value:"0000000000000000000000000000000000000000"},{mode:"ECO", value:"2020000a0000000034d87f3a00d500000100a88c"},{mode:"STANDARD", value:"4040001e0000000034d87f3a00d5000001009183"},{mode:"TURBO", value:"557f7d000000000034d8ff3a00d500000100064e"}];
 let rideMode = 0; //0 off, 1 eco, 2 standard, 2 turbo
 const tries =[
@@ -677,12 +544,10 @@ const assisScoreHexMap = {
         32: "1c47",
         33: "e358"
     };
-//Nov 25 add batteryCycleCount
 const deviceInformation = {
 	wheelName:"",
 	heardwareVersion:"",
 	firmwareVersion:"",
-	batteryCycleCount:"",
 	powerSaveTimeout:"",
 	maxAssistSpeed:"",
 	tireSetting:""
@@ -691,9 +556,6 @@ const deviceInformation = {
 //UI
 //const speed_div = document.getElementById("speed_lable");
 const canvas = document.getElementById("canvas");
-const foreground = document.getElementById("foreground");
-//foreground.style.height = percentage + '%';
-
 const canvas_header = document.getElementById("header");
 const canvas_main = document.getElementById("main");
 const canvas_footer = document.getElementById("footer");
@@ -721,12 +583,6 @@ function onButtonClick(bnt){
 			}else{
 				informationPage();
 			}
-
-			//clear trip summary and reset trip data
-			const tripSummary = document.getElementById('tripSummary');
-		  if(tripSummary)canvas_header.removeChild(tripSummary);
-		  tripData = [];
-
 			requestDevice();
 	    break;
 	  case '<':
@@ -752,7 +608,6 @@ function onButtonClick(bnt){
 	    break;
 	  case 'Cancel':
 	  	logMode = false;
-	  	clearTimeout(timeoutId);
 			homePage();
 			try{
 				bluetoothDevice.gatt.disconnect();
@@ -761,17 +616,11 @@ function onButtonClick(bnt){
 			}
 	    break;
 	  case 'About Wheel':
-			aboutWheelPage();
-	    break; 
-	  case ' Done ':
-			LandingPage();
-	    break; 
-	  case 'Wheel Setting':
 			readDeviceInformation();
-	    break; 
+	    break;
 	  case 'Save':
 			saveSetting();	
-			//LandingPage();
+			LandingPage();
 	    break;
 	  case 'Exit':
 			canvas.classList.replace("colorBlack","colorWhite");
@@ -780,54 +629,18 @@ function onButtonClick(bnt){
 			LandingPage();
 	    break;
 	  case 'Ride':
-	  	loadBrakeAssistData();
 			CurrentRidePage();
-	    break;
-	  case 'Braking Assistance':
-	  	loadBrakeAssistData();
-			brakeAssistPage();
-	    break;
-	     Save
-	  case ' Save ':
-			brakeAssistSave();
-			LandingPage();
 	    break;
 	  case 'Donate with PayPal':
 			redirectToPayPal();
 	    break;
-	  case 'Still':
-			paddle = "Still";
-			document.getElementById("btn_Still").style.backgroundColor ="Green";
-			document.getElementById("btn_Forwards").style.backgroundColor = "gray";
-			document.getElementById("btn_Backwards").style.backgroundColor ="gray";
-	    break;
-	  case 'Forwards':
-			paddle = "Forwards";
-			document.getElementById("btn_Still").style.backgroundColor ="gray";
-			document.getElementById("btn_Forwards").style.backgroundColor = "green";
-			document.getElementById("btn_Backwards").style.backgroundColor ="gray";
-	    break;
-	  case 'Backwards':
-			paddle = "Backwards";
-			document.getElementById("btn_Still").style.backgroundColor ="gray";
-			document.getElementById("btn_Forwards").style.backgroundColor = "gray";
-			document.getElementById("btn_Backwards").style.backgroundColor ="green";
-	    break;  
-	  case 'Post':
-			postLog();
-	    break;  
-	  case 'Simu':
-			Simu();
-	    break;  
 	  default:
 	    break;
 	}
 }
 
-
 function cmd_button(lable,color="colorRed"){
 	let btn_element = document.createElement("button");
-	btn_element.id = "btn_"+lable;
 	btn_element.name ="action";
 	btn_element.className = "round-button";
 	btn_element.classList.add(color);
@@ -859,8 +672,6 @@ function input_text(lable,value){
 	return first_element;
 }
 
-
-
 function input_slidebar(lable,value){
 	let first_element = document.createElement("div");
 	first_element.className = "wrap-input100 validate-input";
@@ -888,52 +699,13 @@ function input_slidebar(lable,value){
 	return first_element;
 }
 
-function input_Range_PowerSaveTimeout(lable,value){
-	let first_element = document.createElement("div");
-	first_element.className = "sliderRange-container";
-
-	let second_element = document.createElement("div");
-	second_element.textContent = lable;
-	second_element.style.float = "left";
-	second_element.id ="lable_" + lable;
-
-	let third_element = document.createElement("input");
-	third_element.className = "sliderRange";
-	third_element.id = lable;
-	third_element.type = "range";
-	third_element.min = 5;
-	third_element.max = 30;
-	third_element.value = value;
-	third_element.addEventListener('input', PowerSaveTimeoutUpdate);
-
-	let fourth_element = document.createElement("div");
-	fourth_element.className = "sliderRange-labels";
-
-	let fifth_element = document.createElement("span");
-	fifth_element.textContent = "Min";
-	let sixth_element = document.createElement("span");
-	sixth_element.textContent ="Max";
-
-	fourth_element.appendChild(fifth_element);
-	fourth_element.appendChild(sixth_element);
-
-	first_element.appendChild(second_element);
-	first_element.appendChild(third_element);
-	first_element.appendChild(fourth_element);
-
-
-	return first_element;
-}
-
-
 function deviceInfoDetail(ul,title,value){
-
 	let li_title = document.createElement("li");
 	li_title.textContent = title;
 	li_title.style.textAlign = "left";
 	li_title.style.borderBottom = '2px solid #adadad';
 	li_title.style.padding =  "5px";
-	li_title.style.alignContent = "center";
+	li_title.style.color = "#999999";
 
 
 	let li_value = document.createElement("li");
@@ -941,7 +713,6 @@ function deviceInfoDetail(ul,title,value){
 	li_value.style.textAlign = "right";
 	li_value.style.borderBottom = '2px solid #adadad';
 	li_value.style.padding =  "5px";
-	li_title.style.alignContent = "center";
 
 	ul.appendChild(li_title);
 	ul.appendChild(li_value);
@@ -998,123 +769,6 @@ function inputSelectOption(lable){
 	return first_element;
 }
 
-function input_text_WheelName(lable,value){
-	let first_element = document.createElement("div");
-	first_element.className = "sliderRange-container";
-
-	let second_element = document.createElement("div");
-	second_element.textContent = lable;
-	second_element.style.float = "left";
-	second_element.id ="lable_" + lable;
-
-	let third_element = document.createElement("input");
-	third_element.className= "input100";
-	//third_element.style.width = "100%";
-	//third_element.style.fontSize = "17px";
-	third_element.name = lable;
-	third_element.id= lable;
-	third_element.setAttribute("type","text");
-	third_element.value = value;
-
-	first_element.appendChild(second_element);
-	first_element.appendChild(third_element);
-	return first_element;
-
-}
-
-
-function input_Button_IncreseDecreseSpeed(lable,value){
-	let first_element = document.createElement("div");
-	first_element.className = "sliderRange-container";
-	let second_element = document.createElement("div");
-	second_element.textContent = lable;
-	second_element.style.float = "left";
-
-	let third_element = document.createElement("div");
-	third_element.className = "container-increse-decrese";
-	third_element.style.width = "100%";
-	let left_element = document.createElement("div");
-	left_element.className = "column left";
-	left_element.id="lable_" + lable;
-
-
-	if (maxAssistSpeed > 32) {
-		if (unit ==1) {
-			left_element.textContent = "above 32 km/h";	
-		}else{
-			left_element.textContent = "above 20 mph";
-		}
-	}else{
-		if (unit ==1) {
-			left_element.textContent = maxAssistSpeed +" km/h";
-		}else{
-			left_element.textContent = (maxAssistSpeed * unit).toFixed(0) +" mph";
-		}
-	}
-
-	let right_element = document.createElement("div");
-	right_element.className = "column right";
-	third_element.appendChild(left_element);
-	third_element.appendChild(right_element);
-
-	let button_element = document.createElement("div");
-	button_element.className = "button-container";
-	let decrese_element = document.createElement("button");
-	decrese_element.className = "adjust-button";
-	decrese_element.textContent = "-";
-	decrese_element.setAttribute("onclick","decreaseValue()");
-	let increse_element = document.createElement("button");
-	increse_element.className = "adjust-button";
-	increse_element.textContent = "+";
-	increse_element.setAttribute("onclick","increaseValue()");
-	button_element.appendChild(decrese_element);
-	button_element.appendChild(increse_element);
-	right_element.appendChild(button_element);
-
-
-	first_element.appendChild(second_element);
-	first_element.appendChild(third_element);
-
-	return first_element;
-
-}
-
-function input_SelectOption_Tire(lable){
-	let first_element = document.createElement("div");
-	first_element.className = "sliderRange-container";
-	//first_element.alignContent="left"
-	let second_element = document.createElement("div");
-	second_element.style.float ="left";
-	second_element.textContent = lable;
-	
-
-	let third_element = document.createElement("select");
-	third_element.className= "input100";
-	//third_element.style.width = "100%";
-  //third_element.style.fontSize="17px";
-	third_element.name = lable;
-	third_element.id= lable;
-	third_element.style.border = "0px";
-	third_element.style.outline ="0px";
-	third_element.setAttribute("onchange","tireChange(this)");
-	
-	for (let i = 0; i < tries.length; i++) {
-  	//console.log(`Name: ${tries[i].name}, Value: ${tries[i].value}`);
-  	let opt_element = document.createElement("option");
-  	opt_element.value = tries[i].value;
-		opt_element.textContent = tries[i].name;
-		third_element.appendChild(opt_element);
-		third_element.value = deviceInformation.tireSetting;
-	}
-
-	first_element.appendChild(second_element);
-	first_element.appendChild(third_element);
-
-	return first_element;
-
-}
-
-
 function increseDecressButton(lable,value){
 
 	let first_element = document.createElement("div");
@@ -1164,145 +818,8 @@ function increseDecressButton(lable,value){
 
 	return first_element;
 }
-
-function increseDecressButton(lable,value){
-
-	let first_element = document.createElement("div");
-	first_element.className = "wrap-input100 validate-input";
-
-
-	let second_element = document.createElement("div");
-	second_element.className = "container-increse-decrese";
-	let left_element = document.createElement("div");
-	left_element.className = "column left";
-	left_element.id="lable_" + lable;
-
-
-	if (maxAssistSpeed > 32) {
-		left_element.textContent = "above 32km/h";
-	}else{
-		left_element.textContent = maxAssistSpeed +" km/h";
-	}
-
-	let right_element = document.createElement("div");
-	right_element.className = "column right";
-	second_element.appendChild(left_element);
-	second_element.appendChild(right_element);
-
-
-	let button_element = document.createElement("div");
-	button_element.className = "button-container";
-	let decrese_element = document.createElement("button");
-	decrese_element.className = "adjust-button";
-	decrese_element.textContent = "-";
-	decrese_element.setAttribute("onclick","decreaseValue()");
-	let increse_element = document.createElement("button");
-	increse_element.className = "adjust-button";
-	increse_element.textContent = "+";
-	increse_element.setAttribute("onclick","increaseValue()");
-	button_element.appendChild(decrese_element);
-	button_element.appendChild(increse_element);
-	right_element.appendChild(button_element);
-
-	let third_element = document.createElement("span");
-	third_element.className ="focus-input100";
-	third_element.setAttribute("data-placeholder","Max Assist Speed:");
-
-	first_element.appendChild(second_element);
-
-	first_element.appendChild(third_element);
-
-	return first_element;
-}
-
-
-
-
-function toggleButton(ul,label,value,toggleUpdate){
-	let li_title = document.createElement("li");
-	li_title.textContent = label;
-	li_title.id = "lable_"+label;
-	li_title.style.textAlign = "left";
-	li_title.style.borderBottom = '2px solid #adadad';
-	li_title.style.padding =  "5px";
-	li_title.style.alignContent = "center";
-
-
-	let li_value = document.createElement("li");
-	
-	li_value.style.textAlign = "right";
-	li_value.style.borderBottom = '2px solid #adadad';
-	li_value.style.padding =  "5px";
-
-	
-
-	let label_element = document.createElement("label");
-	label_element.className = "switch";
-	let input_element = document.createElement("input");
-	input_element.id = label;
-	input_element.type = "checkbox";
-	input_element.checked = value;
-
-	//temporaly adhoc
-	//input_element.addEventListener('input',brakeAssistToggleUpdate);	
-	input_element.addEventListener('input',toggleUpdate);
-	
-	let span_element = document.createElement("span");
-	span_element.className = "slider round";
-
-	label_element.appendChild(input_element);
-	label_element.appendChild(span_element);
-
-	li_value.appendChild(label_element);
-
-	ul.appendChild(li_title);
-	ul.appendChild(li_value);
-
-
-}
-
-
-function input_Range_Sensitivity(lable,value){
-	let first_element = document.createElement("div");
-	first_element.className = "sliderRange-container";
-
-	let second_element = document.createElement("div");
-	second_element.textContent = lable;
-	second_element.style.float = "left";
-
-	let third_element = document.createElement("input");
-	third_element.className = "sliderRange";
-	third_element.id = lable;
-	third_element.type = "range";
-	third_element.min = 285179688;
-	third_element.max = 2289925988;
-	third_element.value = SensitivityReverseValue(value);
-	//third_element.setAttribute("onchange","SensitivityRangeChange(this)");
-	third_element.addEventListener('input', SensitivityRangeUpdate);
-
-	let fourth_element = document.createElement("div");
-	fourth_element.className = "sliderRange-labels";
-
-	let fifth_element = document.createElement("span");
-	fifth_element.textContent = "Low";
-	let sixth_element = document.createElement("span");
-	sixth_element.textContent ="High";
-
-	fourth_element.appendChild(fifth_element);
-	fourth_element.appendChild(sixth_element);
-
-	first_element.appendChild(second_element);
-	first_element.appendChild(third_element);
-	first_element.appendChild(fourth_element);
-
-
-	return first_element;
-}
-
-
 
 function homePage(){
-	currentPage = "homePage";
 	cleanPage();
 	logMode = false;
 	currentRide = -1;
@@ -1312,8 +829,8 @@ function homePage(){
 	first_element.textContent = "Please go close to the wheel and click connect to device";
 	
 	let redwheel_element = document.createElement("div");
-	redwheel_element.style.width = "inherit";
-	redwheel_element.style.height = "150px";
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
 	redwheel_element.id = "canvas_redWheel"; 
 	let svg_element = document.createElement("img");
 	svg_element.src = "img/redwheel.svg";
@@ -1324,12 +841,10 @@ function homePage(){
 	canvas_main.appendChild(first_element);
 	canvas_footer.appendChild(cmd_button('Connect to Device'));
 	canvas_footer.appendChild(cmd_button('Donate with PayPal','colorBlue'));
-	window.scrollTo(0,0);
 	
 }
 
 function informationPage(){
-	currentPage = "informationPage";
 	cleanPage();
 	let bleStatus_element = document.createElement("div");
 	bleStatus_element.id = "ble_status";
@@ -1337,8 +852,8 @@ function informationPage(){
 	ble_status = bleStatus_element;
 
 	let redwheel_element = document.createElement("div");
-	redwheel_element.style.width = "inherit";
-	redwheel_element.style.height = "150px";
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
 	redwheel_element.id = "canvas_redWheel"; 
 	let svg_element = document.createElement("img");
 	svg_element.src = "img/redwheel.svg";
@@ -1348,12 +863,10 @@ function informationPage(){
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(bleStatus_element);
 	canvas_footer.appendChild(cmd_button("Cancel"));
-	window.scrollTo(0,0);
 	
 }
 
 function investigatePage(){
-	currentPage = "investigatePage";
 	cleanPage();
 	wheelName_div.textContent = 'Investigate Mode';
 	logElement = document.createElement("div");
@@ -1365,22 +878,19 @@ function investigatePage(){
 	canvas_main.appendChild(ble_element);
 }
 
-function finishPage(msg){
-	currentPage = "finishPage";
+function finishPage(){
 	cleanPage();
 	canvas.classList.replace("colorBlack","colorWhite");
 	//background: #f2f2f2; -> #121212
 	document.body.style.backgroundColor = "#f2f2f2";
-
-
 	let bleStatus_element = document.createElement("div");
 	bleStatus_element.id = "ble_status";
-	bleStatus_element.textContent = msg;//"Please wait for shutdown and unpair proceess ...";
+	bleStatus_element.textContent = "Please wait for showdown and unpair proceess ...";
 	ble_status = bleStatus_element;
 
 	let redwheel_element = document.createElement("div");
-	redwheel_element.style.width = "inherit";
-	redwheel_element.style.height = "150px";
+	redwheel_element.width = "200px";
+	redwheel_element.height = "150px";
 	redwheel_element.id = "canvas_redWheel"; 
 	let svg_element = document.createElement("img");
 	svg_element.src = "img/redwheel.svg";
@@ -1389,14 +899,11 @@ function finishPage(msg){
 
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(bleStatus_element);
-
-	window.scrollTo(0,0);
 	loadingIndicator();
 
 }
 
 function LandingPage(){
-	currentPage = "LandingPage";
 	if (logMode == true) return;
 	cleanPage();
 	wheelName_div.textContent = wheelName;
@@ -1410,149 +917,47 @@ function LandingPage(){
 	canvas_main.appendChild(redwheel_element);
 	canvas_main.appendChild(text_element);
 	canvas_footer.appendChild(cmd_button('About Wheel','colorGreen'));
-	//canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
 	canvas_footer.appendChild(cmd_button('Ride','colorDark'));
-	canvas_footer.appendChild(cmd_button('Done'));
-	window.scrollTo(0,0);
-}
-
-function aboutWheelPage(){
-	currentPage = "aboutWheelPage";
-	if (logMode == true) return;
-	cleanPage();
-
-	const title_element = document.createElement("div");
-	title_element.style.color ="orangered";
-	title_element.style.fontFamily = "Poppins-Bold, sans-serif";
-	title_element.style.fontSize = "large";
-	title_element.textContent ="About Wheel";
-	title_element.style.paddingBottom = "20px";
-	canvas_main.appendChild(title_element);
-
-	let redwheel_element = document.createElement("img");
-	redwheel_element.src = "img/redwheel.svg";
-	let text_element = document.createElement("div");
-	text_element.innerHTML ="Wheel connected, Welcome back <br>Enjoy riding <b><font color='red'>the red wheel</font></b>";
-	
-	canvas_main.appendChild(redwheel_element);
-	canvas_main.appendChild(text_element);
-	canvas_footer.appendChild(cmd_button('Wheel Setting','colorGreen'));
-	canvas_footer.appendChild(cmd_button('Braking Assistance','colorGreen'));
-	canvas_footer.appendChild(cmd_button(' Done '));
-	window.scrollTo(0,0);
-	
+	canvas_footer.appendChild(cmd_button('Done',));
 }
 
 function SettingPage(){
-	currentPage = "SettingPage";
+
 	if (logMode == true) return;
 	cleanPage();
 	//adjust layout by temporary remove disply flex
 	//canvas.style.display = '';
-	try{
-	  wheelName_div.textContent = deviceInformation.wheelName;
-		maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
-
-
-		const title_element = document.createElement("div");
-		title_element.style.color ="orangered";
-		title_element.style.fontFamily = "Poppins-Bold, sans-serif";
-		title_element.style.fontSize = "large";
-		title_element.textContent ="Wheel Setting";
-		title_element.style.paddingBottom = "20px";
-		canvas_main.appendChild(title_element);
-
-		let ul_element = document.createElement("ul");
-		ul_element.style.display = "grid";
-		ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
-		ul_element.style.width = "inherit";
-		deviceInfoDetail(ul_element,"Hardware Version",deviceInformation.heardwareVersion);
-		deviceInfoDetail(ul_element,"Firmware Version",deviceInformation.firmwareVersion);
-		//Nov 25, add batteryCycleCount
-		//deviceInfoDetail(ul_element,"Battery cycle count (testing)",deviceInformation.batteryCycleCount);
-
-		//unit metric or imperial
-		if (unit == 1){
-			toggleButton(ul_element,"Unit (Metric)",true,unitToggleUpdate);	
-		}else{
-			toggleButton(ul_element,"Unit (Imperial)",false,unitToggleUpdate);
-		}
-		
-
-		canvas_main.appendChild(ul_element);
-		//canvas_main.appendChild(document.createElement("br"));
-		//canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
-
-		canvas_main.appendChild(input_text_WheelName('Wheel Name',wheelName)); 
-		canvas_main.appendChild(input_Range_PowerSaveTimeout('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));
-
-		canvas_main.appendChild(input_Button_IncreseDecreseSpeed('Max Assist Speed',maxAssistSpeed));
-		canvas_main.appendChild(input_SelectOption_Tire("Tire Setting"));
-
-		PowerSaveTimeoutUpdate();
-	}catch(error){
-		const error_element = document.createElement("div");
-		error_element.textContent = "error: " + error;
-		canvas_main.appendChild(error_element);
-		const deInfor_element = document.createElement("div");
-		deInfor_element.textContent = "deviceInformation: " + JSON.stringify(deviceInformation);;
-		canvas_main.appendChild(deInfor_element);
-	}
-	canvas_footer.appendChild(cmd_button('Save'));
-	window.scrollTo(0,0);
-
-}
-
-
-function brakeAssistPage(){
-	currentPage = "brakeAssistPage";
-	if (logMode == true) return;
-		cleanPage();
-		//2020000a0000000034d87f3a00d500000100a88c
-
-		var brakeAssistValue = rideModes[1].value.substr(16,8);
-		var brakeAssistState = rideModes[1].value.substr(24,12);
-    
-		const title_element = document.createElement("div");
-		title_element.style.color ="orangered";
-		title_element.style.fontFamily = "Poppins-Bold, sans-serif";
-		title_element.style.fontSize = "large";
-		title_element.textContent ="Braking Assistance";
-		title_element.style.paddingBottom = "20px";
-
-		const desc_element = document.createElement("div");
-		desc_element.style.textAlign = "left";
-		desc_element.style.fontSize =  "14px";
-		desc_element.style.borderBottom = "2px solid #adadad";
-		desc_element.innerHTML = "<blockquote style='padding-bottom: 20px;'>When enabled, your Copenhagen Wheel can help with braking! Just pedal backwards to slow down. Adjust the sensitivity to decide how much you need to backpedal.<P><BR><Font color='orangered'><B>Remember</B></Font>, braking assistance is just that—assistance. It doesn't replace your bike's hand brakes, so don't rely on it in emergencies.</P></blockquote>";
-
-
+	
+  	wheelName_div.textContent = deviceInformation.wheelName;
+	maxAssistSpeed = hexToAssistScore(deviceInformation.maxAssistSpeed); 
 
 	let ul_element = document.createElement("ul");
 	ul_element.style.display = "grid";
 	ul_element.style.gridTemplateColumns = "repeat(2, 1fr)";
-	if (brakeAssistState == '00d500000100'){
-		toggleButton(ul_element,"Braking Assistance",true,brakeAssistToggleUpdate);
-	}else{
-		toggleButton(ul_element,"Braking Assistance",false,brakeAssistToggleUpdate);
-	}
-	
+	deviceInfoDetail(ul_element,"Hardware Version",deviceInformation.heardwareVersion);
+	deviceInfoDetail(ul_element,"Firmware Version",deviceInformation.firmwareVersion);
 
-	canvas_main.appendChild(title_element);
-	canvas_main.appendChild(desc_element);
 	canvas_main.appendChild(ul_element);
-	canvas_main.appendChild(input_Range_Sensitivity('Sensitivity',hexToDecimal(brakeAssistValue)));
+	canvas_main.appendChild(document.createElement("br"));
+	canvas_main.appendChild(input_text('Wheel Name',wheelName)); 
 
-	canvas_footer.appendChild(cmd_button(' Save ')); 
+	canvas_main.appendChild(input_slidebar('Power Save timeout',hexToProgressScore(deviceInformation.powerSaveTimeout)));  
+	var elem = document.getElementById("lable_Power Save timeout"); 
+  	elem.setAttribute("data-placeholder","Power Save timeout: " + hexToProgressScore(deviceInformation.powerSaveTimeout) + " mins");
+ 
+  	canvas_main.appendChild(increseDecressButton('Max Assist Speed',maxAssistSpeed));
+	elem = document.getElementById("lable_Max Assist Speed"); 
+  	elem.setAttribute("data-placeholder","Max Assist Speed:");
 
-	SensitivityRangeUpdate();
-	brakeAssistToggleUpdate();
+  	canvas_main.appendChild(inputSelectOption("Tire Setting"));
+	canvas_footer.appendChild(cmd_button('Save'));
+	//adjust layout by temporary remove disply flex
+	//canvas.style.display="inline";
+	canvas.scrollIntoView();
 
-	window.scrollTo(0,0);
 }
 
 function CurrentRidePage(){
-	currentPage = "CurrentRidePage";
 	if (logMode == true) return;
 	cleanPage();
 	currentRide = 1;
@@ -1561,30 +966,6 @@ function CurrentRidePage(){
   	canvas.classList.replace("colorWhite","colorBlack");
   	//background:  #f2f2f2 -- > #121212
   	document.body.style.backgroundColor = "#121212";
-
-  const speed_element = document.createElement("div");
-  //speed_element.id = "speedLabel";
-  speedLabel = speed_element;
-  speed_element.className = "speed";
-  //speed_element.style.fontSize = '40px'; // change size and color
-  speed_element.textContent = "0";
-  canvas_main.appendChild(speed_element);
-
-
-  const kmh_element = document.createElement("div");
-  //speed_element.id = "speedLabel";
-  //totalDistanceLabel = distance_element;
-  kmh_element.style.fontSize = '15px';  //Sep 28 change size from 13 to 20px 
-  kmh_element.style.margin ='0px';
-  kmh_element.style.padding ='0px';
-  kmh_element.style.color = '#00fffd';
-  if (unit == 1){
-  	kmh_element.textContent = "km/h";
-	}else{
-		kmh_element.textContent = "mph";
-	}
-  canvas_main.appendChild(kmh_element);
-
 
 	const gridContainer_element = document.createElement("div");
 	gridContainer_element.className = "grid-container";
@@ -1603,13 +984,11 @@ function CurrentRidePage(){
 
 	const decressBtn = cmd_button("<","colorBlack");
 	const incressBtn = cmd_button(">","colorBlack");
-	decressBtn.style.backgroundColor = 'rgba(0,0,0,0)';
 	decressBtn.style.height = '120px';
 	decressBtn.style.width = '80%';
 	decressBtn.style.margin = '0px';
 	decressBtn.style.fontSize = '180px';
 	decressBtn.style.fontFamily = "Poppins-Medium";
-	incressBtn.style.backgroundColor = 'rgba(0,0,0,0)';
 	incressBtn.style.height = '120px';
 	incressBtn.style.margin = '0px';
 	incressBtn.style.width = '80%';
@@ -1623,34 +1002,6 @@ function CurrentRidePage(){
 	rideModeLabel = center_element;
 	center_element.style.fontSize = '28px';
 	canvas_main.appendChild(gridContainer_element);
-
-
-	 const distance_element = document.createElement("div");
-  //speed_element.id = "speedLabel";
-  totalDistanceLabel = distance_element;
-  distance_element.style.fontSize = '30px'; //Sep 28 change size from 20 to 30px
-  distance_element.style.fontFamily = "Poppins-Medium";
-	//distance_element.style.backgroundColor = 'rgba(0,0,0,0)';
-  distance_element.style.margin='0px';
-  distance_element.style.padding='0px';
-  distance_element.style.color ='#FFFF00';//Sep 28 change color from #47a1f0 to FFFF00
-  distance_element.style.margin ='0px';
-  distance_element.style.padding ='0px';
-  distance_element.textContent = "0.0";
-
-  const km_element = document.createElement("font");
-  km_element.style.fontSize = '15px'; //Sep 28 change size from 13 to 15px 
-  km_element.style.margin ='0px';
-  km_element.style.padding ='0px';
-  km_element.style.color = '#FFFF00';
-
-  if (unit == 1){
-  	km_element.textContent ='km';
-  }else{
-  	km_element.textContent ='miles';
-  }
-  distance_element.appendChild(km_element);
-  canvas_main.appendChild(distance_element);
 
 
 	//batteryLabel
@@ -1681,11 +1032,10 @@ function CurrentRidePage(){
 	canvas_footer.appendChild(cmd_button("Finish"));
 	canvas_footer.appendChild(cmd_button("Exit","colorBlue"));
 
-  window.scrollTo(0,0);
+	canvas.scrollIntoView();
+
 	getRideModeState();
-
 }
-
 
 function cleanPage(){
   wheelName_div.textContent = 'Copenhagen Wheel';
@@ -1765,7 +1115,7 @@ async function loadCharacteristic(){
 		C0x0025Characteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
 		log('C0x0025Characteristic checked');
 		C0x0029Characteristic = await controllerService.getCharacteristic(C0x0029_characteristicUuid);//timer not speed
-		C0x0029Characteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
+		C0x0029Characteristic.addEventListener('characteristicvaluechanged',speedValueChanged);
 		log('C0x0029Characteristic checked');
 		C0x002dCharacteristic = await controllerService.getCharacteristic(C0x002d_characteristicUuid);//Can't crack value yet
 		C0x002dCharacteristic.addEventListener('characteristicvaluechanged',handleCharacteristicValueChanged);
@@ -1821,95 +1171,32 @@ function C0x0041CharacteristicValueChanged(event) {
     const value = event.target.value;
     log('0x0041 value change | ' +  dataToHexString(value) + ' | ' + DataToStr(value));
   	log('Step 17)');
-  	clearTimeout(timeoutId);
   	LandingPage();
 }
 
 function speedValueChanged(event) {
+	/* hv to find out
 	const characteristic = event.target;
-	const value = event.target.value; 
-	let kmh = -1;
-	let sph = 0;
-	kmh = value.getUint8(1);
-	kmh = kmh/2.186; //Math.round(kmh/2.186);
-	let distancefromkmh = (kmh * 0.27)/1000;
-  totalDistance = totalDistance + distancefromkmh;
-
+  const value = event.target.value; //00 00 00 00 4d 15 ac 14 d4 00 65 20 44 02 98 1d 4e 4e 02 00
+  let kmh = value.getUint8(12);
+  log('Speed: ' + dataToHexString(value) + '|' + kmh);
+  //kmh  = rpmToKmph(kmh);		
   try{
-  	if (kmh > 2 ) {
-  		//speedLabel.textContent =  Math.round(kmh - 1.618);//.toFixed(2); 
-  		sph = kmh - 1.618;
-  	}else{
-  		//speedLabel.textContent =  Math.round(kmh);//.toFixed(2); 
-  		sph = kmh ;
-  	}
-  	if (speedLabel){
-	  	if (unit ==1){
-	  		speedLabel.textContent =  Math.round(sph);
-	  		totalDistanceLabel.innerHTML = totalDistance.toFixed(2) + "<font style='font-size: 13px;'> km</font>"	
-	  	}else{
-	  		speedLabel.textContent =  Math.round(sph*unit);
-	  		totalDistanceLabel.innerHTML = (totalDistance * unit).toFixed(2) + "<font style='font-size: 13px;'> miles</font>"	
-	  	}
-	  }
-  	
+  	//speedLabel.textContent =  kmh; timmer
   }catch(error){
   	log('error speedValueChanged: ' + error);
   }
-	const stamp = new Date().getTime();
-	tripData.push({time:stamp,speed:kmh});
+	*/
 }
 
-
 function batteryLevelValueChanged(event) {
-	if (currentPage != "CurrentRidePage") return;
 	try{
 		const characteristic = event.target;
-		const value = event.target.value;
+	  const value = event.target.value;
 	  const level = value.getUint8(7);
-	  const status = value.getUint8(8);
-	  const state = value.getUint8(5);
-	  const usage = value.getUint8(4);
-
-	  //deviceInformation.batteryCycleCount = value.getUint8(6);
-
 	  batteryLevel.style.width = level + '%';
 	  batteryLevelLabel.textContent = 'Battery Level: ' + level+'%';
 
-	  	//July 21 , too much delay can't opend this featrue yet
-	  	/*
-			if (usage > 127){
-		  	usage = 256 - usage;//126
-		  }
-		  var percentage = usage;
-		  if (rideMode != 0){
-		  	percentage = (100/126) * usage;	
-		  }
-		  percentage = percentage + 0;
-		  if (percentage > 100) percentage = 100;
-	  	if (percentage > 60) {
-				foreground.style.borderTopLeftRadius = (100 - percentage) + '%';
-	      foreground.style.borderTopRightRadius = (100 - percentage) + '%';
-	  	}else{
-	  		foreground.style.borderTopLeftRadius =  '85%';
-	      foreground.style.borderTopRightRadius = '85%';
-	  	}
-	  	foreground.style.height = percentage + '%';
-			*/
-
-		  if (status == 195){
-		  	//use
-		  	if (level > 30) {
-		  		batteryLevel.style.backgroundColor = '#ffffff';	
-		  	}else{
-		  		batteryLevel.style.backgroundColor = 'red';
-		  	}
-		  }else{
-		  	//charge
-		  	batteryLevel.style.backgroundColor = '#529e2b'; 
-		  }
-
-	  handleCharacteristicValueChanged(event);
 	}catch(error){
 		log('error batteryLevelValueChanged: ' + error);
 	}
@@ -1928,106 +1215,18 @@ function batteryWarningValueChanged(event){
 }
 
 function handleCharacteristicValueChanged(event) {
-	
+	/* hv to find out
 	try{
+		// Here you can access the characteristic UUID stored in the outer scope
 		const characteristic = event.target
+		// To get the actual value, you can access it from the event object
 		const characteristicUUID = characteristic.uuid; 
 		const value = event.target.value;
-		if (characteristicUUID.toLowerCase() == C0x0029_characteristicUuid){
-				speedValueChanged(event);
-		}
-
-		const stamp = new Date().getTime();
-		const traceStr =  stamp + '|' + paddle + '|' + rideModes[rideMode].mode + '|' + characteristicUUID + '|' + dataToHexString(value);// + '|' + gpslat + '|' +  gpslng;
-
-		logTrace.push(traceStr);
-
+		log('handle value change | ' + characteristicUUID + ' | ' + dataToHexString(value) + ' | ' + DataToStr(value));
 	}catch(error){
 		log('error handleCharacteristicValueChanged: ' + error);
 	}
-	
-}
-
-
-
-
-function summaryTrip(data) {
-    let totalArea = 0;
-    let totalSpeed = 0;
-    let maxSpeed = -Infinity;
-    let totalDuration = 0;
-
-    for (let i = 1; i < data.length; i++) {
-        // Calculate the difference in time (Δ Time)
-        const deltaTime = (data[i].time - data[i - 1].time)/1000; //H
-        // Calculate the average speed
-        const avgSpeed = (data[i].speed + data[i - 1].speed) / 2;//J
-        // Calculate the area of the trapezoid
-        const area = deltaTime * avgSpeed;//H*J
-        // Add to the total area
-        totalArea += area;
-        totalDuration += deltaTime;
-        // Add to total speed for average calculation
-        totalSpeed += data[i].speed;
-
-        // Check for max speed
-        if (data[i].speed > maxSpeed) {
-            maxSpeed = data[i].speed;
-        }
-    }
-
-    // Calculate the average speed
-    const averageSpeed = totalSpeed / data.length;
-    
-    const differenceInMs = data[data.length -1].time - data[0].time;
-		// Convert milliseconds to hours and minutes
-    const totalMinutes = Math.floor(differenceInMs / 1000 / 60);
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-
-    // Format the result as hh:mm
-    const formattedHours = String(hours).padStart(2, '0');
-    const formattedMinutes = String(minutes).padStart(2, '0');
-
-    if (unit ==1){
-    	return {
-        totalArea: ((totalArea * 0.27)/1000).toFixed(2),
-        maxSpeed: maxSpeed.toFixed(2),
-        averageSpeed: averageSpeed.toFixed(2),
-        totalDuration: formattedHours + ':' + formattedMinutes
-    	};
-    }else{
-     	return {
-        totalArea: (((totalArea * 0.27)/1000) * unit).toFixed(2),
-        maxSpeed: (maxSpeed * unit).toFixed(2),
-        averageSpeed: (averageSpeed * unit).toFixed(2),
-        totalDuration: formattedHours + ':' + formattedMinutes
-    	};   	
-    }
-
-}
-
-
-function postLog(){
-	console.log (logTrace.join('\r\n'));
-	const stamp = new Date().getTime();
-  var inputString = logTrace.join('\r\n');
-  fetch('save_to_file.php', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: 'filename='+stamp+'.txt&inputString=' + encodeURIComponent(inputString), 
-  })
-  .then(response => response.text())
-  .then(data => {
-      alert(data);
-      logTrace = []; 
-  })
-  .catch(error => {
-      alert('Error: ' + error);
-  });
-
+	*/
 }
 
 //Data Convertion
@@ -2090,22 +1289,26 @@ function dataToHexString(data) {
     return hexString;
 }
 
-
-async function switchMode(){
-	try{
-			//step 9-15 start noti
-			log('switchMode');
-			log('Write RideModeCharacteristic ' + rideModes[rideMode].value);
-			await RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
-			log('RideModeCharacteristic successed');
-			log('RequestToControllerharacteristic 2000');
-			await RequestToControllerharacteristic.writeValue(hexStringToData('2000'));
-			await getRideModeState();
-	}catch(error){
-			log('Argh! RideModeCharacteristic fail: ' + error);
-	}
+function switchMode(){
+	
+		RideModeCharacteristic.writeValue(hexStringToData(rideModes[rideMode].value))
+	  .then(data=>{
+	    log('RideModeCharacteristic successed');
+	    log('RequestToControllerharacteristic');
+	    RequestToControllerharacteristic.writeValue(hexStringToData('2000'))
+			  .then(data=>{
+			    log('RequestToControllerharacteristic successed');
+			    getRideModeState();
+			    //rideModeLabel.textContent = rideModes[rideMode].mode;
+			  })
+			  .catch(error => {
+			    log('Argh! RequestToControllerharacteristic fail: ' + error);
+			  });
+	  })
+	  .catch(error => {
+	    log('Argh! RideModeCharacteristic fail: ' + error);
+	  });
 }
-
 
 async function readDeviceInformation(){
 	try {
@@ -2120,11 +1323,6 @@ async function readDeviceInformation(){
 		const firmwareVersionString = DataToStr(firmwareVersion);
 		log ('Step 2) read c0X0025: ' + firmwareVersionString);	
 		deviceInformation.firmwareVersion = firmwareVersionString.split('+')[0];
-
-		//Nov 25, add batteryCycleCount
-		//const batteryValue = await C0x0031Characteristic.readValue();
-		//deviceInformation.batteryCycleCount = batteryValue.getUint8(6);
-
 
 		const wheelInfo = await C0x0035Characteristic.readValue();
 		const wheelInfoString =  dataToHexString(wheelInfo);
@@ -2179,15 +1377,7 @@ async function readIntitialInformation() {
 			let passcode = findValue(serial);
 			if(passcode){
 				log ('Step 8) Sending passcode for authentication');
-				//start time out
-				timeoutId = setTimeout(function() {
-							const timeout_element = document.createElement("div");
-							timeout_element.textContent = "Timeout Please try again!!!";
-							canvas_main.appendChild(timeout_element);
-	            //log('Timeout Please try again');    
-	            }, 20000); // 20 seconds
 				await PasscodeCharacteristic.writeValue(hexStringToData(passcode));
-
 			}else{
 				log ('Step 8) authen fail passcode not found');	
 			}
@@ -2216,8 +1406,6 @@ async function prepareRideModeInformation(){
 			await C0x007bCharacteristic.startNotifications();
 			log ('Step 15) C0x007bCharacteristic : start noti');	
 
-
-
 			//step 16 send request cf 	
 			RequestToControllerharacteristic.writeValue(hexStringToData('cf'))
 			  .then(data=>{
@@ -2227,8 +1415,6 @@ async function prepareRideModeInformation(){
 			  .catch(error => {
 			    log('Argh! Step 16) RequestToControllerharacteristic with cf fail: ' + error);
 			  });		
-
-
 	}catch (error) {
   	console.error('prepareRideModeInformation:', error);
   	log('prepareRideModeInformation:' + error);
@@ -2236,52 +1422,40 @@ async function prepareRideModeInformation(){
 
 }
 
+function getRideModeState(){
+	RideModeCharacteristic.readValue()
+			  .then(data=>{
+			    log('RideModeCharacteristic' + ' | ' + dataToHexString(data) + ' | ' + DataToStr(data));
+			    const value = dataToHexString(data);
+			    //calcualte break assis
+			    let prefix = value.substring(0, 3);
 
-async function getRideModeState(){
-	try {
-		const data = await RideModeCharacteristic.readValue();
-		const value = dataToHexString(data);
-		let prefix = value.substring(0, 3);
-		switch (prefix) {
-		  case '000': 
-		  	rideMode = 0;
-			log('RideMode: off');
-		    break;
-		  case '202':
-		  	rideMode = 1; 
-			log('RideMode: eco');
-		    break;
-		  case '404':
-		  	rideMode = 2;
-			log('RideMode: standard');
-		    break;
-		  case '557':
-		  	rideMode = 3;
-			log('RideMode: turbo');
-		    break;
-		  default:
-		    break;
-		}
-		log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
-		try{
-			if(rideModeLabel){
-				if (rideMode == 2) {
-					rideModeLabel.style.fontSize = '24px';
-				}else{
-					rideModeLabel.style.fontSize = '28px';
-				}
-				rideModeLabel.textContent = rideModes[rideMode].mode;
-			} 
-
-		}catch(error){
-			log('Argh! rideModeLabel not found: ' + error);
-		}
-
-	}catch(error){
-		log('Argh! RideModeCharacteristic Read fail: ' + error);
-	}
-	
-
+					switch (prefix) {
+					  case '000': 
+					  	rideMode = 0;
+						log('RideMode: off');
+					    break;
+					  case '202':
+					  	rideMode = 1; 
+						log('RideMode: eco');
+					    break;
+					  case '404':
+					  	rideMode = 2;
+						log('RideMode: standard');
+					    break;
+					  case '557':
+					  	rideMode = 3;
+						log('RideMode: turbo');
+					    break;
+					  default:
+					    break;
+					}
+					rideModeLabel.textContent = rideModes[rideMode].mode;
+					log('RideMode' + ' | ' + rideMode + ' | ' + rideModes[rideMode].mode + ' | ' + value);
+			  })
+			  .catch(error => {
+			    log('Argh! RideModeCharacteristic Read fail: ' + error);
+			  });	
 }
 
 function PresentAccessLevelValueChanged(event){
@@ -2295,7 +1469,6 @@ function PresentAccessLevelValueChanged(event){
 		log ('Access gant');
 		if (currentRide < 0) {
 			currentRide = 1;
-			clearTimeout(timeoutId);
 			prepareRideModeInformation();
 		}
 		}else{
@@ -2319,122 +1492,11 @@ function PresentAccessLevelValueChanged(event){
 }
 
 async function finishRide(){
-	//trip summary
-	let summary = summaryTrip(tripData)
-
-	let trip_element = document.createElement('div');
-	trip_element.id = "tripSummary";
-	trip_element.className = 'trip-summary';
-
-	let trip_header_element = document.createElement('div');
-	trip_header_element.className = "trip-summary-header";
-	trip_header_element.textContent = "Trip Summary";
-
-	let trip_info_element = document.createElement('div');
-	trip_info_element.className = "trip-summary-info";
-
-		let column1_element = document.createElement('div');
-		column1_element.className = "trip-column";
-
-			let distance_title_element = document.createElement('div');
-			distance_title_element.className = "unit";
-			distance_title_element.textContent = "DISTANCE";
-
-			let distance_value_element = document.createElement('div');
-			distance_value_element.className = "value";
-			distance_value_element.textContent = summary.totalArea;
-	
-			let distance_unit_element = document.createElement('div');
-			distance_unit_element.className = "unit";
-			if (unit ==1){
-				distance_unit_element.textContent = "km";
-			}else{
-				distance_unit_element.textContent = "miles";
-			}
-
-		column1_element.appendChild(distance_title_element);
-		column1_element.appendChild(distance_value_element);
-		column1_element.appendChild(distance_unit_element);
-
-		let column2_element = document.createElement('div');
-		column2_element.className = "trip-column";
-
-			let duration_title_element = document.createElement('div');
-			duration_title_element.className = "unit";
-			duration_title_element.textContent = "DURATION";
-
-			let duration_value_element = document.createElement('div');
-			duration_value_element.className = "value";
-			duration_value_element.textContent = summary.totalDuration;
-
-			let duration_unit_element = document.createElement('div');
-			duration_unit_element.className = "unit";
-			duration_unit_element.textContent = "minutes";
-
-		column2_element.appendChild(duration_title_element);
-		column2_element.appendChild(duration_value_element);
-		column2_element.appendChild(duration_unit_element);
-
-		let column3_element = document.createElement('div');
-			column3_element.className = "trip-column";
-
-			let avgSpeed_title_element = document.createElement('div');
-			avgSpeed_title_element.className = "unit";
-			avgSpeed_title_element.textContent = "AVG SPEED";
-
-			let avgSpeed_value_element = document.createElement('div');
-			avgSpeed_value_element.className = "value";
-			avgSpeed_value_element.textContent = summary.averageSpeed;
-			
-			let avgSpeed_unit_element = document.createElement('div');
-			avgSpeed_unit_element.className = "unit";
-			if (unit ==1){
-				avgSpeed_unit_element.textContent = "km/h";	
-			}else{
-				avgSpeed_unit_element.textContent = "mph";	
-			}	
-		column3_element.appendChild(avgSpeed_title_element);
-		column3_element.appendChild(avgSpeed_value_element);
-		column3_element.appendChild(avgSpeed_unit_element);
-
-		let column4_element = document.createElement('div');
-			column4_element.className = "trip-column";
-
-			let maxSpeed_title_element = document.createElement('div');
-			maxSpeed_title_element.className = "unit";
-			maxSpeed_title_element.textContent = "MAX SPEED";
-
-			let maxSpeed_value_element = document.createElement('div');
-			maxSpeed_value_element.className = "value";
-			maxSpeed_value_element.textContent = summary.maxSpeed;
-
-			let maxSpeed_unit_element = document.createElement('div');
-			maxSpeed_unit_element.className = "unit";
-			if (unit ==1){
-				maxSpeed_unit_element.textContent = "km/h";	
-			}else{
-				maxSpeed_unit_element.textContent = "mph";	
-			}
-		column4_element.appendChild(maxSpeed_title_element);
-		column4_element.appendChild(maxSpeed_value_element);
-		column4_element.appendChild(maxSpeed_unit_element);
-
-	trip_info_element.appendChild(column1_element);
-	trip_info_element.appendChild(column2_element);
-	trip_info_element.appendChild(column3_element);
-	trip_info_element.appendChild(column4_element);
-
-	trip_element.appendChild(trip_header_element);
-	trip_element.appendChild(trip_info_element);
-
-	canvas_header.appendChild(trip_element);
-	finishPage("Please wait for shutdown and unpair proceess ...");
-
+	finishPage();
 	try {
 		await CommandToControllerharacteristic.writeValue(hexStringToData('1e0102'));
 	}catch (error) {}
   log('Step final)  turn off device');
-  //alert(summary_str);
   homePage();
 	if (ble_status) ble_status.textContent = "Disconnect from Device";
 	bluetoothDevice.gatt.disconnect();
@@ -2492,10 +1554,7 @@ async function saveSetting(){
 	log('assistScoreToHex as hex:' + assistScoreToHex(maxAssistSpeed));
 	log('trieSettingHex as hex:' + trieSettingValue);
 	
-
-	
-	finishPage("Please wait for saving data ...");
-
+	finishPage();
 	if(deviceInformation.wheelName != wheelNameValue){
 		//modify and save
 		log('wheelName Change from ' + deviceInformation.wheelName + ' to ' + wheelNameValue);
@@ -2547,9 +1606,7 @@ async function saveSetting(){
 	LandingPage();
 	//set display back
 	//canvas.style.display = "flex";
-  //canvas.scrollIntoView();
-
-  	
+  	canvas.scrollIntoView();
 }
 
 
@@ -2589,32 +1646,18 @@ function hexToProgressScore(hexValue) {
 
     // Ensure the score is within the given range
     if (score < minScore || score > maxScore) {
-        //throw new Error("Hex value does not correspond to a valid score");
-    		score = 12;
+        throw new Error("Hex value does not correspond to a valid score");
     }
 
     return score;
 }
 
 function moveProgressBar() {
-	//remove 
   var rangeValue = document.getElementById("Power Save timeout").value;
   var elem = document.getElementById("lable_Power Save timeout"); 
   elem.setAttribute("data-placeholder","Power Save timeout: " + rangeValue + " mins");
 	log('moveProgressBar:'+rangeValue);
 
-}
-
-function PowerSaveTimeoutUpdate(){
-	const slider = document.getElementById('Power Save timeout');
-	const value = slider.value;
-  const min = slider.min;
-  const max = slider.max;
-  const percentage = ((value - min) / (max - min)) * 100;
-  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
-  var lable = document.getElementById("lable_Power Save timeout"); 
-  lable.textContent = "Power Save timeout: " + value + " mins";
-  log('PowerSaveTimeoutUpdate:'+value);
 }
 
 function assistScoreToHex(score) {
@@ -2635,34 +1678,17 @@ function hexToAssistScore(hexValue) {
     if (hexScoreMap.hasOwnProperty(hexValue)) {
         return hexScoreMap[hexValue];
     } else {
-        //throw new Error("Hex value does not correspond to a known score");
-    	// if error return max assis speed
-    		return 33;
+        throw new Error("Hex value does not correspond to a known score");
     }
 }
 
 function maxAssistSpeedChange(){
 	var elem = document.getElementById("lable_Max Assist Speed"); 
-	/*if (maxAssistSpeed > 32) {
+	if (maxAssistSpeed > 32) {
 		elem.textContent = "Assits above 32km/h";
 	}else{
 		elem.textContent = maxAssistSpeed +" km/h";
-	}*/
-
-		if (maxAssistSpeed > 32) {
-		if (unit ==1) {
-			elem.textContent = "above 32 km/h";	
-		}else{
-			elem.textContent = "above 20 mph";
-		}
-	}else{
-		if (unit ==1) {
-			elem.textContent = maxAssistSpeed +" km/h";
-		}else{
-			elem.textContent = (maxAssistSpeed * unit).toFixed(0) +" mph";
-		}
 	}
-
   log('maxAssistSpeed:'+maxAssistSpeed);
 }
 
@@ -2697,244 +1723,6 @@ updateClock();
 
 // Update the clock every second
 setInterval(updateClock, 1000);	
-
-//---
-
-function saveBrakeAssistData(value) {
-  localStorage.setItem('brakeAssistValue', value);
-}
-
-function loadBrakeAssistData() {
-  var data = localStorage.getItem('brakeAssistValue');
-  var brakeAssistValue= "34d87f3a00d500000100";
-  if (data) {
-      brakeAssistValue = data;
-  } 
-  rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
-	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
-	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
-
-	console.log('loadBrakeAssistData');
-	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
-
-}
-
-async function brakeAssistSave(){
-	const toggle = document.getElementById('Braking Assistance');
-	const slider = document.getElementById('Sensitivity');
-	var breakAssistState = "00d500000100";
-	if (!toggle.checked) {
-		breakAssistState = "000000000100";
-	}
-
-	const value = slider.value;
-	var reverseValue = SensitivityReverseValue(value);
-	var brakeAssistValue = decimalToHex(reverseValue) + breakAssistState
-	saveBrakeAssistData(brakeAssistValue);
-
-	rideModes[1].value = rideModeCRC('2020000a00000000' + brakeAssistValue);
-	rideModes[2].value = rideModeCRC('4040001e00000000' + brakeAssistValue);
-	rideModes[3].value = rideModeCRC('557f7d0000000000' + brakeAssistValue);
-
-	console.log('brakeAssistSave');
-	console.log('rideModes',rideModes[1].value,rideModes[2].value,rideModes[3].value);
-
-	try{
-			//sent new brake assist command
-		//step 1 read current mode
-		await getRideModeState();
-		
-	  var currentRideModeState = rideMode;
-	  console.log('brakeAssistSave step1 getRideModeState:' + rideMode);
-	  if (currentRideModeState == 0) rideMode = 1;
-	  await  switchMode();
-	  if (rideMode != currentRideModeState) {
-	  	rideMode = currentRideModeState;
-	  	console.log('brakeAssistSave step2 getRideModeState back to :' + rideMode);
-	  	await  switchMode();
-	  }
-	  
-
-	}catch(error){
-		console.log('brakeAssistSave error' + error);
-	}
-
-	
-}
-
-function unitToggleUpdate(){
-	let toggle = document.getElementById('Unit (Metric)');
-	let label = document.getElementById('lable_Unit (Metric)');
-	if (!toggle) {
-		toggle = document.getElementById('Unit (Imperial)');
-		label = document.getElementById('lable_Unit (Imperial)');
-	}
-
-	if (toggle.checked) {
-		label.textContent = "Unit (Metric)";
-		unit = 1;
-	}else{
-		label.textContent = "Unit (Imperial)";
-		unit = 0.621371192;
-	}
-	localStorage.setItem('unitValue', unit);
-	maxAssistSpeedChange();
-}
-
-function brakeAssistToggleUpdate(){
-	const toggle = document.getElementById('Braking Assistance');
-	const slider = document.getElementById('Sensitivity');
-	const value = slider.value;
-  const min = slider.min;
-  const max = slider.max;
-  const percentage = ((value - min) / (max - min)) * 100;
-	if (toggle.checked) {
-		slider.disabled = false
-		slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
-	}else{
-		slider.disabled = true;
-		slider.style.background = `linear-gradient(to right, #ddd ${percentage}%, #ddd ${percentage}%)`;	
-	}
-}
-
-function SensitivityRangeUpdate(){
-	const slider = document.getElementById('Sensitivity');
-	const value = slider.value;
-  const min = slider.min;
-  const max = slider.max;
-  const percentage = ((value - min) / (max - min)) * 100;
-  const reverseValue = SensitivityReverseValue(value);
-
-  
-  var eco= rideModeCRC('2020000a00000000' + decimalToHex(reverseValue) + "00d500000100");
-	var std = rideModeCRC('4040001e00000000' + decimalToHex(reverseValue) + "00d500000100");
-	var tub = rideModeCRC('557f7d0000000000' + decimalToHex(reverseValue) + "00d500000100");
-
-  console.log('SensitivityRangeValue',Math.round(percentage/10),value,decimalToHex(reverseValue),eco,std,tub);  
-  slider.style.background = `linear-gradient(to right, #6d6b6b ${percentage}%, #ddd ${percentage}%)`;
-}
-
-
-function testSensitivityRangeUpdate(){
-	const slider = document.getElementById('Sensitivity');
-	const tx = document.getElementById('tx');
-	alert (tx.value);
-	slider.value = SensitivityReverseValue(hexToDecimal(tx.value));
-	SensitivityRangeUpdate();
-}
-
-function SensitivityChange(){
-
-	var rangeValue = document.getElementById("Sensitivity").value;
-  var elem = document.getElementById("lable_Sensitivity"); 
-  elem.setAttribute("data-placeholder","Sensitivity: " + Sensitivitypercentage(rangeValue) + "%");
-  rangeValue = SensitivityReverseValue(rangeValue);
-  var v = rideModeCRC('2020000a00000000' + decimalToHex(rangeValue) + '00d500000100');
-	log('SensitivityBar:'+v);
-
-}
-
-function Sensitivitypercentage(value) {
-	return  Math.round(value * (100/2289925988));
-}
-
-function SensitivityReverseValue(value) {
-	const min = 285179688; 
-  const max = 2289925988;  
-  return max - (value - min);
-}
-
-function decimalToHex(decimal) {
-	decimal = parseInt(decimal);
-    return decimal.toString(16).toUpperCase();
-}
-
-function hexToDecimal(hex) {
-    return parseInt(hex, 16);
-}
-
-function hexToBytes(hex) {
-    let bytes = [];
-    for (let c = 0; c < hex.length; c += 2)
-        bytes.push(parseInt(hex.substr(c, 2), 16));
-    return new Uint8Array(bytes);
-}
-
-function buf2hex(buffer) { // buffer is an ArrayBuffer
-    return [...new Uint8Array(buffer)]
-        .map(x => x.toString(16).padStart(2, '0'))
-        .join('');
-}
-
-function swapEveryOtherByte(byteArray) {
-    // Loop through the byte array two bytes at a time
-    for (let i = 0; i < byteArray.length - 1; i += 2) {
-        // Swap bytes
-        const temp = byteArray[i];
-        byteArray[i] = byteArray[i + 1];
-        byteArray[i + 1] = temp;
-    }
-    return byteArray;
-}
-function crc16(data) {
-  let crc = 0;
-  let out = 0;
-  let bitFlag;
-  let thisByte;
-  let bitsRead = 0;
-  let index = 0;
-
-  // Create a new copy of the data and swap every other byte
-  const newData = swapEveryOtherByte([...data]);
-  let byteLen = newData.length;
-
-  while (byteLen > 0) {
-      bitFlag = out >> 15;
-      out = (out << 1) & 0xFFFF;
-
-      thisByte = newData[index] & 0xFF;
-
-      // Get the next bit from thisByte
-      out = out | ((thisByte >> bitsRead) & 1);
-
-      bitsRead += 1;
-      if (bitsRead > 7) {
-          bitsRead = 0;
-          index += 1;
-          byteLen -= 1;
-      }
-
-      // Apply the CRC polynomial if the shifted-out bit is 1
-      if (bitFlag !== 0) {
-          out = out ^ 0x8005;
-      }
-  }
-
-  // Push out the last 16 bits
-  for (let i = 0; i < 16; i++) {
-      bitFlag = out >> 15;
-      out = (out << 1) & 0xFFFF;
-      if (bitFlag !== 0) {
-          out = out ^ 0x8005;
-      }
-  }
-
-  // Reverse the bits in the CRC
-  for (let i = 0; i < 16; i++) {
-      if (out & (1 << i)) {
-          crc = crc | (1 << (15 - i));
-      }
-  }
-  return new Uint8Array([(crc & 0xFF), (crc >> 8)]);
-}
-
-function rideModeCRC(hex){
-    var d = hexToBytes(hex);
-    let b = new Uint8Array(d.buffer, d.byteOffset, d.byteLength);
-    var crc = crc16(b);
-    var data = new Uint8Array([...b, ...crc]);
-    return buf2hex(data.buffer);
-}
 
 </script>
 
